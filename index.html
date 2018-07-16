@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <script src="views/home/home.js"></script>
+    <script src="components/field/component.js"></script>
+    <script src="components/field-select/component.js"></script>
+    <script src="components/field-options/component.js"></script>
+    <script src="components/dataset/component.js"></script>
+    <script src="components/pager/component.js"></script>
+</head>
+<body>
+
+<!--
+<div data-ng-view></div>
+-->
+<aside class="main-sidebar">
+    <nav class="main-sidebar-menu">
+
+        <a class="menu-item">Lorem ipsum 1</a>
+
+    </nav>
+</aside>
+
+<main class="main-container">
+
+    <header ></header>
+
+    <div class="body">
+        <form class="form-grid">
+            <field data-model="person.name" data-label="'Nombre'"></field>
+
+            <field-select data-model="person.status" data-label="'Estado Civil'" data-options="item as item for item in ['Casado','Soltero']"></field-select>
+
+            <field-options data-multiple="true" data-model="person.interests" data-label="'Intereses'" data-option-label="'name'"  data-options="[{id:1,name:'Deportes'},{id:2,name:'Ciencia'}]"></field-options>
+        </form>
+
+
+        <dataset data-properties="{'id':'ID','name':'Nombre','surname':'Apellido'}" data-items="[{id:1,name:'Gabriel',surname:'Macus'},{id:2,name:'Juan',surname:'Pérez'}]"></dataset>
+
+
+    </div>
+
+
+</main>
+{{person}}
+
+</body>
+</html>

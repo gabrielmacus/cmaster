@@ -1,0 +1,11 @@
+<label>{{$ctrl.label}}</label>
+<div class="checkbox-options">
+        <div class="checkbox-option" data-ng-repeat="(k,option) in $ctrl.options">
+            <label>{{option[$ctrl.optionLabel]}}</label>
+
+            <input data-ng-if="$ctrl.multiple" data-ng-change="$ctrl.updateModel()"  data-ng-model="$ctrl.selected[k]" data-ng-true-value="{{(!$ctrl.optionValue)?option:option[$ctrl.optionValue]}}" type="checkbox">
+
+            <input data-ng-if="!$ctrl.multiple"  data-ng-model="$ctrl.model" data-ng-true-value="{{(!$ctrl.optionValue)?option:option[$ctrl.optionValue]}}" type="checkbox">
+
+        </div>
+</div>

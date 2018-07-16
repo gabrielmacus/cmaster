@@ -1,0 +1,25 @@
+<!--<div class="header" data-ng-repeat-start="(k,p) in $ctrl.properties">
+    {{p}}
+</div>
+
+<div class="col" data-ng-repeat-end data-ng-repeat="item in $ctrl.items">
+    <span class="text">{{item[k]}}</span>
+</div>-->
+
+
+
+<div class="table">
+    <div class="row headers" >
+        <div class="header col" data-ng-repeat="p in $ctrl.properties">
+            {{p}}
+        </div>
+    </div>
+
+    <div class="row data" data-ng-repeat="item in $ctrl.items">
+        <div class="col" data-ng-repeat="(k,p) in $ctrl.properties">
+            <span class="text">{{item[k]}}</span>
+        </div>
+    </div>
+</div>
+
+<pager></pager>

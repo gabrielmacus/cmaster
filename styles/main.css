@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");
+html {
+  box-sizing: border-box; }
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit; }
+
+html,
+body {
+  height: 100%;
+  font-family: "Open Sans", sans-serif; }
+
+body {
+  display: grid;
+  grid-template-columns: 35% auto; }
+
+.main-sidebar {
+  grid-column: 1;
+  grid-row: 1 / span 2; }
+
+.main-sidebar > .main-sidebar-menu {
+  transition: all 0.2s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background-color: #22a6b3;
+  color: white;
+  height: 100%;
+  overflow: auto;
+  position: relative;
+  left: 0%; }
+
+.main-sidebar-menu > .menu-item:hover {
+  color: #22a6b3;
+  background-color: white; }
+
+.main-sidebar-menu > .menu-item {
+  padding: 15px;
+  display: inline-block;
+  width: 100%;
+  border-bottom: 1px solid #7ed6df;
+  font-weight: 600; }
+
+.main-container > header {
+  min-height: 46px;
+  background-color: #22a6b3;
+  grid-column: 1 / span 6;
+  grid-row: 1; }
+
+.main-container {
+  display: grid;
+  grid-template-rows: min-content auto;
+  grid-row: 1 / span 2;
+  grid-template-columns: repeat(6, 1fr); }
+
+.main-container > .body {
+  grid-column: 1 / span 6;
+  padding: 15px; }
+
+.main-container > header {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+
+.grid-list {
+  grid-column: 1 / span 6;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 15px;
+  margin-bottom: 15px; }
+  .grid-list .grid-list-item.item-key-value {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    background: #7ed6df;
+    padding: 15px; }
+    .grid-list .grid-list-item.item-key-value .item-property:last-child {
+      margin-bottom: 0; }
+      .grid-list .grid-list-item.item-key-value .item-property:last-child .value .media {
+        position: relative;
+        left: -15px;
+        width: calc(100% + 30px);
+        margin-top: 15px; }
+    .grid-list .grid-list-item.item-key-value .item-property {
+      margin-bottom: 15px; }
+      .grid-list .grid-list-item.item-key-value .item-property .value {
+        display: block;
+        margin-bottom: 7.5px; }
+      .grid-list .grid-list-item.item-key-value .item-property .key {
+        display: block;
+        margin-bottom: 7.5px; }
+  .grid-list .grid-list-item.item-preview {
+    display: grid;
+    grid-template-rows: min-content auto;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+    .grid-list .grid-list-item.item-preview:hover > .title {
+      background: #7ed6df;
+      color: #3d3d3d; }
+    .grid-list .grid-list-item.item-preview .title {
+      transition: all 0.2s;
+      background: #3d3d3d;
+      color: white;
+      padding: 15px; }
+
+.main-title {
+  margin-bottom: 15px;
+  font-size: 30px;
+  font-weight: 300;
+  color: #84817a; }
+
+.form-grid {
+  margin-bottom: 15px;
+  display: grid;
+  grid-gap: 15px; }
+  .form-grid .form-cell .checkbox-options, .form-grid .form-cell .radio-options, .form-grid field .checkbox-options, .form-grid field .radio-options, .form-grid field-select .checkbox-options, .form-grid field-select .radio-options, .form-grid field-options .checkbox-options, .form-grid field-options .radio-options {
+    display: grid;
+    grid-gap: 7.5px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+    .form-grid .form-cell .checkbox-options .checkbox-option, .form-grid .form-cell .checkbox-options .radio-option, .form-grid .form-cell .radio-options .checkbox-option, .form-grid .form-cell .radio-options .radio-option, .form-grid field .checkbox-options .checkbox-option, .form-grid field .checkbox-options .radio-option, .form-grid field .radio-options .checkbox-option, .form-grid field .radio-options .radio-option, .form-grid field-select .checkbox-options .checkbox-option, .form-grid field-select .checkbox-options .radio-option, .form-grid field-select .radio-options .checkbox-option, .form-grid field-select .radio-options .radio-option, .form-grid field-options .checkbox-options .checkbox-option, .form-grid field-options .checkbox-options .radio-option, .form-grid field-options .radio-options .checkbox-option, .form-grid field-options .radio-options .radio-option {
+      display: flex; }
+      .form-grid .form-cell .checkbox-options .checkbox-option input, .form-grid .form-cell .checkbox-options .radio-option input, .form-grid .form-cell .radio-options .checkbox-option input, .form-grid .form-cell .radio-options .radio-option input, .form-grid field .checkbox-options .checkbox-option input, .form-grid field .checkbox-options .radio-option input, .form-grid field .radio-options .checkbox-option input, .form-grid field .radio-options .radio-option input, .form-grid field-select .checkbox-options .checkbox-option input, .form-grid field-select .checkbox-options .radio-option input, .form-grid field-select .radio-options .checkbox-option input, .form-grid field-select .radio-options .radio-option input, .form-grid field-options .checkbox-options .checkbox-option input, .form-grid field-options .checkbox-options .radio-option input, .form-grid field-options .radio-options .checkbox-option input, .form-grid field-options .radio-options .radio-option input {
+        border-bottom: none;
+        display: inline-block;
+        margin-left: auto;
+        width: auto; }
+      .form-grid .form-cell .checkbox-options .checkbox-option label, .form-grid .form-cell .checkbox-options .radio-option label, .form-grid .form-cell .radio-options .checkbox-option label, .form-grid .form-cell .radio-options .radio-option label, .form-grid field .checkbox-options .checkbox-option label, .form-grid field .checkbox-options .radio-option label, .form-grid field .radio-options .checkbox-option label, .form-grid field .radio-options .radio-option label, .form-grid field-select .checkbox-options .checkbox-option label, .form-grid field-select .checkbox-options .radio-option label, .form-grid field-select .radio-options .checkbox-option label, .form-grid field-select .radio-options .radio-option label, .form-grid field-options .checkbox-options .checkbox-option label, .form-grid field-options .checkbox-options .radio-option label, .form-grid field-options .radio-options .checkbox-option label, .form-grid field-options .radio-options .radio-option label {
+        width: auto;
+        font-size: 15px;
+        color: black;
+        display: inline-block; }
+  .form-grid .form-cell.form-actions, .form-grid field.form-actions, .form-grid field-select.form-actions, .form-grid field-options.form-actions {
+    text-align: right; }
+    .form-grid .form-cell.form-actions button, .form-grid field.form-actions button, .form-grid field-select.form-actions button, .form-grid field-options.form-actions button {
+      font-family: "Open Sans", sans-serif;
+      transition: all 0.2s;
+      font-weight: 600;
+      border: 0;
+      display: inline-block;
+      font-size: 15px;
+      padding: 7.5px;
+      background-color: #22a6b3;
+      color: white; }
+    .form-grid .form-cell.form-actions button:hover, .form-grid field.form-actions button:hover, .form-grid field-select.form-actions button:hover, .form-grid field-options.form-actions button:hover {
+      background-color: #7ed6df;
+      color: black; }
+  .form-grid .form-cell label, .form-grid .form-cell label + *, .form-grid field label, .form-grid field label + *, .form-grid field-select label, .form-grid field-select label + *, .form-grid field-options label, .form-grid field-options label + * {
+    display: block;
+    width: 100%;
+    font-size: 18px; }
+  .form-grid .form-cell label + *, .form-grid field label + *, .form-grid field-select label + *, .form-grid field-options label + * {
+    font-family: "Open Sans", sans-serif;
+    padding: 5px;
+    padding-left: 0;
+    padding-right: 0;
+    border: 0;
+    border-bottom: 1px solid #22a6b3;
+    outline: 0; }
+  .form-grid .form-cell label, .form-grid field label, .form-grid field-select label, .form-grid field-options label {
+    font-weight: 600;
+    color: #22a6b3;
+    margin-bottom: 7.5px; }
+
+b {
+  font-weight: 600; }
+
+img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: auto; }
+
+dataset > .table {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  display: grid;
+  margin-bottom: 15px; }
+  dataset > .table .row.data {
+    border-bottom: 1px solid #bdbdbd; }
+    dataset > .table .row.data:last-child {
+      border-bottom: none; }
+  dataset > .table .headers, dataset > .table .data {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20px, 1fr)); }
+    dataset > .table .headers .col, dataset > .table .data .col {
+      padding: 7.5px; }
+      dataset > .table .headers .col.header, dataset > .table .data .col.header {
+        background: #22a6b3;
+        color: white;
+        font-weight: 600; }
+      dataset > .table .headers .col.col:not(.header), dataset > .table .data .col.col:not(.header) {
+        background: #eeeeee;
+        border-right: 1px solid #bdbdbd; }
+        dataset > .table .headers .col.col:not(.header):last-child, dataset > .table .data .col.col:not(.header):last-child {
+          border-right: none; }
+
+pager {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+  text-align: center; }
+  pager .page {
+    padding: 7.5px; }
+
+/*# sourceMappingURL=main.css.map */
