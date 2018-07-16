@@ -5,6 +5,11 @@ var app =  angular.module('myApp', [
     'ngRoute',
     'myApp.home'
 ])
+app.filter('trustUrl', function ($sce) {
+    return function(url) {
+        return $sce.trustAsResourceUrl(url);
+    };
+});
 
 app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');

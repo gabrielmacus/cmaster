@@ -1,8 +1,9 @@
-<span class="prev"></span>
+<span class="prev"><i class="fas fa-caret-left"></i>
 
-<span class="page">1</span>
-<span class="page">2</span>
-<span class="page">3</span>
-<span class="page">4</span>
+</span>
 
-<span class="next"></span>
+<span class="page" data-ng-class="{'active':p.active}" data-ng-repeat="p in $ctrl.pagerArray">{{p.number}}</span>
+
+<span class="next"><i class="fas fa-caret-right"></i>
+
+</span>

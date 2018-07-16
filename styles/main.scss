@@ -14,12 +14,7 @@ body {
   height: 100%;
   font-family: $main-font;
 }
-body {
 
-  display: grid;
-  grid-template-columns: 35% auto;
-  //grid-template-rows: min-content1fr;
-}
 $main-color: #22a6b3;
 $main-font-color:white;
 
@@ -28,6 +23,7 @@ $secondary-font-color: black;
 
 $padding-1: 15px;
 
+$menu-width:350px;
 $menu-color: $main-color;
 $menu-font-color: $main-font-color;
 $menu-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -35,8 +31,10 @@ $menu-item-border-bottom: #7ed6df;
 
 
 .main-sidebar {
-  grid-column: 1;
-  grid-row: 1 / span 2;
+  position: fixed;
+  width: $menu-width;
+  float: left;
+  height: 100%;
 }
 
 .main-sidebar > .main-sidebar-menu {
@@ -69,6 +67,9 @@ $menu-item-border-bottom: #7ed6df;
 }
 
 .main-container {
+  float: right;
+  width: calc(100% - #{$menu-width});
+  height: 100%;
   display: grid;
   grid-template-rows: min-content auto;
   grid-row: 1 / span 2;
@@ -85,7 +86,7 @@ $menu-item-border-bottom: #7ed6df;
 .grid-list {
   grid-column: 1 / span 6;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: $padding-1;
   margin-bottom: $padding-1;
 
@@ -120,7 +121,7 @@ $menu-item-border-bottom: #7ed6df;
       }
     }
   }
-  .grid-list-item.item-preview {
+  .grid-list-item.item-preview,media {
     &:hover > .title {
       background: $secondary-color;
       color: #3d3d3d;
@@ -131,6 +132,7 @@ $menu-item-border-bottom: #7ed6df;
     .title {
       transition: all 0.2s;
       background: #3d3d3d;
+      line-height: 22px;
       color: white;
       padding: $padding-1;
     }
@@ -158,10 +160,11 @@ $main-title-font-color:#84817a;
 
 
       display:grid;
-      grid-gap:$padding-1 / 2;
+      grid-gap:$padding-1 ;
       grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
       .checkbox-option,.radio-option
       {
+
         display: flex;
         input
         {
@@ -169,13 +172,46 @@ $main-title-font-color:#84817a;
           display: inline-block;
           margin-left: auto;
           width: auto;
+          position: absolute;
+          opacity: 0;
         }
-        label{
+        label{ cursor:pointer;
           width: auto;
           font-size: 15px;
           color: black;
           display: inline-block;
         }
+        label.dummy
+        { cursor:pointer;
+          padding: 0;
+          margin: 0;
+          margin-left: auto;
+          border: 0;
+        }
+        label.dummy.not-checked
+        {
+          display: block;
+        }
+        label.dummy.checked
+        {
+          display: none;
+        }
+
+        input:checked
+        {
+            & ~ label.dummy.checked
+            {
+              display: block;
+            }
+          & ~ label.dummy.not-checked
+          {
+            display: none;
+          }
+
+
+        }
+
+
       }
     }
     &.form-actions
@@ -218,13 +254,14 @@ $main-title-font-color:#84817a;
       color:$main-color;
       margin-bottom:$padding-1/2;
     }
+
   }
 }
 
 b {
   font-weight: 600;
 }
-img {
+img ,iframe{
   display: block;
   object-fit: cover;
   width: 100%;
@@ -236,6 +273,26 @@ dataset >  .table
 {  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
  display: grid;
   margin-bottom: $padding-1;
+  .actions
+  {
+    .actions-dropdown
+    {
+      .action{
+        margin-bottom: $padding-1/2;
+        font-weight: 600;
+        cursor:pointer;
+        transition:all 0.2s;
+        &:hover
+        {
+          color:$main-color;
+        }
+        &:last-child
+        {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
   .row.data
   {
     border-bottom: 1px solid #bdbdbd;
@@ -275,11 +332,44 @@ dataset >  .table
 }
 pager
 {
-  display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(30px,1fr));
+  //display: grid;
+  //grid-template-columns: repeat(auto-fill, minmax(55px,1fr));
+  display: flex;
+
+  cursor: pointer;
+
   text-align: center;
   .page
-  {
-    padding: $padding-1/2;
+  {    font-weight: 300;
+
+    &.active
+    {
+      font-weight: 600;
+      color: $main-color;
+    }
   }
+  span{
+
+    transition:all 0.2s;
+    background: #eeeeee;
+
+    padding: 10px;
+    &:hover
+    {
+      color: $main-font-color!important;
+      background-color: $main-color;
+    }
+  }
+  .prev
+  {    margin-left: auto;}
+
+  .prev,.next
+  {
+    &.disabled
+    {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+  }
+  margin-bottom: $padding-1;
 }

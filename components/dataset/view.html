@@ -13,12 +13,26 @@
         <div class="header col" data-ng-repeat="p in $ctrl.properties">
             {{p}}
         </div>
+        <div class="header col ">
+            <!--- For actions -->
+        </div>
     </div>
 
     <div class="row data" data-ng-repeat="item in $ctrl.items">
         <div class="col" data-ng-repeat="(k,p) in $ctrl.properties">
+
             <span class="text">{{item[k]}}</span>
         </div>
+        <span class="col actions" >
+            <ul class="actions-dropdown">
+
+                <li class="action" data-ng-repeat="action in $ctrl.individualActions">
+                    <a data-ng-click="action.action()">{{action.label}} &nbsp;<i data-ng-show="action.icon" data-ng-class="action.icon"></i></a
+
+
+                </li>
+            </ul>
+        </span>
     </div>
 </div>
 

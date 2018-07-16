@@ -1,9 +1,14 @@
 app.component('dataset', {
         bindings: {
             properties:'=',
-            items:'='
+            items:'=',
+            individualActions:'=',
+            generalActions:'='
         },
         controller: function () {
+            this.$onInit=function () {
+
+            }
 
 
         },

@@ -1,0 +1,10 @@
+
+<figure class="media">
+    <img data-ng-if="$ctrl.detectMediaType($ctrl.src) == 'image'" data-ng-src="{{$ctrl.src}}">
+    <iframe data-ng-if="$ctrl.detectMediaType($ctrl.src) == 'iframe'" data-ng-src="{{$ctrl.src | trustUrl}}"></iframe>
+
+
+</figure>
+<h3 class="title">
+        <span class="text">{{$ctrl.caption || '-'}}</span>
+</h3>

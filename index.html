@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="styles/main.css">
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
     <script src="app.js"></script>
     <script src="views/home/home.js"></script>
     <script src="components/field/component.js"></script>
@@ -15,6 +17,9 @@
     <script src="components/field-options/component.js"></script>
     <script src="components/dataset/component.js"></script>
     <script src="components/pager/component.js"></script>
+    <script src="components/media/component.js"></script>
+    <script src="components/grid-list/component.js"></script>
+
 </head>
 <body>
 
@@ -30,9 +35,9 @@
 </aside>
 
 <main class="main-container">
-
+<!--
     <header ></header>
-
+-->
     <div class="body">
         <form class="form-grid">
             <field data-model="person.name" data-label="'Nombre'"></field>
@@ -43,14 +48,23 @@
         </form>
 
 
-        <dataset data-properties="{'id':'ID','name':'Nombre','surname':'Apellido'}" data-items="[{id:1,name:'Gabriel',surname:'Macus'},{id:2,name:'Juan',surname:'Pérez'}]"></dataset>
+        <dataset  data-individual-actions="[{'label':'Eliminar','icon':'fas fa-trash'},{'label':'Editar','icon':'fas fa-pen'}]" data-properties="{'id':'ID','name':'Nombre','surname':'Apellido'}" data-items="[{id:1,name:'Gabriel',surname:'Macus'},{id:2,name:'Juan',surname:'Pérez'}]"></dataset>
+
+
+        <grid-list>
+            <media data-caption="'Jackson guitar'" data-src="'https://images.ctfassets.net/4jcppgetbqrc/huBE6f1N0OAyqsAaWkWQG/8008af02913ce548e49c06450fdecc8f/CS-Soloist-Arch-Top-Green-Purple-Flip-Flop.jpg'"></media>
+            <media data-caption="'Chester Cheetah'" data-src="'https://i.dailymail.co.uk/i/pix/2017/12/15/14/4759E20400000578-0-image-a-75_1513348477962.jpg'"></media>
+            <media data-caption="'Hormigas de fuego vs Gusano - Curiosidades con Mike'" data-src="'https://www.youtube.com/embed/cwPi6SBfeO4'"></media>
+
+
+        </grid-list>
 
 
     </div>
 
+    {{person}}
 
 </main>
-{{person}}
 
 </body>
 </html>
