@@ -6,9 +6,8 @@
     <span class="text">{{item[k]}}</span>
 </div>-->
 
-
-
-<div class="table">
+<!--table-->
+<div data-ng-class="$ctrl.viewMode">
     <div class="row headers" >
         <div class="header col" data-ng-repeat="p in $ctrl.properties">
             {{p}}
@@ -19,19 +18,18 @@
     </div>
 
     <div class="row data" data-ng-repeat="item in $ctrl.items">
-        <div class="col" data-ng-repeat="(k,p) in $ctrl.properties">
+
+
+        <div data-header="{{p}}" class="col" data-ng-repeat="(k,p) in $ctrl.properties">
 
             <span class="text">{{item[k]}}</span>
         </div>
         <span class="col actions" >
-            <ul class="actions-dropdown">
 
-                <li class="action" data-ng-repeat="action in $ctrl.individualActions">
-                    <a data-ng-click="action.action()">{{action.label}} &nbsp;<i data-ng-show="action.icon" data-ng-class="action.icon"></i></a
+            <dropdown  data-placeholder="'Acciones'" data-items="[{label:'Demo'},{label:'Demo 2'}]">
+                          <a data-ng-click="action.action()"  data-ng-repeat="action in $ctrl.individualActions">{{action.label}} &nbsp;<i data-ng-show="action.icon" data-ng-class="action.icon"></i></a>
+            </dropdown>
 
-
-                </li>
-            </ul>
         </span>
     </div>
 </div>

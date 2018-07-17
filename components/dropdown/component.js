@@ -1,10 +1,13 @@
 app.component('dropdown', {
         bindings: {
-            items:'=',
+
+            opened:'=?',
             placeholder:'='
 
         },
+        transclude:true,
         controller: function () {
+
 
 
         },

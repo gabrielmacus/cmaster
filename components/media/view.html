@@ -1,6 +1,10 @@
 
 <figure class="media">
     <img data-ng-if="$ctrl.detectMediaType($ctrl.src) == 'image'" data-ng-src="{{$ctrl.src}}">
+    <img class="animation-image" data-ng-if="$ctrl.detectMediaType($ctrl.src) == 'image'" data-ng-src="{{$ctrl.src}}">
+
+
+
     <iframe data-ng-if="$ctrl.detectMediaType($ctrl.src) == 'iframe'" data-ng-src="{{$ctrl.src | trustUrl}}"></iframe>
     <video controls preload="metadata" data-ng-if="$ctrl.detectMediaType($ctrl.src) == 'video'"  data-ng-src="{{$ctrl.src | trustUrl}}"></video>
 

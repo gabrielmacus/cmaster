@@ -1,0 +1,7 @@
+<button type="{{$ctrl.type}}">
+
+   <span data-ng-show="!$ctrl.loading" class="text" data-ng-transclude></span>
+    <span data-ng-show="$ctrl.loading" class="spinner"><i class="fas fa-spinner"></i>
+    </span>
+
+</button>
