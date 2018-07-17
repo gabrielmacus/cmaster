@@ -20,7 +20,6 @@ app.component('media', {
 
 
 
-
                 switch (ext.toLowerCase())
                 {
                     case 'jpg':
@@ -33,6 +32,9 @@ app.component('media', {
                         break;
                     case 'youtube':
                         return 'iframe';
+                        break;
+                    case 'mp4':
+                        return 'video';
                         break;
                     default:
                         return 'binary';

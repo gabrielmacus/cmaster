@@ -92,7 +92,7 @@ body {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
     .grid-list .grid-list-item.item-preview:hover > .title, .grid-list media:hover > .title {
       background: #7ed6df;
-      color: #3d3d3d; }
+      color: #212121; }
     .grid-list .grid-list-item.item-preview .title, .grid-list media .title {
       transition: all 0.2s;
       background: #3d3d3d;
@@ -178,7 +178,7 @@ body {
 b {
   font-weight: 600; }
 
-img, iframe {
+img, iframe, video {
   display: block;
   object-fit: cover;
   width: 100%;
@@ -238,5 +238,19 @@ pager {
   pager .prev.disabled, pager .next.disabled {
     pointer-events: none;
     opacity: 0.5; }
+
+dropdown {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-weight: 600;
+  background: #22a6b3;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  color: white; }
+  dropdown .dropdown-item {
+    display: flex;
+    width: 100%; }
+    dropdown .dropdown-item i {
+      margin-left: auto; }
 
 /*# sourceMappingURL=main.css.map */

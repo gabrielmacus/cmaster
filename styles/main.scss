@@ -9,6 +9,7 @@ html {
 }
 $main-font:"Open Sans", sans-serif;;
 
+
 html,
 body {
   height: 100%;
@@ -124,7 +125,7 @@ $menu-item-border-bottom: #7ed6df;
   .grid-list-item.item-preview,media {
     &:hover > .title {
       background: $secondary-color;
-      color: #3d3d3d;
+      color: #212121;
     }
     display: grid;
     grid-template-rows: min-content auto;
@@ -261,7 +262,7 @@ $main-title-font-color:#84817a;
 b {
   font-weight: 600;
 }
-img ,iframe{
+img ,iframe,video{
   display: block;
   object-fit: cover;
   width: 100%;
@@ -372,4 +373,23 @@ pager
     }
   }
   margin-bottom: $padding-1;
+}
+
+dropdown
+{
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-weight: 600;
+  background: $main-color;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  color:$main-font-color;
+  .dropdown-item
+  {
+    display: flex;
+    width: 100%;
+    i{
+      margin-left: auto;
+    }
+  }
 }

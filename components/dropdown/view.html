@@ -1,0 +1,4 @@
+<span class="dropdown-item">{{$ctrl.placeholder}}<i class="fas fa-caret-square-down"></i></span>
+<span class="dropdown-item" data-ng-repeat="(k,item) in $ctrl.items" data-ng-click="item.action()">
+    {{item.label}}
+</span>
