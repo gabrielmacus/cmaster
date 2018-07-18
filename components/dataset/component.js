@@ -8,6 +8,7 @@ app.component('dataset', {
         },
         controller: function ($scope,$window,$timeout) {
             var self = this;
+
             self.$onInit=function () {
 
 

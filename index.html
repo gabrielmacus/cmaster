@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="styles/main.css">
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/jquery-param/jquery-param.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-
-    <script src="app.js"></script>
-    <script src="views/home/home.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.5.2/qs.min.js"></script>
+   <script src="app.js"></script>
+    <!-- Components -->
     <script src="components/field/component.js"></script>
     <script src="components/field-select/component.js"></script>
     <script src="components/field-options/component.js"></script>
@@ -24,12 +25,17 @@
     <script src="components/heading/component.js"></script>
     <script src="components/btn/component.js"></script>
     <script src="components/form-actions/component.js"></script>
+    <!-- Views -->
+    <script src="components/routes/home/component.js"></script>
+    <script src="components/routes/list/component.js"></script>
+    <!--Services-->
+    <script src="services/errorHandler.js"></script>
+    <script src="services/rest.js"></script>
+
 </head>
 <body>
 
-<!--
-<div data-ng-view></div>
--->
+
 <aside class="main-sidebar">
     <nav class="main-sidebar-menu">
 
@@ -42,7 +48,8 @@
 <!--
     <header ></header>
 -->
-    <div class="body">
+    <div class="body" ui-view>
+        <!--
         <form class="form-grid">
             <field data-model="person.name" data-label="'Nombre'"></field>
 
@@ -51,8 +58,9 @@
             <field-options data-multiple="true" data-model="person.interests" data-label="'Intereses'" data-option-label="'name'"  data-options="[{id:1,name:'Deportes'},{id:2,name:'Ciencia'}]"></field-options>
 
             <form-actions>
-                <btn >Guardar</btn>
+
                 <btn >Cancelar</btn>
+                <btn >Guardar</btn>
             </form-actions>
 
 
@@ -67,13 +75,13 @@
             <media data-caption="'Chester Cheetah'" data-src="'https://i.dailymail.co.uk/i/pix/2017/12/15/14/4759E20400000578-0-image-a-75_1513348477962.jpg'"></media>
             <media data-caption="'Hormigas de fuego vs Gusano - Curiosidades con Mike'" data-src="'https://www.youtube.com/embed/cwPi6SBfeO4'"></media>
             <media data-caption="'Bad bunny'" data-src="'https://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4'"></media>
+
         </grid-list>
 
 
-
+        <dataset  data-grid-mode="true" data-items="[{'edad':21,'name':'Juan Pérez','job':'ASDsad ads'},{'job':'asdads','edad':22,'name':'Gabriel Macus','profilePic':'https://images.pexels.com/photos/371633/pexels-photo-371633.jpeg?auto=compress&cs=tinysrgb&h=350'}]" data-properties="{'job':{'label':'Trabajo'},'edad':'Edad','name':'Nombre','profilePic':{'label':'Foto de perfil',type:'media'}}"></dataset>
+-->
     </div>
-
-    {{person}}
 
 </main>
 

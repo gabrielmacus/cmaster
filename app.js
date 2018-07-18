@@ -2,18 +2,50 @@
 
 // Declare app level module which depends on views, and components
 var app =  angular.module('myApp', [
-    'ngRoute',
-    'ngAnimate',
-    'myApp.home'
+    'ui.router',
+    'ngAnimate'
 ])
+//Filters
 app.filter('trustUrl', function ($sce) {
     return function(url) {
         return $sce.trustAsResourceUrl(url);
     };
 });
 
-app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-    $locationProvider.hashPrefix('!');
+//Router config
+app.config(function($stateProvider, $urlServiceProvider) {
+    //$urlServiceProvider.rules.otherwise({ state: 'userlist' });
 
-    $routeProvider.otherwise({redirectTo: '/'});
-}]);
+    $stateProvider.state('home', {
+        url: '/',
+        component: 'home',
+        resolve: {
+
+        }
+    });
+    $stateProvider.state('list', {
+        url: '/:module',
+        component: 'list',
+        resolve: {
+
+            module:function ($transition$) {
+                return $transition$.params().module;
+            }
+            /*
+            items:function (REST) {
+                var client = new REST();
+                client.url = "/libs/api/post/";
+                return client.list();
+            }*/
+            
+        }
+    });
+
+
+
+
+
+});
+app.run(function () {
+    
+});

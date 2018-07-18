@@ -20,10 +20,18 @@
     <div class="row data" data-ng-repeat="item in $ctrl.items">
 
 
-        <div data-header="{{p}}" class="col" data-ng-repeat="(k,p) in $ctrl.properties">
 
-            <span class="text">{{item[k]}}</span>
+        <div data-header="{{p.label || p}}" class="col" data-ng-repeat="(k,p) in $ctrl.properties" data-ng-if="item[k]">
+
+            <span class="text" data-ng-if="!p.type">{{item[k]}}</span>
+            <media data-ng-if="p.type == 'media'" data-src="item[k]"></media>
+
         </div>
+
+
+
+
+
         <span class="col actions" >
 
             <dropdown  data-placeholder="'Acciones'" data-items="[{label:'Demo'},{label:'Demo 2'}]">
