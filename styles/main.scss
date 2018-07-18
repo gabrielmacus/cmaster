@@ -12,6 +12,7 @@ body {
   font-family: $main-font;
 }
 
+
 $main-color: #22a6b3;
 $main-font-color:white;
 
@@ -194,8 +195,14 @@ heading
 
 }
 
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
-
+@keyframes spin {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
+}
 button
 {
   min-width: 45px;
@@ -214,13 +221,25 @@ button
     color:$secondary-font-color;
   }
   .spinner{
-    animation:spin 1s linear infinite;
+    i
+    {
+      animation-name: spin;
+      animation-duration: 1000ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
 
   }
 }
 
 .form-grid
 {
+  form-actions
+  {
+
+    text-align:right;
+  }
   margin-bottom: $padding-1;
   display:grid;
   grid-gap:$padding-1;
@@ -286,11 +305,7 @@ button
 
       }
     }
-    &.form-actions
-    {
 
-      text-align:right;
-    }
 
 
 

@@ -1,6 +1,6 @@
 app.component('btn', {
         bindings: {
-            type:'=',
+            type:'=?',
             loading:'='
         },
         transclude:true,

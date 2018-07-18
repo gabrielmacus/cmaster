@@ -1126,8 +1126,9 @@ heading .main-title {
   color: #84817a; }
 
 @keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
+  from {
+    transform: rotate(0deg); }
+  to {
     transform: rotate(360deg); } }
 button {
   min-width: 45px;
@@ -1143,13 +1144,18 @@ button {
   button:hover {
     background-color: #7ed6df;
     color: black; }
-  button .spinner {
-    animation: spin 1s linear infinite; }
+  button .spinner i {
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; }
 
 .form-grid {
   margin-bottom: 15px;
   display: grid;
   grid-gap: 15px; }
+  .form-grid form-actions {
+    text-align: right; }
   .form-grid .form-cell .checkbox-options, .form-grid .form-cell .radio-options, .form-grid field .checkbox-options, .form-grid field .radio-options, .form-grid field-select .checkbox-options, .form-grid field-select .radio-options, .form-grid field-options .checkbox-options, .form-grid field-options .radio-options {
     display: grid;
     grid-gap: 15px;
@@ -1183,8 +1189,6 @@ button {
         display: block; }
       .form-grid .form-cell .checkbox-options .checkbox-option input:checked ~ label.dummy.not-checked, .form-grid .form-cell .checkbox-options .radio-option input:checked ~ label.dummy.not-checked, .form-grid .form-cell .radio-options .checkbox-option input:checked ~ label.dummy.not-checked, .form-grid .form-cell .radio-options .radio-option input:checked ~ label.dummy.not-checked, .form-grid field .checkbox-options .checkbox-option input:checked ~ label.dummy.not-checked, .form-grid field .checkbox-options .radio-option input:checked ~ label.dummy.not-checked, .form-grid field .radio-options .checkbox-option input:checked ~ label.dummy.not-checked, .form-grid field .radio-options .radio-option input:checked ~ label.dummy.not-checked, .form-grid field-select .checkbox-options .checkbox-option input:checked ~ label.dummy.not-checked, .form-grid field-select .checkbox-options .radio-option input:checked ~ label.dummy.not-checked, .form-grid field-select .radio-options .checkbox-option input:checked ~ label.dummy.not-checked, .form-grid field-select .radio-options .radio-option input:checked ~ label.dummy.not-checked, .form-grid field-options .checkbox-options .checkbox-option input:checked ~ label.dummy.not-checked, .form-grid field-options .checkbox-options .radio-option input:checked ~ label.dummy.not-checked, .form-grid field-options .radio-options .checkbox-option input:checked ~ label.dummy.not-checked, .form-grid field-options .radio-options .radio-option input:checked ~ label.dummy.not-checked {
         display: none; }
-  .form-grid .form-cell.form-actions, .form-grid field.form-actions, .form-grid field-select.form-actions, .form-grid field-options.form-actions {
-    text-align: right; }
   .form-grid .form-cell label, .form-grid .form-cell label + *, .form-grid field label, .form-grid field label + *, .form-grid field-select label, .form-grid field-select label + *, .form-grid field-options label, .form-grid field-options label + * {
     display: block;
     width: 100%;

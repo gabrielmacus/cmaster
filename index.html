@@ -23,7 +23,7 @@
     <script src="components/grid-list/component.js"></script>
     <script src="components/heading/component.js"></script>
     <script src="components/btn/component.js"></script>
-
+    <script src="components/form-actions/component.js"></script>
 </head>
 <body>
 
@@ -50,7 +50,10 @@
 
             <field-options data-multiple="true" data-model="person.interests" data-label="'Intereses'" data-option-label="'name'"  data-options="[{id:1,name:'Deportes'},{id:2,name:'Ciencia'}]"></field-options>
 
-            <btn data-loading="true">Guardar</btn>
+            <form-actions>
+                <btn >Guardar</btn>
+                <btn >Cancelar</btn>
+            </form-actions>
 
 
         </form>
