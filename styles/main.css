@@ -1077,7 +1077,7 @@ body {
     background: #7ed6df;
     padding: 15px; }
     .grid-list .row.data [data-header]:before {
-      content: attr(data-header) ":";
+      content: attr(data-header);
       display: block;
       margin-bottom: 7.5px;
       font-weight: 600; }
@@ -1088,6 +1088,8 @@ body {
     .grid-list .row.data [data-header] {
       display: block;
       margin-bottom: 15px; }
+      .grid-list .row.data [data-header] .text {
+        line-height: 120%; }
       .grid-list .row.data [data-header] media {
         display: block;
         position: relative;

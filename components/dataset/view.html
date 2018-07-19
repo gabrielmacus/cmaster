@@ -10,7 +10,7 @@
 <div data-ng-class="$ctrl.viewMode">
     <div class="row headers" >
         <div class="header col" data-ng-repeat="p in $ctrl.properties">
-            {{p}}
+            {{p.label || p}}
         </div>
         <div class="header col ">
             <!--- For actions -->
@@ -42,4 +42,5 @@
     </div>
 </div>
 
-<pager></pager>
+<pager data-pagination="$ctrl.pagination"></pager>
+

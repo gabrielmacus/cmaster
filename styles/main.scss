@@ -104,7 +104,7 @@ $menu-item-border-bottom: #7ed6df;
     padding: $padding-1;
     [data-header]:before
     {
-      content: attr(data-header)':';
+      content: attr(data-header);
       display: block;
       margin-bottom: $padding-1/2;
       font-weight: 600;
@@ -120,6 +120,9 @@ $menu-item-border-bottom: #7ed6df;
       margin-top: auto;
     }
     [data-header] {
+
+      .text
+      {line-height: 120%;}
 
       display: block;
       margin-bottom: $padding-1;

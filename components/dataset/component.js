@@ -2,6 +2,7 @@ app.component('dataset', {
         bindings: {
             properties:'=',
             items:'=',
+            pagination:'=',
             individualActions:'=',
             generalActions:'=',
             gridMode:'='
