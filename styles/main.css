@@ -1020,7 +1020,7 @@ body {
 .main-sidebar > .main-sidebar-menu {
   transition: all 0.2s;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  background-color: #22a6b3;
+  background-color: #2980b9;
   color: white;
   height: 100%;
   overflow: auto;
@@ -1028,19 +1028,19 @@ body {
   left: 0%; }
 
 .main-sidebar-menu > .menu-item:hover {
-  color: #22a6b3;
+  color: #2980b9;
   background-color: white; }
 
 .main-sidebar-menu > .menu-item {
   padding: 15px;
   display: inline-block;
   width: 100%;
-  border-bottom: 1px solid #7ed6df;
+  border-bottom: 1px solid #3498db;
   font-weight: 600; }
 
 .main-container > header {
   min-height: 46px;
-  background-color: #22a6b3;
+  background-color: #2980b9;
   grid-column: 1 / span 6;
   grid-row: 1; }
 
@@ -1074,7 +1074,7 @@ body {
     flex: 1;
     flex-flow: column;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    background: #7ed6df;
+    background: #eeeeee;
     padding: 15px; }
     .grid-list .row.data [data-header]:before {
       content: attr(data-header);
@@ -1103,7 +1103,7 @@ body {
     grid-template-rows: min-content auto;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
     .grid-list .grid-list-item.item-preview:hover > .title, .grid-list media:hover > .title {
-      background: #7ed6df;
+      background: #3498db;
       color: #212121; }
     .grid-list .grid-list-item.item-preview .title, .grid-list media .title {
       transition: all 0.2s;
@@ -1113,7 +1113,8 @@ body {
       padding: 15px; }
     .grid-list .grid-list-item.item-preview figure, .grid-list media figure {
       overflow: hidden;
-      position: relative; }
+      position: relative;
+      height: 200px; }
     .grid-list .grid-list-item.item-preview figure:hover .animation-image, .grid-list media figure:hover .animation-image {
       transform: scale(1);
       opacity: 1; }
@@ -1131,7 +1132,9 @@ heading .main-title {
   margin-bottom: 15px;
   font-size: 30px;
   font-weight: 300;
-  color: #84817a; }
+  color: #3498db;
+  border-bottom: 1px solid #3498db;
+  line-height: 150%; }
 
 @keyframes spin {
   from {
@@ -1147,10 +1150,10 @@ button {
   display: inline-block;
   font-size: 15px;
   padding: 7.5px;
-  background-color: #22a6b3;
+  background-color: #2980b9;
   color: white; }
   button:hover {
-    background-color: #7ed6df;
+    background-color: #3498db;
     color: black; }
   button .spinner i {
     animation-name: spin;
@@ -1207,11 +1210,11 @@ button {
     padding-left: 0;
     padding-right: 0;
     border: 0;
-    border-bottom: 1px solid #22a6b3;
+    border-bottom: 1px solid #2980b9;
     outline: 0; }
   .form-grid .form-cell label, .form-grid field label, .form-grid field-select label, .form-grid field-options label {
     font-weight: 600;
-    color: #22a6b3;
+    color: #2980b9;
     margin-bottom: 7.5px; }
 
 b {
@@ -1233,7 +1236,7 @@ dataset > .table {
     cursor: pointer;
     transition: all 0.2s; }
     dataset > .table .actions .actions-dropdown .action:hover {
-      color: #22a6b3; }
+      color: #2980b9; }
     dataset > .table .actions .actions-dropdown .action:last-child {
       margin-bottom: 0; }
   dataset > .table .row.data {
@@ -1254,7 +1257,7 @@ dataset > .table {
       dataset > .table .headers .col .text, dataset > .table .data .col .text {
         line-height: 125%; }
       dataset > .table .headers .col.header, dataset > .table .data .col.header {
-        background: #22a6b3;
+        background: #2980b9;
         color: white;
         font-weight: 600; }
       dataset > .table .headers .col.col:not(.header), dataset > .table .data .col.col:not(.header) {
@@ -1272,14 +1275,13 @@ pager {
     font-weight: 300; }
     pager .page.active {
       font-weight: 600;
-      color: #22a6b3; }
-  pager span {
-    transition: all 0.2s;
-    background: #eeeeee;
+      color: #2980b9; }
+  pager a {
+    background-color: #eeeeee;
     padding: 10px; }
-    pager span:hover {
+    pager a:hover {
       color: white !important;
-      background-color: #22a6b3; }
+      background-color: #2980b9; }
   pager .next {
     margin-right: auto; }
   pager .prev.disabled, pager .next.disabled {
@@ -1293,10 +1295,14 @@ dropdown {
   display: block;
   width: 100%;
   font-weight: 600;
-  background: #22a6b3;
+  background: #2980b9;
   color: white; }
-  dropdown .opened i {
-    transform: rotate(180deg); }
+  dropdown .opened {
+    background-color: #3498db; }
+    dropdown .opened i {
+      transform: rotate(180deg); }
+  dropdown:hover {
+    background-color: #3498db; }
   dropdown .dropdown-item, dropdown .collapsed-items > * {
     cursor: pointer;
     padding: 10px;
@@ -1312,12 +1318,38 @@ dropdown {
     left: 0;
     right: 0; }
     dropdown .collapsed-items > *:hover {
-      color: #22a6b3;
+      color: #2980b9;
       background-color: white; }
     dropdown .collapsed-items > * {
       transition: all 0.2s;
       background: #eeeeee;
       color: black;
       font-weight: 300; }
+
+lightbox .lighbox {
+  z-index: 3;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%; }
+  lightbox .lighbox .lightbox-container {
+    width: auto;
+    padding: 15px;
+    background: white;
+    margin: auto; }
+    lightbox .lighbox .lightbox-container .close {
+      cursor: pointer;
+      float: left;
+      width: 100%;
+      text-align: right;
+      margin-bottom: 7.5px;
+      font-size: 20px; }
+
+a {
+  text-decoration: none;
+  color: inherit; }
 
 /*# sourceMappingURL=main.css.map */

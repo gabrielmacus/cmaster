@@ -7,7 +7,7 @@
 </div>-->
 
 <!--table-->
-<div data-ng-class="$ctrl.viewMode">
+<div data-ng-class="$ctrl.viewMode" data-ng-if="$ctrl.items">
     <div class="row headers" >
         <div class="header col" data-ng-repeat="p in $ctrl.properties">
             {{p.label || p}}
@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="row data" data-ng-repeat="item in $ctrl.items">
+    <div class="row data " data-ng-repeat="item in $ctrl.items">
 
 
 
@@ -35,12 +35,12 @@
         <span class="col actions" >
 
             <dropdown  data-placeholder="'Acciones'" data-items="[{label:'Demo'},{label:'Demo 2'}]">
-                          <a data-ng-click="action.action()"  data-ng-repeat="action in $ctrl.individualActions">{{action.label}} &nbsp;<i data-ng-show="action.icon" data-ng-class="action.icon"></i></a>
+                          <a data-ng-click="action.action(item)"  data-ng-repeat="action in $ctrl.individualActions">{{action.label}} &nbsp;<i data-ng-show="action.icon" data-ng-class="action.icon"></i></a>
             </dropdown>
 
         </span>
     </div>
 </div>
 
-<pager data-pagination="$ctrl.pagination"></pager>
+<pager data-change-page="$ctrl.changePage" data-ng-show="$ctrl.pagination.pages > 1" data-pager-offset="$ctrl.pagerOffset" data-pagination="$ctrl.pagination"></pager>
 

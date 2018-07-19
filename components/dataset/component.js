@@ -3,9 +3,11 @@ app.component('dataset', {
             properties:'=',
             items:'=',
             pagination:'=',
+            changePage:'<',
             individualActions:'=',
             generalActions:'=',
-            gridMode:'='
+            gridMode:'=',
+            pagerOffset:'<'
         },
         controller: function ($scope,$window,$timeout) {
             var self = this;

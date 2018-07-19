@@ -2,5 +2,11 @@
     {{$ctrl.title}}
 </heading>
 
-<dataset data-individual-actions="$ctrl.individualActions" data-grid-mode="$ctrl.gridMode" data-pagination="$ctrl.pagination" data-properties="$ctrl.properties" data-items="$ctrl.items"></dataset>
+<dataset data-change-page="$ctrl.changePage" data-pager-offset="$ctrl.pagerOffset" data-pagination="$ctrl.pagination" data-individual-actions="$ctrl.individualActions" data-grid-mode="$ctrl.gridMode" data-pagination="$ctrl.pagination" data-properties="$ctrl.properties" data-items="$ctrl.items"></dataset>
+
+<lightbox data-opened="$ctrl.deleteItem">
+    <heading>¿Eliminar el elemento?</heading>
+    <btn data-ng-click="$ctrl.deleteItem()">Si</btn>
+    <btn  data-ng-click="$ctrl.deleteItem=false">No</btn>
+</lightbox>
 

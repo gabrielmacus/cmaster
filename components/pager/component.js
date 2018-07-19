@@ -1,30 +1,46 @@
 app.component('pager', {
     bindings: {
 
-        pagination:'<'
+        pagination:'<',
+        pagerOffset:'<',
+       changePage:'<'
 
     },
     controller: function () {
 
         var self = this;
+
+        self.goToPage=function (number) {
+
+            self.changePage(number);
+        }
+
         self.$onChanges = function (changes) {
 
-            if (changes.pagination) {
-/*
+            if (changes.pagination && changes.pagination.currentValue) {
+
+
 
                 var currentPage = self.pagination.offset;
-                var pagerStart =  currentPage - self.pagination.offset;
-                var pagerEnd = currentPage + $scope.offset;
-                var pagerArray = [];
+                var pagerStart =  currentPage - self.pagerOffset;
+                var pagerEnd = currentPage + self.pagerOffset;
+                this.pagerArray = [];
+
 
                 for(var i=pagerStart;i<=pagerEnd;i++)
                 {
                     if(i>-1)
                     {
                         var number = i+1;
-                        if(number <= pagination.pages)
+                        if(number <= self.pagination.pages)
                         {
-                            pagerArray.push({number:number});
+                            var page = {number:number};
+                            if(page.number == (currentPage+1))
+                            {
+                                page.active=true;
+                            }
+                            console.log(page);
+                            this.pagerArray.push(page);
                         }
 
 
@@ -32,7 +48,7 @@ app.component('pager', {
 
                 }
 
-                this.pagerArray = pagerArray;*/
+
 
             }
         };

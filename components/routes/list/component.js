@@ -6,40 +6,69 @@ app.component('list', {
         },
     controller:function (REST,Modules) {
         var self = this;
+        self.changePage=function (page) {
+            self.query.p = page;
+            return self.list();
+        };
+        self.list=function () {
+            var restClient = new REST(self.module);
+
+            return restClient.list(self.query).then(function (data) {
+                self.items = [];
+                for(var k in data.results)
+                {
+                    if(self.onProcess)
+                    {
+                        self.onProcess(data.results[k],function () {
+
+                            self.items.push(data.results[k]);
+
+                        });
+                    }
+                    else
+                    {
+                        self.items.push(data.results[k]);
+                    }
+                }
+
+                self.pagination = data.pagination;
+
+            });
+        };
+        self.delete=function (item) {
+            var restClient = new REST(self.module);
+            return restClient.delete(item.id).then(function () {
+                self.list();
+            })
+        }
         this.$onInit=function () {
 
-            var restClient = new REST(self.module);
-            self.query={};
+
+            //Default values
+            self.query={p:1};
             self.items = [];
             self.gridMode = 768;
-            self.individualActions = [{'label':'Eliminar','icon':'fas fa-trash'},{'label':'Editar','icon':'fas fa-pen'}];
+            self.pagerOffset = 4;
+            self.individualActions = [{'label':'Eliminar','icon':'fas fa-trash','action':function (item) {
+
+                self.deleteItem=function () {
+                    self.deleteItem=false;
+                    self.delete(item);
+
+
+                }
+
+            }},{'label':'Editar','icon':'fas fa-pen'}];
 
             if(Modules[self.module])
             {
+                //Overwrites desired default values
                 Modules[self.module](self);
             }
 
-            restClient.list(self.query).then(function (data) {
+            self.list();
 
-                for(var k in data.results)
-                {
-                  if(self.onProcess)
-                  {
-                      self.onProcess(data.results[k],function () {
 
-                          self.items.push(data.results[k]);
-
-                      });
-                  }
-                  else
-                  {
-                      self.items.push(data.results[k]);
-                  }
-                }
-
-              self.pagination = data.pagination;
-
-             });
          }
     },
     templateUrl:"components/routes/list/view.html"
