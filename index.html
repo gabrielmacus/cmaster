@@ -10,6 +10,7 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="bower_components/jquery-param/jquery-param.min.js"></script>
+    <link rel="stylesheet" href="https://i.icomoon.io/public/temp/49dafde119/LigasLocales/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.5.2/qs.min.js"></script>
    <script src="app.js"></script>
@@ -26,6 +27,7 @@
     <script src="components/btn/component.js"></script>
     <script src="components/form-actions/component.js"></script>
     <script src="components/lightbox/component.js"></script>
+    <script src="components/field-upload/component.js"></script>
 
     <!-- Views -->
     <script src="components/routes/home/component.js"></script>
@@ -43,8 +45,18 @@
 <aside class="main-sidebar">
     <nav class="main-sidebar-menu">
 
-        <a class="menu-item" href="#!/post">Noticias</a>
-        <a class="menu-item" href="#!/file">Archivos</a>
+        <a class="menu-item" href="#!/post">Noticias <i class="fas fa-newspaper"></i>
+
+        </a>
+        <a class="menu-item" href="#!/file">Archivos <i class="fas fa-file-invoice"></i>
+
+        </a>
+
+        <a class="menu-item" href="#!/match">Partidos <i class="fas fa-futbol"></i>
+
+        </a>
+        <a class="menu-item" href="#!/team">Equipos <i class="icon-team"></i></a>
+        <a class="menu-item" href="#!/player">Jugadores <i class="icon-player"></i></a>
 
     </nav>
 </aside>
@@ -53,7 +65,7 @@
 <!--
     <header ></header>
 -->
-    <div class="body" ui-view>
+    <div class="body toggle" ui-view>
         <!--
         <form class="form-grid">
             <field data-model="person.name" data-label="'Nombre'"></field>

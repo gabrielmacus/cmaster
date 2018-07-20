@@ -5,12 +5,12 @@ app.component('save', {
             id:'<'
           //  items:'<'
         },
-    controller:function (REST,Modules) {
+    controller:function (REST,Modules,$state) {
         var self = this;
         self.item = {};
 
         self.cancel=function () {
-            window.history.back();
+            $state.go("list",{module:self.module});
         }
         self.loadItem=function (id) {
 
@@ -23,13 +23,15 @@ app.component('save', {
         };
         self.saveItem=function () {
             var restClient = new REST(self.module);
- ;
+            self.loading =true;
             restClient.save(self.item,function (validationErrors) {
 
+                self.loading=false;
                     self.validationErrors = validationErrors;
 
             })
                 .then(function (item) {
+                    self.loading=false;
                     console.log(item);
                 });
 

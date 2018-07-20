@@ -4,6 +4,12 @@
 
 <dataset data-change-page="$ctrl.changePage" data-pager-offset="$ctrl.pagerOffset" data-pagination="$ctrl.pagination" data-individual-actions="$ctrl.individualActions" data-grid-mode="$ctrl.gridMode" data-pagination="$ctrl.pagination" data-properties="$ctrl.properties" data-items="$ctrl.items"></dataset>
 
+<form-actions>
+
+    <btn data-ng-click="$ctrl.goToCreate()">Nuevo <i class="fas fa-file"></i>
+
+    </btn>
+</form-actions>
 <lightbox data-opened="$ctrl.deleteItem">
     <heading>¿Eliminar el elemento?</heading>
     <btn data-ng-click="$ctrl.deleteItem()">Si</btn>

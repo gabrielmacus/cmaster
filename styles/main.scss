@@ -53,7 +53,11 @@ $menu-item-border-bottom: $secondary-color;
 }
 .main-sidebar-menu > .menu-item {
   padding: $padding-1;
-  display: inline-block;
+  display: flex;
+  i
+  {
+    margin-left: auto;
+  }
   width: 100%;
   border-bottom: 1px solid $menu-item-border-bottom;
   font-weight: 600;
@@ -129,6 +133,7 @@ $menu-item-border-bottom: $secondary-color;
       margin-bottom: $padding-1;
       media
       {
+        box-shadow: none;
         display: block;
         .title{
           display: none;
@@ -164,6 +169,10 @@ $menu-item-border-bottom: $secondary-color;
       overflow: hidden;
       position: relative;
       height:200px;
+    }
+    figure:empty
+    {
+      display: none;
     }
     figure:hover
     {
@@ -247,7 +256,10 @@ button
 
   }
 }
-
+btn
+{
+  button:not(.loading) i{    margin-left: 5px;}
+}
 .form-grid
 {
   form-actions
@@ -355,7 +367,7 @@ img ,iframe,video{
   display: block;
   object-fit: cover;
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 
@@ -546,6 +558,9 @@ dropdown
 lightbox
 {
 
+  .main-title
+  {    border-bottom: 0;
+    font-size: 25px;}
   .lighbox
   {
     z-index: 3;
@@ -578,4 +593,29 @@ lightbox
 a{
   text-decoration: none;
   color: inherit;
+}
+
+field-upload
+{
+  .file-dropbox
+  {
+    background: #eeeeee;
+    color:$secondary-color;
+    width: 100%;
+    position: relative;
+    display: flex;
+    height: 150px;
+    align-items: center;
+    .text
+    {
+      margin: auto;
+    }
+    [type='file']
+    {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+  }
 }

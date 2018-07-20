@@ -3,8 +3,9 @@
 
     <form-actions>
 
-        <btn data-ng-click="$ctrl.cancel()" >Cancelar</btn>
-        <btn data-ng-click="$ctrl.saveItem()">Guardar</btn>
+        <btn  data-ng-click="$ctrl.cancel()" >Cancelar <i class="fas fa-long-arrow-alt-left"></i></btn>
+        <btn data-loading="$ctrl.loading" data-ng-click="$ctrl.saveItem()">Guardar <i class="fas fa-save"></i></btn>
+
 
 
     </form-actions>

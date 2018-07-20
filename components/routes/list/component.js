@@ -4,8 +4,12 @@ app.component('list', {
             module:'<'
           //  items:'<'
         },
-    controller:function (REST,Modules) {
+    controller:function (REST,Modules,$state) {
+
         var self = this;
+        self.goToCreate=function () {
+            $state.go("create",{module:self.module});
+        }
         self.changePage=function (page) {
             self.query.p = page;
             return self.list();

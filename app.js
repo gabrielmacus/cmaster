@@ -18,7 +18,7 @@ app.config(function($stateProvider, $urlServiceProvider) {
 
 
     $stateProvider.state('update', {
-        url: '/:module/save/:id',
+        url: '/:module/save/{id:int}',
         component: 'save',
         resolve: {
 
