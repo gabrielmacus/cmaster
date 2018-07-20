@@ -1,5 +1,9 @@
 <label>{{$ctrl.label}}</label>
-<div class="file-dropbox">
-    <input type="file">
-    <span class="text">Click aqui o arrastrá tu archivo para subirlo</span>
+<div data-ng-click="$ctrl.loadFile()" class="file-dropbox">
+    <!--<input type="file">-->
+    <span class="text">Click aqui o arrastrá tu archivo para cargarlo</span>
 </div>
+
+<grid-list>
+    <media data-ng-repeat="p in $ctrl.previews" data-src="p.base64"></media>
+</grid-list>

@@ -8,7 +8,9 @@ app.factory('Modules', function($http,HttpErrorHandler) {
             ctrl.gridMode = 1920;
             ctrl.title="Listado de archivos";
         },
-
+        "file-save":function (ctrl) {
+            ctrl.multipart=true;
+        },
         "post":function (ctrl) {
 
             ctrl.onProcess=function (item,callback) {
@@ -22,7 +24,7 @@ app.factory('Modules', function($http,HttpErrorHandler) {
                 callback();
             }
             ctrl.title="Listado de noticias";
-            ctrl.gridMode = 1920;
+            ctrl.gridMode = 768;
             ctrl.properties = {"image":{type:"media",label:"Imagen"},"title":"Titulo"};
             ctrl.query.populate = [{file:{path:'images'}}];
         },

@@ -1,0 +1,49 @@
+pager
+{
+  //display: grid;
+  //grid-template-columns: repeat(auto-fill, minmax(55px,1fr));
+  //display: flex;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(80px,1fr));
+
+  user-select: none;
+
+  cursor: pointer;
+
+  text-align: center;
+  .page
+  {    font-weight: 300;
+
+    &.active
+
+    {
+      font-weight: 600;
+      color: $main-color;
+    }
+  }
+  a{
+
+
+    background-color: #eeeeee;
+
+    padding: 10px;
+    &:hover
+    {
+      color: $main-font-color!important;
+      background-color: $main-color;
+    }
+  }
+
+
+  .prev,.next
+  {
+
+    &.disabled
+    {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+  }
+  margin-bottom: $padding-1;
+}

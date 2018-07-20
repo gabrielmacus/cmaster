@@ -1,13 +1,13 @@
-<form class="form-grid">
+<field-grid>
     <field data-model="$ctrl.item.title" data-label="'Título'"></field>
 
-    <form-actions>
+    <btn-toolbar>
 
         <btn  data-ng-click="$ctrl.cancel()" >Cancelar <i class="fas fa-long-arrow-alt-left"></i></btn>
         <btn data-loading="$ctrl.loading" data-ng-click="$ctrl.saveItem()">Guardar <i class="fas fa-save"></i></btn>
 
 
 
-    </form-actions>
+    </btn-toolbar>
 
-</form>
+</field-grid>

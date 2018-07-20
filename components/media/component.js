@@ -19,8 +19,25 @@ app.component('media', {
                     }
                     else
                     {
-                        src = src.split(".");
-                        ext = src[src.length-1];
+
+                        var mime = src.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/);
+
+                        if(mime && mime.length == 2)
+                        {
+                            //is base64 encoded
+                            ext  = mime[1].split("/");
+                            ext= ext[1];
+
+                        }
+                        else
+                        {
+
+                            src = src.split(".");
+                            ext = src[src.length-1];
+                        }
+
+
+
                     }
 
 

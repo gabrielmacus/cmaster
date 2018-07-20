@@ -1,0 +1,45 @@
+
+@keyframes spin {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
+}
+btn
+{
+  button:not(.loading) i{    margin-left: 5px;}
+  button
+  {
+
+    cursor:pointer;
+    height: 100%;
+    width: 100%;
+    font-family:$main-font;
+    transition:all 0.2s;
+    font-weight:600;
+    border:0;
+    display:inline-block;
+    font-size:15px;
+    padding:$padding-1/2;
+    background-color:$main-color;
+    color:$main-font-color;
+    &:hover
+    {
+      background-color:$secondary-color;
+      color:$secondary-font-color;
+    }
+    .spinner{
+      i
+      {
+        animation-name: spin;
+        animation-duration: 1000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+
+
+    }
+  }
+}

@@ -1,13 +1,13 @@
-<form class="form-grid">
 
-    <field-upload ></field-upload>
-
-    <form-actions>
+<field-grid>
+    <field-upload data-multiple="true" data-model="$ctrl.items" ></field-upload>
+    <btn-toolbar>
 
         <btn  data-ng-click="$ctrl.cancel()" >Cancelar <i class="fas fa-long-arrow-alt-left"></i></btn>
-        <btn data-loading="$ctrl.loading"  data-ng-click="$ctrl.saveItem()">Guardar <i class="fas fa-save"></i></btn>
+        <btn data-loading="$ctrl.loading" data-ng-click="$ctrl.saveItem()">Guardar <i class="fas fa-save"></i></btn>
 
 
-    </form-actions>
 
-</form>
+    </btn-toolbar>
+
+</field-grid>

@@ -1,0 +1,16 @@
+btn-toolbar
+{
+  .tools
+  {
+    grid-template-columns: repeat(auto-fill,minmax(130px,1fr));
+    display: grid;
+    grid-gap: $padding-1/2;
+    btn
+    {
+      width: 100%;
+
+      text-align: center;
+    }
+  }
+  margin-bottom: $padding-1;
+}

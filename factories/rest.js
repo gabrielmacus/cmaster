@@ -30,26 +30,73 @@ app.factory('REST', function($http,HttpErrorHandler) {
 
 
         };
-        self.save=function (item,validationCallback) {
+        self.save=function (item,validationCallback,multipart) {
 
             var url = '/libs/api/'+self.module+"/";
             if(item.id)
             {
                 url+=item.id;
             }
-            return $http({
+            var request = {
                 method:'post',
                 url:url,
                 data:window.param(item),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 
-            })
+            };
+
+
+
+            if(multipart)
+            {          var payload = new FormData();
+
+                for(var k in item)
+                {
+                    if(item[k] instanceof FileList)
+                    {
+                        var fileList = [];
+                        for(var i =0;i<item[k].length;i++)
+                        {
+                            fileList.push(item[k][i]);
+                        }
+                        item[k] =fileList;
+
+                    }
+
+                    if(item[k] instanceof Array)
+                    {
+
+
+                        for(var i =0;i<item[k].length;i++)
+                        {
+
+                            payload.append(k+"[]", item[k][i]);
+
+                        }
+                    }
+                    else
+                    {
+                        for (var j in item[k])
+                        {
+
+                            payload.append(j, item[k][j]);
+                        }
+                    }
+                }
+
+
+                request.data = payload;
+                request.headers['Content-Type'] = undefined;
+                request.transformRequest= angular.identity;
+            }
+
+            return $http(request)
                 .then(function (response) {
 
                     return response.data;
 
                 },function (error) {
-                    if(error.status == 400)
+                    if(error.status == 400 && validationCallback)
                     {
                         validationCallback(error.data);
                     }

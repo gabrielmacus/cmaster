@@ -5,7 +5,7 @@
     <iframe data-ng-if="$ctrl.detectMediaType($ctrl.src) == 'iframe'" data-ng-src="{{$ctrl.src | trustUrl}}"></iframe>
     <video controls preload="metadata" data-ng-if="$ctrl.detectMediaType($ctrl.src) == 'video'"  data-ng-src="{{$ctrl.src | trustUrl}}"></video>
 
-    <div data-ng-if="$ctrl.detectMediaType($ctrl.src) == 'binary'" class="no-preview-available">
+    <div data-ng-if="!$ctrl.src || $ctrl.detectMediaType($ctrl.src) == 'binary'" class="no-preview-available">
         <span class="text">Vista previa no disponible</span>
     </div>
 

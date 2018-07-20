@@ -29,18 +29,36 @@ app.component('save', {
                 self.loading=false;
                     self.validationErrors = validationErrors;
 
-            })
+            },self.multipart)
                 .then(function (item) {
                     self.loading=false;
                     console.log(item);
                 });
 
 
-        }
+        };
+        self.saveMultipleItems=function (k) {
+
+            k = !k?0:k;
+
+
+
+            if(self.items[k])
+            {
+
+                self.item = self.items[k];
+                console.log(self.item);
+                self.saveItem().then(function (item) {
+
+                    self.saveMultipleItems(k+1);
+                });
+            }
+
+        };
 
         this.$onInit=function () {
 
-
+            self.multipart=false;
             if(Modules[self.module+"-save"])
             {
                 //Overwrites desired default values

@@ -1,0 +1,17 @@
+<div class="grid-item-wrapper" >
+
+    <span class="grid-item-block key" data-ng-repeat-start="(k,p) in $ctrl.properties">
+        <span class="text">{{p.label || p}}</span>
+    </span>
+    <span class="grid-item-block value" data-ng-repeat-end>
+
+            <span class="text" data-ng-if="!p.type">{{$ctrl.item[k]}}</span>
+            <media  data-ng-if="p.type == 'media'" data-src="$ctrl.item[k]"></media>
+
+    </span>
+
+    <span class="grid-item-block extra">
+        <ng-transclude></ng-transclude>
+    </span>
+
+</div>

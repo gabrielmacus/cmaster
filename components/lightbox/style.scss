@@ -1,0 +1,34 @@
+lightbox
+{
+
+  .main-title
+  {    border-bottom: 0;
+    font-size: 25px;}
+  .lighbox
+  {
+    z-index: 3;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    width: 100%;
+    height: 100%;
+    .lightbox-container
+    {
+      .close
+      {
+        cursor: pointer;
+        float: left;
+        width: 100%;
+        text-align: right;
+        margin-bottom: $padding-1 /2;
+        font-size: 20px;
+      }
+      width: auto;
+      padding: $padding-1;
+      background: white;
+      margin: auto;
+    }
+  }
+}

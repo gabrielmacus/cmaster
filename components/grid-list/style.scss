@@ -1,0 +1,12 @@
+grid-list > .grid-list-wrapper
+{
+  grid-column: 1 / span 6;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: $padding-1;
+  margin-bottom: $padding-1;
+
+  
+
+
+}
