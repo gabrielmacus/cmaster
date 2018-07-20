@@ -52,12 +52,25 @@ $menu-item-border-bottom: $secondary-color;
   background-color: $menu-font-color;
 }
 .main-sidebar-menu > .menu-item {
+  transition:all 0.2s;
   padding: $padding-1;
   display: flex;
+  align-items: center;
   i
   {
+    transition:all 0.2s;
     margin-left: auto;
+    right: 0;
+    position: relative;
+    font-size: 20px;
   }
+
+  &:hover
+  {
+    i
+    {right: 20px;}
+  }
+
   width: 100%;
   border-bottom: 1px solid $menu-item-border-bottom;
   font-weight: 600;
@@ -133,6 +146,15 @@ $menu-item-border-bottom: $secondary-color;
       margin-bottom: $padding-1;
       media
       {
+        .no-preview-available
+        {
+          display: grid;
+          align-items: center;
+          text-align: center;
+          background: #2d3436;
+          color:white;
+          height: 100%;
+        }
         box-shadow: none;
         display: block;
         .title{

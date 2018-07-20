@@ -1032,13 +1032,21 @@ body {
   background-color: white; }
 
 .main-sidebar-menu > .menu-item {
+  transition: all 0.2s;
   padding: 15px;
   display: flex;
+  align-items: center;
   width: 100%;
   border-bottom: 1px solid #3498db;
   font-weight: 600; }
   .main-sidebar-menu > .menu-item i {
-    margin-left: auto; }
+    transition: all 0.2s;
+    margin-left: auto;
+    right: 0;
+    position: relative;
+    font-size: 20px; }
+  .main-sidebar-menu > .menu-item:hover i {
+    right: 20px; }
 
 .main-container > header {
   min-height: 46px;
@@ -1099,6 +1107,13 @@ body {
         left: -15px;
         width: calc(100% + 30px);
         margin-top: 15px; }
+        .grid-list .row.data [data-header] media .no-preview-available {
+          display: grid;
+          align-items: center;
+          text-align: center;
+          background: #2d3436;
+          color: white;
+          height: 100%; }
         .grid-list .row.data [data-header] media .title {
           display: none; }
   .grid-list .grid-list-item.item-preview, .grid-list media {

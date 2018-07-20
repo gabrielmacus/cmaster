@@ -62,7 +62,10 @@ app.component('list', {
 
                 }
 
-            }},{'label':'Editar','icon':'fas fa-pen'}];
+            }},{'label':'Editar','icon':'fas fa-pen','action':function (item) {
+                $state.go("update",{module:self.module,id:item.id});
+
+            }},{'label':'Ver detalles','icon':'fas fa-info'}];
 
             if(Modules[self.module])
             {
