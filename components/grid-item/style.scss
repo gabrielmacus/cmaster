@@ -1,4 +1,8 @@
 grid-item > .grid-item-wrapper{
+  input{
+    border: none;
+    padding: $padding-1/2;
+  }
   transition:all 0.2s;
   cursor:pointer;
 height: 100%;

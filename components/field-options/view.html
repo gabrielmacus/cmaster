@@ -1,4 +1,4 @@
-<label>{{$ctrl.label}}</label>
+<label data-ng-show="$ctrl.label">{{$ctrl.label}}</label>
 <div class="checkbox-options">
         <div class="checkbox-option" data-ng-repeat="(k,option) in $ctrl.options">
             <label for="{{$ctrl.generateId(option[$ctrl.optionLabel] || $ctrl.label)}}" >{{option[$ctrl.optionLabel]}}</label>

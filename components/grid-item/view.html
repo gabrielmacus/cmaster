@@ -1,3 +1,4 @@
+
 <div class="grid-item-wrapper" >
 
     <span class="grid-item-block key" data-ng-repeat-start="(k,p) in $ctrl.properties">
@@ -7,6 +8,10 @@
 
             <span class="text" data-ng-if="!p.type">{{$ctrl.item[k]}}</span>
             <media  data-ng-if="p.type == 'media'" data-src="$ctrl.item[k]"></media>
+
+            <field data-ng-if="p.type=='editable-text'" data-model="$ctrl.item[k]"></field>
+
+
 
     </span>
 

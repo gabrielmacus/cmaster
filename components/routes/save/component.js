@@ -21,37 +21,41 @@ app.component('save', {
                 });
 
         };
-        self.saveItem=function () {
+        self.saveItem=function (dontRedirectOnEnd) {
             var restClient = new REST(self.module);
             self.loading =true;
-            restClient.save(self.item,function (validationErrors) {
+            return restClient.save(self.item,function (validationErrors) {
 
                 self.loading=false;
                     self.validationErrors = validationErrors;
 
+
             },self.multipart)
                 .then(function (item) {
                     self.loading=false;
-                    console.log(item);
+                    if(!dontRedirectOnEnd)
+                    {
+                        $state.go("list",{module:self.module});
+                    }
+
                 });
 
 
         };
         self.saveMultipleItems=function (k) {
-
             k = !k?0:k;
-
-
-
             if(self.items[k])
             {
 
                 self.item = self.items[k];
-                console.log(self.item);
-                self.saveItem().then(function (item) {
+
+                self.saveItem(true).then(function (item) {
 
                     self.saveMultipleItems(k+1);
                 });
+            }
+            else {
+                $state.go("list",{module:self.module});
             }
 
         };

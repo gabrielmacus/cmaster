@@ -17,7 +17,8 @@ app.component('fieldUpload', {
                     var file = arr[index];
                     var reader = new FileReader();
                     reader.onloadend=function (e) {
-                        results.push({file:file,base64:e.target.result});
+
+                        results.push({file:file,name:file.name,base64:e.target.result});
                         if(index + 1 == arr.length)
                         {
                             return callback(results);
@@ -55,11 +56,9 @@ app.component('fieldUpload', {
                     for(var k in self.previews)
                     {
                         var file = self.previews[k].file;
-                        var p  =angular.copy(self.previews[k]);
-                        delete p.base64;
+                        var p  =self.previews[k];
+                        delete p.file;
                         p.file = file;
-                        p.demo="asdasd";
-
                         if(self.multiple)
                         {
                             self.model.push(p);
@@ -78,32 +77,42 @@ app.component('fieldUpload', {
                 self.previewsChanged();
             }
 
-            self.loadFile=function () {
+
                 var fileInput = document.createElement("input");
-                fileInput.type="file";
-                fileInput.multiple = self.multiple?true:false;
+            fileInput.type="file";
+            fileInput.addEventListener("change",function () {
+
+                console.log(fileInput.files);
+                self.readBase64(fileInput.files,function (results) {
+
+
+                    for(var i=0;i<results.length;i++)
+                    {
+                        self.previews.push(results[i]);
+                    }
+
+
+                    self.previewsChanged();
+                    $scope.$apply();
+
+
+                },function (e) {
+                    //(Math.ceil((e.loaded* 100) / e.total));
+                })
+
+
+            });
+
+            self.$onInit=function () {
+               fileInput.multiple = self.multiple?true:false;
+
+            };
+
+            self.loadFile=function () {
+
+                fileInput.value = "";
                 fileInput.click();
-                fileInput.addEventListener("change",function () {
 
-                    self.readBase64(fileInput.files,function (results) {
-
-
-                        for(var i=0;i<results.length;i++)
-                        {
-                            self.previews.push(results[i]);
-                        }
-
-
-                        self.previewsChanged();
-                        $scope.$apply();
-
-
-                    },function (e) {
-                        console.log(Math.ceil((e.loaded* 100) / e.total));
-                    })
-
-
-                });
 
             }
 

@@ -4,8 +4,9 @@ lightbox
   .main-title
   {    border-bottom: 0;
     font-size: 25px;}
-  .lighbox
+  .lightbox
   {
+    overflow: auto;
     z-index: 3;
     display: flex;
     position: fixed;
@@ -16,6 +17,12 @@ lightbox
     height: 100%;
     .lightbox-container
     {
+
+      .main-title{
+        border: 0;
+        font-size: 25px;
+
+      }
       .close
       {
         cursor: pointer;

@@ -1,12 +1,11 @@
 
 <field-grid>
     <field-upload data-multiple="true" data-model="$ctrl.items" ></field-upload>
+
     <btn-toolbar>
 
         <btn  data-ng-click="$ctrl.cancel()" >Cancelar <i class="fas fa-long-arrow-alt-left"></i></btn>
-        <btn data-loading="$ctrl.loading" data-ng-click="$ctrl.saveItem()">Guardar <i class="fas fa-save"></i></btn>
-
-
+        <btn data-loading="$ctrl.loading" data-ng-click="$ctrl.saveMultipleItems()">Guardar <i class="fas fa-save"></i></btn>
 
     </btn-toolbar>
 

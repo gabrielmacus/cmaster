@@ -56,6 +56,9 @@ app.component('media', {
                         case 'youtube':
                             return 'iframe';
                             break;
+                        case 'mp3':
+                            return 'audio';
+                            break;
                         case 'mp4':
                             return 'video';
                             break;

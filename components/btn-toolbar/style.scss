@@ -2,7 +2,7 @@ btn-toolbar
 {
   .tools
   {
-    grid-template-columns: repeat(auto-fill,minmax(130px,1fr));
+    grid-template-columns: repeat(auto-fill,minmax(120px,1fr));
     display: grid;
     grid-gap: $padding-1/2;
     btn

@@ -5,7 +5,6 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
 $main-font:"Open Sans", sans-serif;;
 
-
 html,
 body {
   height: 100%;
@@ -14,6 +13,7 @@ body {
 
 
 $main-color: #2980b9;
+
 $main-font-color:white;
 
 $secondary-color:#3498db;
@@ -21,83 +21,7 @@ $secondary-font-color: black;
 
 $padding-1: 15px;
 
-$menu-width:350px;
-$menu-color: $main-color;
-$menu-font-color: $main-font-color;
-$menu-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-$menu-item-border-bottom: $secondary-color;
 
-
-
-.main-sidebar {
-  position: fixed;
-  width: $menu-width;
-  float: left;
-  height: 100%;
-}
-
-.main-sidebar > .main-sidebar-menu {
-  transition: all 0.2s;
-  box-shadow: $menu-shadow;
-  background-color: $menu-color;
-  color: $menu-font-color;
-  height: 100%;
-  //max-height: 100vh;
-  overflow: auto;
-  position: relative;
-  left: 0%;
-}
-.main-sidebar-menu > .menu-item:hover {
-  color: $menu-color;
-  background-color: $menu-font-color;
-}
-.main-sidebar-menu > .menu-item {
-  transition:all 0.2s;
-  padding: $padding-1;
-  display: flex;
-  align-items: center;
-  i
-  {
-    transition:all 0.2s;
-    margin-left: auto;
-    right: 0;
-    position: relative;
-    font-size: 20px;
-  }
-
-  &:hover
-  {
-    i
-    {right: 20px;}
-  }
-
-  width: 100%;
-  border-bottom: 1px solid $menu-item-border-bottom;
-  font-weight: 600;
-}
-.main-container > header {
-  min-height: 46px;
-  background-color: $menu-color;
-  grid-column: 1 / span 6;
-  grid-row: 1;
-}
-
-.main-container {
-  float: right;
-  width: calc(100% - #{$menu-width});
-  height: 100%;
-  display: grid;
-  grid-template-rows: min-content auto;
-  grid-row: 1 / span 2;
-  grid-template-columns: repeat(6, 1fr);
-}
-.main-container > .body {
-  grid-column: 1 / span 6;
-  padding: $padding-1;
-}
-.main-container > header {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
 
 
 
@@ -232,3 +156,18 @@ a{
 @import "../components/dropdown/style";
 @import "../components/field-upload/style";
 @import "../components/heading/style";
+@import "../components/navbar/style";
+@import "../components/related-items/style";
+.main-container
+{
+  float: right;
+  height: 100%;
+  display: grid;
+  grid-template-rows: min-content auto;
+  grid-row: 1 / span 2;
+  grid-template-columns: repeat(6, 1fr);
+}
+.main-container > .body {
+  grid-column: 1 / span 6;
+  padding: $padding-1;
+}

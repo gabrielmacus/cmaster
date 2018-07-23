@@ -46,10 +46,34 @@ app.factory('REST', function($http,HttpErrorHandler) {
             };
 
 
-
             if(multipart)
             {          var payload = new FormData();
 
+
+            //console.log(item);
+                for(var k in item)
+                {
+                    if(k  == "base64")
+                    {
+                       //Nothing...
+                    }
+                    else if(item[k] instanceof Array)
+                    {
+                        for (var j in item[k])
+                        {
+                            payload.append(k+"[]", item[k][j]);
+                        }
+
+                    }
+                    else
+                    {
+
+                        payload.append(k, item[k]);
+                    }
+
+                }
+
+            /*
                 for(var k in item)
                 {
                     if(item[k] instanceof FileList)
@@ -82,7 +106,7 @@ app.factory('REST', function($http,HttpErrorHandler) {
                             payload.append(j, item[k][j]);
                         }
                     }
-                }
+                }*/
 
 
                 request.data = payload;

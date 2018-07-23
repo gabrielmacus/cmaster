@@ -1,9 +1,17 @@
-<label>{{$ctrl.label}}</label>
+<label data-ng-show="$ctrl.label">{{$ctrl.label}}</label>
 <div data-ng-click="$ctrl.loadFile()" class="file-dropbox">
     <!--<input type="file">-->
-    <span class="text">Click aqui o arrastrá tu archivo para cargarlo</span>
+
+    <span class="text">Click aqui para cargar archivos <i class="fas fa-file-upload"></i>
+
+
+</span>
 </div>
 
-<grid-list>
-    <media data-ng-repeat="p in $ctrl.previews" data-src="p.base64"></media>
+
+<grid-list data-ng-show="$ctrl.previews.length">
+    <grid-item  data-ng-repeat="p in $ctrl.previews"
+                data-properties="{'base64':{'label':'Vista previa','type':'media'},'name':{'label':'Nombre','type':'editable-text'}}" data-item="p">
+    </grid-item>
 </grid-list>
+

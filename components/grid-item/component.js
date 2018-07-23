@@ -2,7 +2,7 @@ app.component('gridItem', {
 
     bindings:
         {
-            item:'<',
+            item:'=',
             properties:'<'
         },
     transclude:true,

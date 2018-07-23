@@ -1,6 +1,5 @@
 media
 {
-
   .no-preview-available
   {
     display: grid;
@@ -9,6 +8,7 @@ media
     background: #2d3436;
     color:white;
     height: 100%;
+    width: 100%;
   }
   box-shadow: none;
   display: block;
@@ -26,6 +26,17 @@ media
     overflow: hidden;
     position: relative;
     height:200px;
+
+    display: flex;
+    align-items: center;
+    background: black;
+    audio
+    {
+      margin: auto;
+      border-radius: 0px;
+      background: aliceblue;
+      width: 90%;
+    }
   }
   figure:empty
   {
