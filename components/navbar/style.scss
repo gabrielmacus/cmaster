@@ -2,7 +2,7 @@ $menu-width:350px;
 $menu-color: $main-color;
 $menu-font-color: $main-font-color;
 
-$menu-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+$menu-shadow:inset 0px 1px 10px rgba(0, 0, 0, 0.4);
 $menu-item-border-bottom: $secondary-color;
 $menu-icon-size:20px;
 //Side navbar
@@ -13,13 +13,13 @@ navbar >   .menu-top
   position: fixed;
   right: 0;
   z-index: 1;
-  box-shadow: $menu-shadow;
-
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   float: right;
   width: calc(100% - #{$menu-width});
   .menu-hamburger
   {    padding: $padding-1;
     display: inline-block;
+    transition:all 0.2s;
 
     &:hover
     {
@@ -35,6 +35,7 @@ navbar >   .menu-top
 navbar[data-type='top'] + navbar[data-type='left'] + .main-container
 {
 margin-top: 50px;
+  height: calc(100% - 50px);
 }
 
 //Side navbar
@@ -58,45 +59,20 @@ navbar > .menu-side.left
 }
 .main-container,.menu-top{
   transition: all 0.2s;
-}
-@media all and (min-width: 769px) {
-  body.sidebar-toggle
-  {
-    navbar > .menu-side
-    {
-      left:-($menu-width - 50);
-
-    }
-    .main-container{
-      width: calc(100% - 50px);
-    }
-    .menu-top
-    {
-      width: calc(100% - 50px);
-    }
-  }
-}
-@media all and (max-width: 768px) {
-
-  body:not(.sidebar-toggle)
-  {
-    navbar > .menu-side
-    {
-      left:-($menu-width - 50);
-
-    }
-    .main-container{
-      width: calc(100% - 50px);
-    }
-    .menu-top
-    {
-      width: calc(100% - 50px);
-    }
-  }
+  position: relative;
+  right: 0;
 }
 
+.main-container {
+
+  left: 0px;
+
+  overflow-x: hidden;
+
+  width: calc(100% - #{$menu-width});
 
 
+}
 
 
 navbar > .menu-side >.menu-links {
@@ -119,7 +95,8 @@ navbar > .menu-side >.menu-links {
   background: $secondary-color;
   color: $secondary-font-color;
   body:not(.sidebar-toggle) i
-  {right: 20px;}
+  {right: 20px;
+  }
 }
 
 .menu-links  > a {
@@ -149,8 +126,96 @@ navbar > .menu-side >.menu-links {
 
 
 
-.main-container {
 
-  width: calc(100% - #{$menu-width});
+@media all and (min-width: 769px) {
+  body.sidebar-toggle
+  {
 
+    navbar > .menu-side
+    {
+      left:-($menu-width - 50);
+
+    }
+    .main-container{
+      width: calc(100% - 50px);
+    }
+    .menu-top
+    {
+      width: calc(100% - 50px);
+    }
+  }
 }
+@media all and (max-width: 768px) {
+
+  .menu-links > a.active
+  {
+
+     i
+    {
+      right: 0!important;
+    }
+  }
+
+
+  $menu-width:230px;
+
+
+  navbar > .menu-side
+  {
+    width: $menu-width;
+  }
+
+  .main-container {
+    width: calc(100% - 50px);
+
+  }
+  navbar > .menu-top
+  {
+
+    right: 0;
+  }
+  body.sidebar-toggle
+  {
+    .main-container
+    {
+      left: $menu-width - 50;
+    }
+    navbar >   .menu-top
+    {
+      width: calc(100% - #{$menu-width});
+    }
+
+  }
+
+
+  body:not(.sidebar-toggle)
+  {
+
+
+    navbar > .menu-side
+    {
+      width: $menu-width;
+
+      left:-($menu-width - 50);
+
+    }
+    .main-container{
+      width: calc(100% - 50px);
+    }
+    .menu-top
+    {
+      width: calc(100% - 50px);
+    }
+  }
+}
+
+@media all and (max-width: 360px) {
+  .main-container .body
+  {
+    padding: $padding-1 / 2 !important;
+  }
+}
+
+
+
+

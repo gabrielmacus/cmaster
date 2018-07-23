@@ -1,7 +1,9 @@
 <div class="related-items-wrapper">
-    <lightbox data-opened="$ctrl.openLightbox">
-        <list data-module="$ctrl.module"></list>
+    <lightbox data-opened="$ctrl.openList">
+        <list data-ng-if="$ctrl.openList" data-selected-items="$ctrl.selectedItems" data-module="$ctrl.module"></list>
     </lightbox>
-    <btn data-ng-click="$ctrl.openLightbox = !$ctrl.openLightbox">Open</btn>
+
+
+    <btn data-ng-click="$ctrl.selectExistant()">Open</btn>
 
 </div>

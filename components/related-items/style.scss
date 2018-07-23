@@ -1,4 +1,23 @@
 related-items > .related-items-wrapper > lightbox > .lightbox > .lightbox-container{
   width: 90%;
-  margin-top: $padding-1;
+
+  .main-title
+  {
+    font-size: 30px;
+  }
+
+}
+related-items
+{
+  .lightbox-container
+  {
+    max-height: 90vh;
+    overflow: auto;
+  }
+}
+related-items
+{
+  .lightbox-container
+  {    padding: 30px!important;
+    border: 3px solid $secondary-color;}
 }

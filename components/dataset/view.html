@@ -1,16 +1,17 @@
 
 
 <grid-list >
-    <grid-item data-ng-repeat="item in $ctrl.items" data-properties="$ctrl.properties" data-item="item">
+    <grid-item data-ng-repeat="(k,item) in $ctrl.items" data-properties="$ctrl.properties" data-item="item">
 
         <dropdown  data-placeholder="'Acciones'" data-items="[{label:'Demo'},{label:'Demo 2'}]">
             <a data-ng-click="action.action(item)"  data-ng-repeat="action in $ctrl.individualActions">{{action.label}} &nbsp;<i data-ng-show="action.icon" data-ng-class="action.icon"></i></a>
         </dropdown>
+        <field-option data-on-change="$ctrl.onUpdateItemSelection" data-model="item._selected" data-id="'grid-item-'+item.id" data-value="true"></field-option>
+
+
 
     </grid-item>
 </grid-list>
-
-
 
 
 <pager data-change-page="$ctrl.changePage" data-ng-show="$ctrl.pagination.pages > 1" data-pager-offset="$ctrl.pagerOffset" data-pagination="$ctrl.pagination"></pager>

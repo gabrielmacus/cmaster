@@ -9,22 +9,40 @@ app.component('fieldOptions', {
 
         },
         controller: function () {
-
+            String.prototype.bool = function() {
+                return (/^true$/i).test(this);
+            };
+            var self =this;
             this.generateId =function (label) {
                 return window.btoa(unescape(encodeURIComponent(label+" "+this.label)));
             }
 
-            this.updateModel=function () {
-                this.model = [];
-                for(var k in this.selected)
+            self.selected = {};
+
+            self.updateModel=function () {
+
+
+                if(this.model !== false)
+                {
+                    self.selected[this.id] = this.model;
+                }
+                else
+                {
+                    delete self.selected[this.id];
+                }
+
+                self.model =[];
+
+                for(var k in self.selected)
                 {
 
-                    if(this.selected[k])
+                    if(self.selected[k])
                     {
 
-                        this.model.push(this.selected[k]);
+                        self.model.push(self.selected[k]);
                     }
                 }
+
             }
 
 

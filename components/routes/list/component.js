@@ -1,7 +1,8 @@
 app.component('list', {
     bindings:
         {
-            module:'<'
+            module:'<',
+            selectedItems:'=?'
           //  items:'<'
         },
     controller:function (REST,Modules,$state) {

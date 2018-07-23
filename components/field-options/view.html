@@ -1,6 +1,16 @@
 <label data-ng-show="$ctrl.label">{{$ctrl.label}}</label>
 <div class="checkbox-options">
         <div class="checkbox-option" data-ng-repeat="(k,option) in $ctrl.options">
+
+
+
+            <!--data-model="$ctrl.selected[k]"-->
+            <field-option data-id="$ctrl.generateId(option[$ctrl.optionLabel] || $ctrl.label)" data-ng-if="$ctrl.multiple"    data-on-change="$ctrl.updateModel"  data-value="(!$ctrl.optionValue)?option:option[$ctrl.optionValue]"  data-label="option[$ctrl.optionLabel]"></field-option>
+
+            <field-option data-id="$ctrl.generateId(option[$ctrl.optionLabel] || $ctrl.label)" data-ng-if="!$ctrl.multiple"  data-model="$ctrl.model"  data-value="(!$ctrl.optionValue)?option:option[$ctrl.optionValue]"  data-label="option[$ctrl.optionLabel]"></field-option>
+
+
+            <!--
             <label for="{{$ctrl.generateId(option[$ctrl.optionLabel] || $ctrl.label)}}" >{{option[$ctrl.optionLabel]}}</label>
 
             <input id="{{$ctrl.generateId(option[$ctrl.optionLabel] || $ctrl.label)}}" data-ng-if="$ctrl.multiple" data-ng-change="$ctrl.updateModel()"  data-ng-model="$ctrl.selected[k]" data-ng-true-value="{{(!$ctrl.optionValue)?option:option[$ctrl.optionValue]}}" type="checkbox">
@@ -11,7 +21,7 @@
             <label for="{{$ctrl.generateId(option[$ctrl.optionLabel] || $ctrl.label)}}" class="dummy not-checked"><i class="far fa-square"></i></label>
 
             <label for="{{$ctrl.generateId(option[$ctrl.optionLabel] || $ctrl.label)}}" class="dummy checked"><i class="fas fa-check-square"></i></label>
-
+-->
 
 
 

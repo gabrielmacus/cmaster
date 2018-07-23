@@ -6,7 +6,7 @@ lightbox
     font-size: 25px;}
   .lightbox
   {
-    overflow: auto;
+    overflow: hidden;
     z-index: 3;
     display: flex;
     position: fixed;

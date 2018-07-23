@@ -7,13 +7,23 @@ app.component('dataset', {
             individualActions:'=',
             generalActions:'=',
             gridMode:'=',
-            pagerOffset:'<'
+            pagerOffset:'<',
+            selectedItems:'=?'
         },
         controller: function ($scope,$window,$timeout) {
             var self = this;
 
+
             self.$onInit=function () {
 
+
+                self.onUpdateItemSelection=function () {
+
+                    $timeout(function () {
+                        self.selectedItems =self.items.filter(function (t) { return t._selected });
+                        $scope.$apply();
+                    })
+                }
 
                 self.viewMode = 'grid-list';
                 if(self.gridMode !== true)

@@ -5,9 +5,19 @@ app.component('relatedItems', {
             parentKey:'='
         },
         transclude:true,
-        controller: function () {
+        controller: function ($scope,$timeout) {
 
+            var self =this;
+            self.selectExistant=function () {
 
+                self.selectedItems=[];
+                self.openList = true;
+
+                $timeout(function () {
+                    $scope.$apply();
+                })
+
+            }
 
 
         },

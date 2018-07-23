@@ -1260,35 +1260,6 @@ field-grid form {
   display: grid;
   grid-gap: 15px;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
-  .checkbox-options .checkbox-option, .checkbox-options .radio-option, .radio-options .checkbox-option, .radio-options .radio-option {
-    display: flex; }
-    .checkbox-options .checkbox-option input, .checkbox-options .radio-option input, .radio-options .checkbox-option input, .radio-options .radio-option input {
-      border-bottom: none;
-      display: inline-block;
-      margin-left: auto;
-      width: auto;
-      position: absolute;
-      opacity: 0; }
-    .checkbox-options .checkbox-option label, .checkbox-options .radio-option label, .radio-options .checkbox-option label, .radio-options .radio-option label {
-      cursor: pointer;
-      width: auto;
-      font-size: 15px;
-      color: black;
-      display: inline-block; }
-    .checkbox-options .checkbox-option label.dummy, .checkbox-options .radio-option label.dummy, .radio-options .checkbox-option label.dummy, .radio-options .radio-option label.dummy {
-      cursor: pointer;
-      padding: 0;
-      margin: 0;
-      margin-left: auto;
-      border: 0; }
-    .checkbox-options .checkbox-option label.dummy.not-checked, .checkbox-options .radio-option label.dummy.not-checked, .radio-options .checkbox-option label.dummy.not-checked, .radio-options .radio-option label.dummy.not-checked {
-      display: block; }
-    .checkbox-options .checkbox-option label.dummy.checked, .checkbox-options .radio-option label.dummy.checked, .radio-options .checkbox-option label.dummy.checked, .radio-options .radio-option label.dummy.checked {
-      display: none; }
-    .checkbox-options .checkbox-option input:checked ~ label.dummy.checked, .checkbox-options .radio-option input:checked ~ label.dummy.checked, .radio-options .checkbox-option input:checked ~ label.dummy.checked, .radio-options .radio-option input:checked ~ label.dummy.checked {
-      display: block; }
-    .checkbox-options .checkbox-option input:checked ~ label.dummy.not-checked, .checkbox-options .radio-option input:checked ~ label.dummy.not-checked, .radio-options .checkbox-option input:checked ~ label.dummy.not-checked, .radio-options .radio-option input:checked ~ label.dummy.not-checked {
-      display: none; }
 
 btn-toolbar {
   margin-bottom: 15px; }
@@ -1308,6 +1279,8 @@ btn-toolbar {
 btn button:not(.loading) i {
   margin-left: 5px; }
 btn button {
+  outline: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   cursor: pointer;
   height: 100%;
   width: 100%;
@@ -1321,8 +1294,11 @@ btn button {
   background-color: #2980b9;
   color: white; }
   btn button:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     background-color: #3498db;
     color: black; }
+  btn button:active {
+    box-shadow: none; }
   btn button .spinner i {
     animation-name: spin;
     animation-duration: 1000ms;
@@ -1333,7 +1309,7 @@ lightbox .main-title {
   border-bottom: 0;
   font-size: 25px; }
 lightbox .lightbox {
-  overflow: auto;
+  overflow: hidden;
   z-index: 3;
   display: flex;
   position: fixed;
@@ -1435,7 +1411,7 @@ navbar > .menu-top {
   position: fixed;
   right: 0;
   z-index: 1;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   float: right;
   width: calc(100% - 350px);
   background-color: #3498db;
@@ -1443,20 +1419,22 @@ navbar > .menu-top {
   font-size: 20px; }
   navbar > .menu-top .menu-hamburger {
     padding: 15px;
-    display: inline-block; }
+    display: inline-block;
+    transition: all 0.2s; }
     navbar > .menu-top .menu-hamburger:hover {
       cursor: pointer;
       background: #2980b9;
       color: white; }
 
 navbar[data-type='top'] + navbar[data-type='left'] + .main-container {
-  margin-top: 50px; }
+  margin-top: 50px;
+  height: calc(100% - 50px); }
 
 navbar > .menu-side {
   position: fixed;
   width: 350px;
   transition: all 0.2s;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: inset 0px 1px 10px rgba(0, 0, 0, 0.4);
   background-color: #2980b9;
   color: white;
   height: 100%; }
@@ -1469,22 +1447,15 @@ navbar > .menu-side.left {
   left: 0; }
 
 .main-container, .menu-top {
-  transition: all 0.2s; }
+  transition: all 0.2s;
+  position: relative;
+  right: 0; }
 
-@media all and (min-width: 769px) {
-  body.sidebar-toggle navbar > .menu-side {
-    left: -300px; }
-  body.sidebar-toggle .main-container {
-    width: calc(100% - 50px); }
-  body.sidebar-toggle .menu-top {
-    width: calc(100% - 50px); } }
-@media all and (max-width: 768px) {
-  body:not(.sidebar-toggle) navbar > .menu-side {
-    left: -300px; }
-  body:not(.sidebar-toggle) .main-container {
-    width: calc(100% - 50px); }
-  body:not(.sidebar-toggle) .menu-top {
-    width: calc(100% - 50px); } }
+.main-container {
+  left: 0px;
+  overflow-x: hidden;
+  width: calc(100% - 350px); }
+
 navbar > .menu-side > .menu-links {
   transition: all 0.2s;
   height: 100%;
@@ -1519,12 +1490,92 @@ navbar > .menu-side > .menu-links {
   body:not(.sidebar-toggle) .menu-links > a:hover i {
     right: 20px; }
 
-.main-container {
-  width: calc(100% - 350px); }
+@media all and (min-width: 769px) {
+  body.sidebar-toggle navbar > .menu-side {
+    left: -300px; }
+  body.sidebar-toggle .main-container {
+    width: calc(100% - 50px); }
+  body.sidebar-toggle .menu-top {
+    width: calc(100% - 50px); } }
+@media all and (max-width: 768px) {
+  .menu-links > a.active i {
+    right: 0 !important; }
 
+  navbar > .menu-side {
+    width: 230px; }
+
+  .main-container {
+    width: calc(100% - 50px); }
+
+  navbar > .menu-top {
+    right: 0; }
+
+  body.sidebar-toggle .main-container {
+    left: 180px; }
+  body.sidebar-toggle navbar > .menu-top {
+    width: calc(100% - 230px); }
+
+  body:not(.sidebar-toggle) navbar > .menu-side {
+    width: 230px;
+    left: -180px; }
+  body:not(.sidebar-toggle) .main-container {
+    width: calc(100% - 50px); }
+  body:not(.sidebar-toggle) .menu-top {
+    width: calc(100% - 50px); } }
+@media all and (max-width: 360px) {
+  .main-container .body {
+    padding: 7.5px !important; } }
 related-items > .related-items-wrapper > lightbox > .lightbox > .lightbox-container {
-  width: 90%;
-  margin-top: 15px; }
+  width: 90%; }
+  related-items > .related-items-wrapper > lightbox > .lightbox > .lightbox-container .main-title {
+    font-size: 30px; }
+
+related-items .lightbox-container {
+  max-height: 90vh;
+  overflow: auto; }
+
+related-items .lightbox-container {
+  padding: 30px !important;
+  border: 3px solid #3498db; }
+
+field-option {
+  display: flex; }
+  field-option input {
+    border-bottom: none;
+    display: inline-block;
+    margin-left: auto;
+    width: auto;
+    position: absolute;
+    opacity: 0; }
+  field-option label {
+    cursor: pointer;
+    width: auto;
+    font-size: 15px;
+    color: black;
+    display: inline-block; }
+  field-option label.dummy {
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    margin-left: auto;
+    border: 0; }
+  field-option label.dummy.not-checked {
+    display: block; }
+  field-option label.dummy.checked {
+    display: none; }
+  field-option input:checked ~ label.dummy.checked {
+    display: block; }
+  field-option input:checked ~ label.dummy.not-checked {
+    display: none; }
+
+dataset .grid-item-block.extra {
+  display: grid;
+  grid-template-columns: auto min-content;
+  align-items: center; }
+  dataset .grid-item-block.extra label.dummy {
+    font-size: 25px; }
+  dataset .grid-item-block.extra field-option {
+    padding-left: 7.5px; }
 
 .main-container {
   float: right;
