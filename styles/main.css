@@ -1235,11 +1235,11 @@ pager {
     pointer-events: none;
     opacity: 0.5; }
 
-field label, field label + *, field-select label, field-select label + *, field-options label, field-options label + * {
+field > label, field > label + *, field-select > label, field-select > label + *, field-options > label, field-options > label + * {
   display: block;
   width: 100%;
   font-size: 18px; }
-field label + *, field-select label + *, field-options label + * {
+field > label + *, field-select > label + *, field-options > label + * {
   font-family: "Open Sans", sans-serif;
   padding: 5px;
   padding-left: 0;
@@ -1247,10 +1247,18 @@ field label + *, field-select label + *, field-options label + * {
   border: 0;
   border-bottom: 1px solid #2980b9;
   outline: 0; }
-field label, field-select label, field-options label {
+field > label, field-select > label, field-options > label {
   font-weight: 600;
   color: #2980b9;
   margin-bottom: 7.5px; }
+
+related-items .related-items-wrapper > label {
+  display: block;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2980b9;
+  margin-bottom: 15px; }
 
 field-grid form {
   display: grid;
@@ -1309,7 +1317,6 @@ lightbox .main-title {
   border-bottom: 0;
   font-size: 25px; }
 lightbox .lightbox {
-  overflow: hidden;
   z-index: 3;
   display: flex;
   position: fixed;
@@ -1530,6 +1537,8 @@ related-items > .related-items-wrapper > lightbox > .lightbox > .lightbox-contai
   related-items > .related-items-wrapper > lightbox > .lightbox > .lightbox-container .main-title {
     font-size: 30px; }
 
+related-items .related-items-wrapper > btn-toolbar > .tools {
+  grid-template-columns: 1fr 1fr; }
 related-items .lightbox-container {
   max-height: 90vh;
   overflow: auto; }
@@ -1576,6 +1585,11 @@ dataset .grid-item-block.extra {
     font-size: 25px; }
   dataset .grid-item-block.extra field-option {
     padding-left: 7.5px; }
+
+list > btn-toolbar .tools {
+  box-shadow: inset 0px 1px 10px rgba(0, 0, 0, 0.2);
+  padding: 7.5px;
+  background: #E0E0E0; }
 
 .main-container {
   float: right;

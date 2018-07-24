@@ -9,10 +9,21 @@ related-items > .related-items-wrapper > lightbox > .lightbox > .lightbox-contai
 }
 related-items
 {
+  .related-items-wrapper
+  {
+    & > btn-toolbar > .tools{
+      grid-template-columns: 1fr 1fr;
+    }
+
+  }
   .lightbox-container
   {
     max-height: 90vh;
     overflow: auto;
+    btn-toolbar
+    {
+      //display: none;
+    }
   }
 }
 related-items

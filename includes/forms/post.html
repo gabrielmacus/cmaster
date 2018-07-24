@@ -2,7 +2,8 @@
     <field data-model="$ctrl.item.title" data-label="'Título'"></field>
 
 
-    <related-items data-module="'file'" >
+
+    <related-items data-label="'Imágenes'" data-parent-key="'posts'" data-child-key="'images'" data-module="'file'" data-model="$ctrl.item._related.images" data-properties='{"src":{label:"Vista previa",type:"media"},"name":"Nombre"}'>
 
    </related-items>
 

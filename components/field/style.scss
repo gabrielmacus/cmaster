@@ -1,9 +1,9 @@
 field,field-select,field-options
 {
 
-  label,label + *
+  & > label,& > label + *
   {display:block;width:100%;    font-size:18px;}
-  label  + *
+  & > label  + *
   {font-family:$main-font;
     padding:$padding-1/3;
     padding-left:0;
@@ -13,11 +13,23 @@ field,field-select,field-options
 
     outline:0;
   }
-  label
+  & > label
   {
     font-weight:600;
     color:$main-color;
     margin-bottom:$padding-1/2;
+  }
+
+}
+
+related-items
+{
+  .related-items-wrapper > label
+  {
+    display:block;width:100%;    font-size:18px;
+    font-weight:600;
+    color:$main-color;
+    margin-bottom:$padding-1;
   }
 
 }

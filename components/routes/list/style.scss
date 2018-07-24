@@ -1,0 +1,12 @@
+list
+{
+
+  & > btn-toolbar
+  {
+    .tools
+    {  box-shadow: inset 0px 1px 10px rgba(0, 0, 0, 0.2);
+      padding:$padding-1/2;
+      background: #E0E0E0;
+    }
+  }
+}

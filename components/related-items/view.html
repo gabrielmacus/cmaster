@@ -1,9 +1,26 @@
 <div class="related-items-wrapper">
-    <lightbox data-opened="$ctrl.openList">
-        <list data-ng-if="$ctrl.openList" data-selected-items="$ctrl.selectedItems" data-module="$ctrl.module"></list>
+    <label data-ng-show="$ctrl.label">{{$ctrl.label}}</label>
+
+    <lightbox data-opened="$ctrl.openList" >
+        <list data-toolbar-actions="$ctrl.toolbarActions"  class="toggle" data-ng-if="$ctrl.openList" data-selected-items="$ctrl.selectedItems" data-module="$ctrl.module"></list>
+        <a></a>
     </lightbox>
 
 
-    <btn data-ng-click="$ctrl.selectExistant()">Open</btn>
+    <grid-list>
+        <grid-item data-item="item" data-ng-repeat="(k,item) in $ctrl.model" data-properties="$ctrl.properties">
+            <dropdown  data-placeholder="'Acciones'" data-items="[{label:'Demo'},{label:'Demo 2'}]">
+                <a data-ng-click="$ctrl.unrelate(k)">Eliminar &nbsp;<i class="fas fa-trash"></i></a>
+            </dropdown>
+
+        </grid-item>
+    </grid-list>
+
+    <btn-toolbar>
+        <btn data-ng-click="$ctrl.selectExistant()">Seleccionar <i class="fas fa-hand-pointer"></i>
+        </btn>
+        <btn data-ng-click="$ctrl.createNew()">Crear <i class="fas fa-file"></i>
+        </btn>
+    </btn-toolbar>
 
 </div>

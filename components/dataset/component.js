@@ -8,13 +8,14 @@ app.component('dataset', {
             generalActions:'=',
             gridMode:'=',
             pagerOffset:'<',
-            selectedItems:'=?'
+            selectedItems:'='
         },
         controller: function ($scope,$window,$timeout) {
             var self = this;
 
 
             self.$onInit=function () {
+
 
 
                 self.onUpdateItemSelection=function () {

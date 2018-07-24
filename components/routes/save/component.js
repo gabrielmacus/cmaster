@@ -9,13 +9,14 @@ app.component('save', {
         var self = this;
         self.item = {};
 
+        self.query={};
         self.cancel=function () {
             $state.go("list",{module:self.module});
         }
         self.loadItem=function (id) {
 
             var restClient = new REST(self.module);
-            restClient.readById(id)
+            restClient.readById(id,self.query)
                 .then(function (item) {
                     self.item = item;
                 });

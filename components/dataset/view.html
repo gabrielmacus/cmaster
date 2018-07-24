@@ -3,7 +3,7 @@
 <grid-list >
     <grid-item data-ng-repeat="(k,item) in $ctrl.items" data-properties="$ctrl.properties" data-item="item">
 
-        <dropdown  data-placeholder="'Acciones'" data-items="[{label:'Demo'},{label:'Demo 2'}]">
+        <dropdown  data-placeholder="'Acciones'" >
             <a data-ng-click="action.action(item)"  data-ng-repeat="action in $ctrl.individualActions">{{action.label}} &nbsp;<i data-ng-show="action.icon" data-ng-class="action.icon"></i></a>
         </dropdown>
         <field-option data-on-change="$ctrl.onUpdateItemSelection" data-model="item._selected" data-id="'grid-item-'+item.id" data-value="true"></field-option>

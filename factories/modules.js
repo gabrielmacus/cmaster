@@ -29,7 +29,8 @@ app.factory('Modules', function($http,HttpErrorHandler) {
             ctrl.query.populate = [{file:{path:'images'}}];
         },
         "post-save":function (ctrl) {
-
+            ctrl.query = !ctrl.query?{}:ctrl.query;
+            ctrl.query.populate = [{file:{path:'images'}}];
         }
 
     };

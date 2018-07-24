@@ -2,15 +2,18 @@
     {{$ctrl.title}}
 </heading>
 
-<dataset data-selected-items="$ctrl.selectedItems" data-change-page="$ctrl.changePage" data-pager-offset="$ctrl.pagerOffset" data-pagination="$ctrl.pagination" data-individual-actions="$ctrl.individualActions" data-grid-mode="$ctrl.gridMode" data-pagination="$ctrl.pagination" data-properties="$ctrl.properties" data-items="$ctrl.items"></dataset>
+<dataset  data-selected-items="$ctrl.selectedItems" data-change-page="$ctrl.changePage" data-pager-offset="$ctrl.pagerOffset" data-pagination="$ctrl.pagination" data-individual-actions="$ctrl.individualActions" data-grid-mode="$ctrl.gridMode" data-pagination="$ctrl.pagination" data-properties="$ctrl.properties" data-items="$ctrl.items"></dataset>
 
 
 <btn-toolbar>
 
-    <btn data-ng-click="$ctrl.goToCreate()">Nuevo <i class="fas fa-file"></i>
-
+    <btn data-ng-repeat="tool in $ctrl.toolbarActions"
+         data-ng-click="tool.action()"
+         data-ng-show="tool.visible()">
+        {{angular.isFunction(tool.label)?tool.label():tool.label}} <i data-ng-class="tool.icon" data-ng-show="tool.icon"></i>
     </btn>
 </btn-toolbar>
+
 
 <lightbox data-opened="$ctrl.deleteItem">
     <heading>¿Eliminar el elemento?</heading>

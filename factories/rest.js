@@ -4,9 +4,11 @@ app.factory('REST', function($http,HttpErrorHandler) {
     var REST = function (module) {
         var self = this;
         self.module = module;
-        self.readById=function (id) {
+        self.readById=function (id,query) {
 
-            return $http.get('/libs/api/'+self.module+"/"+id)
+            query = !query?{}:query;
+
+            return $http.get('/libs/api/'+self.module+"/"+id+"?"+window.decodeURI(Qs.stringify(query)))
                 .then(function (response) {
                     return response.data;
                 },HttpErrorHandler);

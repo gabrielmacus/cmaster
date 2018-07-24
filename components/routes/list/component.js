@@ -2,10 +2,10 @@ app.component('list', {
     bindings:
         {
             module:'<',
-            selectedItems:'=?'
-          //  items:'<'
+            selectedItems:'=',
+            toolbarActions:'<?'
         },
-    controller:function (REST,Modules,$state) {
+    controller:function (REST,Modules,$state,$timeout,$scope) {
 
         var self = this;
         self.goToCreate=function () {
@@ -34,6 +34,7 @@ app.component('list', {
                     {
                         self.items.push(data.results[k]);
                     }
+
                 }
 
                 self.pagination = data.pagination;
@@ -45,9 +46,34 @@ app.component('list', {
             return restClient.delete(item.id).then(function () {
                 self.list();
             })
-        }
-        this.$onInit=function () {
+        };
+        self.deleteMultipleItems=function (items,k,onEnd) {
 
+            k = k?k:0;
+            if(items[k])
+            {
+                self.delete(items[k])
+                    .then(function () {
+                       self.deleteMultipleItems(items,k+1);
+                    });
+            }
+            else
+            {
+                if(onEnd)
+                {
+                    onEnd();
+                }
+            }
+
+        }
+        self.getSelectedItems=function () {
+
+          return  (self.items)?self.items.filter(function (t) { return t._selected }):[];
+
+        };
+        self.selectedItems = self.getSelectedItems();
+
+        this.$onInit=function () {
 
             //Default values
             self.query={p:1};
@@ -68,10 +94,48 @@ app.component('list', {
 
             }},{'label':'Ver detalles','icon':'fas fa-info'}];
 
+            self.defaultToolbarActions =[
+                {'label':'Crear','icon':'fas fa-file','action':self.goToCreate},
+                {'label':'Eliminar','icon':'fas fa-trash','action':function () {
+
+
+                    self.deleteMultipleItems(self.getSelectedItems(),0,function () {
+                        for(var k in self.items)
+                        {
+                            self.items[k]._selected=false;
+                        }
+                    });
+                },'visible':function () {
+
+                    return self.getSelectedItems().length;//(self.selectedItems && self.selectedItems.length);
+
+                }}];
+
+            if(self.toolbarActions && angular.isFunction(self.toolbarActions))
+            {
+
+              self.toolbarActions =  self.toolbarActions(self);
+            }
+            else {
+                self.toolbarActions= self.defaultToolbarActions;
+            }
+
+
             if(Modules[self.module])
             {
                 //Overwrites desired default values
                 Modules[self.module](self);
+            }
+
+            for(var k in self.toolbarActions)
+            {
+                //Shown by default
+                if(!self.toolbarActions[k].visible)
+                {
+                    self.toolbarActions[k].visible=function () {
+                        return true;
+                    }
+                }
             }
 
             self.list();
