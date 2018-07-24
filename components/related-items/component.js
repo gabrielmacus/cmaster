@@ -4,8 +4,9 @@ app.component('relatedItems', {
             model:'=',
             parentKey:'=',
             childKey:'=',
-            relationType:'=',
+            relationType:'=?',
             properties:'=',
+            unrelateArray:'=',
             label:'='
         },
         transclude:true,
@@ -14,14 +15,100 @@ app.component('relatedItems', {
 
             var self =this;
 
+            self.moveRelated=function (direction,actualPosition) {
+
+                var arr = self.model;
+
+                if(arr && (actualPosition + direction) >= 0 && (actualPosition + direction) < arr.length)
+                {
+                    var posA = actualPosition;
+                    var posB = actualPosition + direction;
+                    var temp = angular.copy(arr[posA]);
+                    arr[posA] = angular.copy(arr[posB]);
+                    arr[posB] = temp;
+
+
+                    /*
+
+                    for(var k in arr)
+                    {
+                        if(self.relationType == 'child')
+                        {
+                            console.log("CHILD POS");
+                            console.log(k);
+                            console.log(arr[k].name)
+
+                            arr[k]._relationData.child_position = k;
+                        }
+                        else {
+                            arr[k]._relationData.parent_position = k;
+                        }
+
+                    }*/
+
+
+                }
+
+
+            };
+
+            self.createNew=function () {
+                self.openCreate=true;
+            }
+
+            self.onCreatedItem=function (item) {
+
+                if(item)
+                {
+
+                    self.model.push(item);
+                }
+                else {
+                    self.openCreate=false;
+                }
+
+            }
 
             self.$onInit=function () {
                 self.relationType =!self.relationType?'child':self.relationType;
 
                 self.model = self.model?self.model:[];
+
+                $scope.$watchCollection("$ctrl.model",function (newCollection) {
+
+                    if(newCollection)
+                    {
+
+                        for(var k in newCollection)
+                        {
+                            newCollection[k]._relationData = ! newCollection[k]._relationData?{}: newCollection[k]._relationData;
+                            newCollection[k]._relationData.module=self.module;
+                            newCollection[k]._relationData.type = self.relationType;
+                            if(self.childKey)
+                            {
+
+                                newCollection[k]._relationData.childKey = self.childKey;
+                            }
+                            if(self.parentKey)
+                            {
+                                newCollection[k]._relationData.parentKey = self.parentKey;
+                            }
+
+                        }
+                    }
+
+                },true);
+
+
+
                 self.unrelate=function (k) {
-                   //TODO: unrelate
-                }
+
+                    self.unrelateArray = !self.unrelateArray?[]:self.unrelateArray;
+                    self.unrelateArray.push(angular.copy(self.model[k]));
+                    self.model.splice(k,1);
+
+                };
+
                 self.toolbarActions=function (listCtrl) {
 
 
@@ -30,25 +117,11 @@ app.component('relatedItems', {
                        var selected = angular.copy(self.selectedItems);
                        for(var k in selected)
                        {
-                           selected[k]._relationData = ! selected[k]._relationData?{}: selected[k]._relationData;
-                           selected[k]._relationData.module=self.module;
-                           if(self.childKey)
-                           {
-                               selected[k]._relationData.child_key = self.childKey;
-                           }
-                           if(self.parentKey)
-                           {
-                               selected[k]._relationData.parent_key = self.parentKey;
-                           }
-                           if(self.relationType == 'child')
-                           {
-                               self.relationType.child_position = k;
-                           }
-                           else {
-                               self.relationType.parent_position = k;
-                           }
 
 
+                           if(!self.model){
+                               self.model=[];
+                           }
                            self.model.push(selected[k])
                        }
                         self.openList=false;

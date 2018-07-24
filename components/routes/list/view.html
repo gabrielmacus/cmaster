@@ -7,7 +7,7 @@
 
 <btn-toolbar>
 
-    <btn data-ng-repeat="tool in $ctrl.toolbarActions"
+    <btn class="scale-fade-in" data-ng-repeat="tool in $ctrl.toolbarActions"
          data-ng-click="tool.action()"
          data-ng-show="tool.visible()">
         {{tool.label()}} <i data-ng-class="tool.icon" data-ng-show="tool.icon"></i>

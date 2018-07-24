@@ -1,20 +1,39 @@
 <div class="related-items-wrapper">
     <label data-ng-show="$ctrl.label">{{$ctrl.label}}</label>
 
+    <p class="related-items-empty" data-ng-show="!$ctrl.model.length">
+        {{'Sin elementos relacionados'}}
+    </p>
+
     <lightbox data-opened="$ctrl.openList" >
         <list data-toolbar-actions="$ctrl.toolbarActions"  class="toggle" data-ng-if="$ctrl.openList" data-selected-items="$ctrl.selectedItems" data-module="$ctrl.module"></list>
-        <a></a>
     </lightbox>
 
+    <lightbox data-opened="$ctrl.openCreate" >
+        <save data-on-save="$ctrl.onCreatedItem"  data-ng-if="$ctrl.openCreate"  data-module="$ctrl.module"></save>
+    </lightbox>
 
-    <grid-list>
-        <grid-item data-item="item" data-ng-repeat="(k,item) in $ctrl.model" data-properties="$ctrl.properties">
+    <grid-list >
+        <grid-item  data-item="item" data-ng-repeat="(k,item) in $ctrl.model" data-properties="$ctrl.properties">
+
             <dropdown  data-placeholder="'Acciones'" data-items="[{label:'Demo'},{label:'Demo 2'}]">
                 <a data-ng-click="$ctrl.unrelate(k)">Eliminar &nbsp;<i class="fas fa-trash"></i></a>
             </dropdown>
 
+            <div class="related-actions">
+                <a></a>
+
+                <a data-ng-click="$ctrl.moveRelated(-1,k)" class="move-left"><i class="fas fa-arrow-alt-circle-left"></i></a>
+                <a data-ng-click="$ctrl.moveRelated(1,k)" class="move-right"><i class="fas fa-arrow-alt-circle-right"></i></a>
+
+            </div>
+
         </grid-item>
     </grid-list>
+
+
+
+
 
     <btn-toolbar>
         <btn data-ng-click="$ctrl.selectExistant()">Seleccionar <i class="fas fa-hand-pointer"></i>
@@ -24,3 +43,4 @@
     </btn-toolbar>
 
 </div>
+

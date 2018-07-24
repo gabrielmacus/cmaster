@@ -4,7 +4,7 @@ grid-item > .grid-item-wrapper{
     padding: $padding-1/2;
   }
   transition:all 0.2s;
-  cursor:pointer;
+  //cursor:pointer;
 height: 100%;
   &.selected{
     box-shadow: inset 0px 0px 10px 0px #ABABAB;

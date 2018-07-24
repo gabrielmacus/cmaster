@@ -1128,7 +1128,6 @@ grid-list > .grid-list-wrapper {
 
 grid-item > .grid-item-wrapper {
   transition: all 0.2s;
-  cursor: pointer;
   height: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -1260,7 +1259,8 @@ related-items .related-items-wrapper > label {
   color: #2980b9;
   margin-bottom: 15px; }
 
-field-grid form {
+field-grid > [data-ng-transclude] {
+  width: 100%;
   display: grid;
   grid-gap: 15px; }
 
@@ -1537,8 +1537,49 @@ related-items > .related-items-wrapper > lightbox > .lightbox > .lightbox-contai
   related-items > .related-items-wrapper > lightbox > .lightbox > .lightbox-container .main-title {
     font-size: 30px; }
 
-related-items .related-items-wrapper > btn-toolbar > .tools {
-  grid-template-columns: 1fr 1fr; }
+related-items .related-items-wrapper {
+  background: linear-gradient(to right, #2980b9, #3498db);
+  padding: 15px; }
+  related-items .related-items-wrapper save .tools btn:first-child {
+    display: none; }
+  related-items .related-items-wrapper .related-items-empty {
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    font-size: 20px; }
+  related-items .related-items-wrapper > grid-list .grid-item-wrapper:hover {
+    outline: none;
+    background: white; }
+  related-items .related-items-wrapper > label {
+    color: white; }
+  related-items .related-items-wrapper .related-actions {
+    padding: 7.5px;
+    background: white;
+    margin-top: 7.5px;
+    font-size: 18px; }
+    related-items .related-items-wrapper .related-actions a, related-items .related-items-wrapper .related-actions a > i {
+      transition: all 0.15s;
+      cursor: pointer; }
+    related-items .related-items-wrapper .related-actions a:hover {
+      color: #3498db; }
+      related-items .related-items-wrapper .related-actions a:hover i {
+        transform: scale(1.2); }
+  related-items .related-items-wrapper > btn-toolbar > .tools {
+    width: calc(100% + 30px);
+    left: -15px;
+    position: relative;
+    bottom: -15px;
+    grid-gap: 0;
+    grid-template-columns: 1fr 1fr; }
+    related-items .related-items-wrapper > btn-toolbar > .tools btn:first-child > button {
+      border-right: none; }
+    related-items .related-items-wrapper > btn-toolbar > .tools button {
+      background: white;
+      color: black;
+      border: 1px solid black; }
+      related-items .related-items-wrapper > btn-toolbar > .tools button:not(:hover) {
+        box-shadow: none; }
 related-items .lightbox-container {
   max-height: 90vh;
   overflow: auto; }

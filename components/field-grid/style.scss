@@ -1,6 +1,7 @@
 field-grid
 {
-form{
+
+ & > [data-ng-transclude]{ width: 100%;
   display: grid;
   grid-gap:$padding-1;
 }

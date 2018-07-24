@@ -3,9 +3,9 @@
 
 
 
-    <related-items data-label="'Imágenes'" data-parent-key="'posts'" data-child-key="'images'" data-module="'file'" data-model="$ctrl.item._related.images" data-properties='{"src":{label:"Vista previa",type:"media"},"name":"Nombre"}'>
+    <related-items data-unrelate-array="$ctrl.item._deletedRelations" data-label="'Imágenes'" data-parent-key="'posts'" data-child-key="'images'" data-module="'file'" data-model="$ctrl.item._related.images" data-properties='{"src":{label:"Vista previa",type:"media"},"name":"Nombre"}'></related-items>
 
-   </related-items>
+
 
     <!--
     <field-options data-multiple="true" data-model="$ctrl.item.interests" data-label="'Intereses'" data-option-label="'label'" data-option-value="'value'"  data-options="[{label:'Si',value:1},{label:'No',value:0}]"></field-options>
@@ -22,3 +22,4 @@
     </btn-toolbar>
 
 </field-grid>
+

@@ -9,6 +9,8 @@
     "angular": "~1.7.0",
     "angular-animate": "~1.7.0",
     "angular-ui-router": "^1.0.18",
-    "jquery-param": "^1.0.1"
+    "jquery-param": "^1.0.1",
+    "sortablejs":"^1.6.0",
+    "angular-legacy-sortablejs-maintained":"^0.6.2"
   }
 }

@@ -1,6 +1,8 @@
 app.factory('REST', function($http,HttpErrorHandler) {
 
     //TODO: Load base url with enviroment
+    var baseUrl = '/libs/api/';
+
     var REST = function (module) {
         var self = this;
         self.module = module;
@@ -8,7 +10,7 @@ app.factory('REST', function($http,HttpErrorHandler) {
 
             query = !query?{}:query;
 
-            return $http.get('/libs/api/'+self.module+"/"+id+"?"+window.decodeURI(Qs.stringify(query)))
+            return $http.get(baseUrl+self.module+"/"+id+"?"+window.decodeURI(Qs.stringify(query)))
                 .then(function (response) {
                     return response.data;
                 },HttpErrorHandler);
@@ -18,7 +20,7 @@ app.factory('REST', function($http,HttpErrorHandler) {
 
             query = !query?{}:query;
 
-            return $http.get('/libs/api/'+self.module+"/?"+window.decodeURI(Qs.stringify(query)),{
+            return $http.get(baseUrl+self.module+"/?"+window.decodeURI(Qs.stringify(query)),{
 
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 
@@ -34,7 +36,7 @@ app.factory('REST', function($http,HttpErrorHandler) {
         };
         self.save=function (item,validationCallback,multipart) {
 
-            var url = '/libs/api/'+self.module+"/";
+            var url = baseUrl+self.module+"/";
             if(item.id)
             {
                 url+=item.id;
@@ -137,7 +139,7 @@ app.factory('REST', function($http,HttpErrorHandler) {
 
         }
         self.delete=function (id) {
-            return $http.delete('/libs/api/'+self.module+"/"+id,{
+            return $http.delete(baseUrl+self.module+"/"+id,{
 
                 headers: {}
 

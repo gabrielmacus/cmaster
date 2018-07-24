@@ -11,7 +11,81 @@ related-items
 {
   .related-items-wrapper
   {
+
+    save .tools btn:first-child
+    {
+
+display: none;
+    }
+    .related-items-empty
+    {
+      width: 100%;
+      text-align: center;
+      color: $main-font-color;
+      font-weight: 600;
+      font-size: 20px;
+    }
+
+    background:  linear-gradient(to right, $main-color, $secondary-color);
+    padding: $padding-1;
+
+    & > grid-list
+    {
+      .grid-item-wrapper:hover
+      {
+        outline: none;
+        background: $main-font-color;
+      }
+    }
+
+    & > label{
+      color: $main-font-color;
+    }
+
+    .related-actions
+    {
+      padding: $padding-1/2;
+      background: white;
+      margin-top: $padding-1/2;
+      font-size: 18px;
+      a, a > i
+      {
+        transition:all 0.15s;
+        cursor: pointer;
+      }
+      a:hover
+      {
+        color: $secondary-color;
+        i{
+          transform: scale(1.2);
+        }
+
+      }
+    }
     & > btn-toolbar > .tools{
+      width: calc(100% + #{$padding-1 * 2});
+      left: -$padding-1;
+      position: relative;
+      bottom: -$padding-1;
+      grid-gap: 0;
+      btn:first-child > button
+      {
+        border-right: none;
+      }
+      button
+      {
+
+        &:not(:hover)
+        { box-shadow: none;
+
+        }
+        background: white;
+        color: black;
+
+
+        border: 1px solid black;
+
+      }
       grid-template-columns: 1fr 1fr;
     }
 

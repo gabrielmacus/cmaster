@@ -2,7 +2,8 @@ app.component('save', {
     bindings:
         {
             module:'<',
-            id:'<'
+            id:'<',
+            onSave:'<'
           //  items:'<'
         },
     controller:function (REST,Modules,$state) {
@@ -34,9 +35,17 @@ app.component('save', {
             },self.multipart)
                 .then(function (item) {
                     self.loading=false;
-                    if(!dontRedirectOnEnd)
+
+
+                    if(self.onSave)
+                    {
+
+                        self.onSave(item);
+                    }
+                    else if(!dontRedirectOnEnd)
                     {
                         $state.go("list",{module:self.module});
+
                     }
 
                 });
@@ -56,7 +65,15 @@ app.component('save', {
                 });
             }
             else {
-                $state.go("list",{module:self.module});
+
+                if(!self.onSave)
+                {
+                    $state.go("list",{module:self.module});
+                }
+                else {
+                    self.onSave();
+                }
+
             }
 
         };
