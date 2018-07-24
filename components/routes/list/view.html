@@ -10,7 +10,7 @@
     <btn data-ng-repeat="tool in $ctrl.toolbarActions"
          data-ng-click="tool.action()"
          data-ng-show="tool.visible()">
-        {{angular.isFunction(tool.label)?tool.label():tool.label}} <i data-ng-class="tool.icon" data-ng-show="tool.icon"></i>
+        {{tool.label()}} <i data-ng-class="tool.icon" data-ng-show="tool.icon"></i>
     </btn>
 </btn-toolbar>
 
