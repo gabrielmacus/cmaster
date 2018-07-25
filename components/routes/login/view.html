@@ -1,0 +1,27 @@
+<div class="login-wrapper">
+
+    <field-grid>
+        <img class="background-image">
+        <div class="overlay"></div>
+
+
+        <div>
+            <i class='fas fa-user'></i>
+            <field data-model="$ctrl.user.username" data-placeholder="'Usuario o Email'"></field>
+        </div>
+
+        <div>
+            <i class="fas fa-key"></i>
+            <field data-type="'password'" data-model="$ctrl.user.password" data-placeholder="'Contraseña'"></field>
+
+        </div>
+
+        <btn-toolbar>
+            <btn data-ng-click="$ctrl.login()">Ingresar</btn>
+        </btn-toolbar>
+
+    </field-grid>
+
+
+
+</div>
