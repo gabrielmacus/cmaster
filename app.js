@@ -4,7 +4,7 @@
 var app =  angular.module('myApp', [
     'ui.router',
     'ngAnimate',
-    'ng-sortable'
+    'ngCookies'
 ])
 //Filters
 app.filter('trustUrl', function ($sce) {
@@ -57,7 +57,13 @@ app.config(function($stateProvider, $urlServiceProvider) {
 
         }
     });
+    $stateProvider.state('logout', {
+        url: '/logout',
+        component: 'logout',
+        resolve: {
 
+        }
+    });
     $stateProvider.state('create', {
         url: '/:module/save',
         component: 'save',
@@ -94,7 +100,7 @@ app.config(function($stateProvider, $urlServiceProvider) {
                 client.url = "/libs/api/post/";
                 return client.list();
             }*/
-            
+
         }
     });
 

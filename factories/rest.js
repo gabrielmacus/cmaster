@@ -16,7 +16,7 @@ app.factory('REST', function($http,HttpErrorHandler) {
                 },HttpErrorHandler);
 
         };
-        self.list=function (query) {
+        self.list=function (query,onError) {
 
             query = !query?{}:query;
 
@@ -30,7 +30,16 @@ app.factory('REST', function($http,HttpErrorHandler) {
 
                  return response.data;
 
-                },HttpErrorHandler);
+                },function (error) {
+
+                    if(onError)
+                    {
+                        onError(error);
+                    }
+
+                    HttpErrorHandler(error);
+
+                });
 
 
         };

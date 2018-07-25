@@ -14,5 +14,23 @@ dataset
       padding-left: $padding-1/2;
     }
   }
+  & > .loading
+  {
+    height: 80px;
+    align-items: center;
+    display: flex;
+    background:  $main-background;
+    margin-bottom: $padding-1;
+    svg
+    {
+      margin: auto;
+      rect
+      {
+        fill:$main-background-font;
+
+      }
+
+    }
+  }
 
 }

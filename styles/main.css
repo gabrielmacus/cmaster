@@ -1011,107 +1011,6 @@ body {
   height: 100%;
   font-family: "Open Sans", sans-serif; }
 
-/*
-.form-grid
-{
-  form-actions
-  {
-
-    text-align:right;
-  }
-  margin-bottom: $padding-1;
-  display:grid;
-  grid-gap:$padding-1;
-  .form-cell,field,field-select,field-options
-  {
-
-    .checkbox-options,.radio-options
-    {
-
-
-      display:grid;
-      grid-gap:$padding-1 ;
-      grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
-      .checkbox-option,.radio-option
-      {
-
-        display: flex;
-        input
-        {
-          border-bottom: none;
-          display: inline-block;
-          margin-left: auto;
-          width: auto;
-          position: absolute;
-          opacity: 0;
-        }
-        label{ cursor:pointer;
-          width: auto;
-          font-size: 15px;
-          color: black;
-          display: inline-block;
-        }
-        label.dummy
-        { cursor:pointer;
-          padding: 0;
-          margin: 0;
-          margin-left: auto;
-          border: 0;
-        }
-        label.dummy.not-checked
-        {
-          display: block;
-        }
-        label.dummy.checked
-        {
-          display: none;
-        }
-
-        input:checked
-        {
-            & ~ label.dummy.checked
-            {
-              display: block;
-            }
-          & ~ label.dummy.not-checked
-          {
-            display: none;
-          }
-
-
-        }
-
-
-      }
-    }
-
-
-
-
-
-
-    label,label + *
-    {display:block;width:100%;    font-size:18px;}
-    label  + *
-    {font-family:$main-font;
-      padding:$padding-1/3;
-      padding-left:0;
-      padding-right:0;
-      border:0;
-      border-bottom:1px solid $main-color;
-
-      outline:0;
-    }
-    label
-    {
-      font-weight:600;
-      color:$main-color;
-      margin-bottom:$padding-1/2;
-    }
-
-  }
-}
-*/
 b {
   font-weight: 600; }
 
@@ -1626,6 +1525,16 @@ dataset .grid-item-block.extra {
     font-size: 25px; }
   dataset .grid-item-block.extra field-option {
     padding-left: 7.5px; }
+dataset > .loading {
+  height: 80px;
+  align-items: center;
+  display: flex;
+  background: white;
+  margin-bottom: 15px; }
+  dataset > .loading svg {
+    margin: auto; }
+    dataset > .loading svg rect {
+      fill: black; }
 
 list > btn-toolbar .tools {
   box-shadow: inset 0px 1px 10px rgba(0, 0, 0, 0.2);
@@ -1634,28 +1543,30 @@ list > btn-toolbar .tools {
 
 login .login-wrapper {
   display: flex;
-    /*
-    &:after{
-      content: '';
-      position: fixed;
-      background:  linear-gradient(to right, $main-color, $secondary-color);
-
-      width: 50%;
-      height: 100%;
-      top: 0;
-      left: 0;
-    }
-*/
   position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   z-index: 10; }
+  login .login-wrapper:after {
+    content: '';
+    position: fixed;
+    background: linear-gradient(to right, #2980b9, #3498db);
+    opacity: 0.3;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0; }
   login .login-wrapper btn-toolbar {
-    height: 60px;
+    height: auto;
     display: grid;
     align-items: end; }
+    login .login-wrapper btn-toolbar [data-ng-transclude] {
+      display: block; }
+      login .login-wrapper btn-toolbar [data-ng-transclude] btn {
+        float: right;
+        max-width: 120px; }
   login .login-wrapper:before {
     background-size: cover;
     content: '';
@@ -1676,9 +1587,14 @@ login .login-wrapper {
     width: 50%;
     padding: 30px;
     margin: auto; }
+    login .login-wrapper field-grid > [data-ng-transclude] {
+      grid-gap: 20px; }
     login .login-wrapper field-grid > [data-ng-transclude] > div {
-      display: flex;
+      grid-template-columns: min-content auto;
+      display: grid;
       font-size: 20px; }
+      login .login-wrapper field-grid > [data-ng-transclude] > div:nth-last-child(2) i {
+        font-size: 18px; }
       login .login-wrapper field-grid > [data-ng-transclude] > div field {
         width: 100%; }
       login .login-wrapper field-grid > [data-ng-transclude] > div i {
@@ -1711,6 +1627,7 @@ login .login-wrapper {
       margin-bottom: 0; }
 
 .main-container {
+  overflow: hidden;
   float: right;
   height: 100%;
   display: grid;
@@ -1720,6 +1637,38 @@ login .login-wrapper {
 
 .main-container > .body {
   grid-column: 1 / span 6;
-  padding: 15px; }
+  padding: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow: auto;
+  background: white; }
+
+.fade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  opacity: 1; }
+
+.fade.ng-enter,
+.fade.ng-leave {
+  transition: all 0.25s ease; }
+
+.fade.ng-enter {
+  opacity: 0; }
+
+.fade.ng-enter-active {
+  opacity: 1;
+  overflow: hidden; }
+
+.fade.ng-leave {
+  opacity: 1; }
+
+.fade.ng-leave-active {
+  opacity: 0; }
 
 /*# sourceMappingURL=main.css.map */

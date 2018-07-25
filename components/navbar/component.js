@@ -8,6 +8,10 @@ app.component('navbar', {
             var self = this;
             self.isActive=function (link) {
 
+                if(!link.active)
+                {
+                    return false;
+                }
                  return $state.current.name == link.active.state  && $state.params.module == link.active.module;
 
             };

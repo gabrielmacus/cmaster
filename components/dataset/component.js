@@ -8,7 +8,8 @@ app.component('dataset', {
             generalActions:'=',
             gridMode:'=',
             pagerOffset:'<',
-            selectedItems:'='
+            selectedItems:'=',
+            loading:'='
         },
         controller: function ($scope,$window,$timeout) {
             var self = this;

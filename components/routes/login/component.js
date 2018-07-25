@@ -6,10 +6,14 @@ app.component('login', {
     controller:function (REST,Modules,$state,AuthenticationFactory) {
         var self = this;
         self.login=function () {
-            AuthenticationFactory.Login(self.user)
-                .then(function (response) {
-                    console.log(response);
-                });
+            self.loading=true;
+            AuthenticationFactory.Login(self.user,function(){
+                    self.loading=false;
+                $state.go('home');
+
+                },function () {
+                self.loading=false;
+            });
         }
 
     },

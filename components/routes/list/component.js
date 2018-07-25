@@ -18,7 +18,11 @@ app.component('list', {
         self.list=function () {
             var restClient = new REST(self.module);
 
-            return restClient.list(self.query).then(function (data) {
+            self.loadingItems=true;
+
+            return restClient.list(self.query,function () {
+                self.loadingItems=false;
+            }).then(function (data) {
                 self.items = [];
                 for(var k in data.results)
                 {
@@ -38,6 +42,8 @@ app.component('list', {
                 }
 
                 self.pagination = data.pagination;
+
+                self.loadingItems=false;
 
             });
         };

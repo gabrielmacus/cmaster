@@ -1,30 +1,68 @@
-app.factory('AuthenticationFactory', function($http,HttpErrorHandler) {
+app.factory('AuthenticationFactory', function($http,HttpErrorHandler,$cookies) {
     //TODO: Load base url with enviroment
     var baseUrl = '/libs/api/';
     return {
 
-        Login:function (user) {
-
+        user:false,
+        token:false,
+        Login:function (user,onsuccess,onerror) {
+            var factory = this;
             var url = baseUrl+"user/login/";
 
             var request = {
+
                 method:'post',
                 url:url,
                 data:window.param(user),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 
             };
-            return $http.post(url,request)
+             $http(request)
                 .then(function (response) {
-                    console.log(response);
-                },HttpErrorHandler);
+
+                    var user =response.data.user;
+                    var token = response.data.token;
+
+                    factory.user = user;
+                    factory.token = token;
+
+                    $cookies.put("_token",factory.token,{'path':'/'});
+
+                    onsuccess();
+
+
+                },function (error) {
+
+                    onerror(error);
+                    HttpErrorHandler(error);
+
+                });
 
         },
-        
+        Logout:function (callback) {
+
+            $cookies.remove("_token",{'path':'/'});
+
+
+            callback();
+
+        },
         CheckAuthentication:function (callback) {
 
+            var factory = this;
+            $http.get('/libs/api/user/logged/')
+                .then(function (response) {
 
-            callback(false);
+                    if(response.data)
+                    {
+                        factory.user = response.data.user;
+                        factory.token = response.data.token;
+                    }
+
+                    callback(factory.user);
+
+                },HttpErrorHandler);
+
         }
 
     };
