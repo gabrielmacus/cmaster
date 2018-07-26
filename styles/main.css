@@ -1133,11 +1133,11 @@ pager {
     pointer-events: none;
     opacity: 0.5; }
 
-field > label, field > label + *, field-select > label, field-select > label + *, field-options > label, field-options > label + * {
+field > label, field > label + *, field-select > label, field-select > label + *, field-options > label, field-options > label + *, field-richtext > label, field-richtext > label + * {
   display: block;
   width: 100%;
   font-size: 18px; }
-field > label + *, field-select > label + *, field-options > label + * {
+field > label + *, field-select > label + *, field-options > label + *, field-richtext > label + * {
   font-family: "Open Sans", sans-serif;
   padding: 5px;
   padding-left: 0;
@@ -1145,10 +1145,33 @@ field > label + *, field-select > label + *, field-options > label + * {
   border: 0;
   border-bottom: 1px solid #2980b9;
   outline: 0; }
-field > label, field-select > label, field-options > label {
+field > label, field-select > label, field-options > label, field-richtext > label {
   font-weight: 600;
   color: #2980b9;
   margin-bottom: 7.5px; }
+
+field-richtext {
+  /* Editor styling */ }
+  field-richtext h1 {
+    font-size: 25px; }
+  field-richtext h2 {
+    font-size: 20px; }
+  field-richtext h3 {
+    font-size: 18px; }
+  field-richtext .ta-toolbar {
+    background-color: #F0F0F0;
+    padding: 10px 10px 5px;
+    margin-left: 0px;
+    /* Override bootstrap */
+    border: 1px solid #EEE; }
+  field-richtext .ta-toolbar .btn-group {
+    margin-bottom: 5px; }
+  field-richtext .ta-editor, field-richtext .white-box {
+    padding: 10px;
+    background-color: #FFF;
+    border: 1px solid #EEE; }
+  field-richtext textarea.ta-bind {
+    width: 100%; }
 
 related-items .related-items-wrapper > label {
   display: block;

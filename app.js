@@ -1,10 +1,14 @@
 'use strict';
-
+//Workaround for textangular
+angular.lowercase=function(text){
+    return text?text.toLowerCase():text;
+};
 // Declare app level module which depends on views, and components
 var app =  angular.module('myApp', [
     'ui.router',
     'ngAnimate',
-    'ngCookies'
+    'ngCookies',
+    'textAngular'
 ])
 //Filters
 app.filter('trustUrl', function ($sce) {
