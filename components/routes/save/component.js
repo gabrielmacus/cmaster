@@ -6,7 +6,7 @@ app.component('save', {
             onSave:'<'
           //  items:'<'
         },
-    controller:function (REST,Modules,$state) {
+    controller:function (REST,Modules,$state,$scope) {
         var self = this;
         self.item = {};
 
@@ -80,11 +80,13 @@ app.component('save', {
 
         this.$onInit=function () {
 
+
+
             self.multipart=false;
             if(Modules[self.module+"-save"])
             {
                 //Overwrites desired default values
-                Modules[self.module+"-save"](self);
+                Modules[self.module+"-save"](self,$scope);
             }
 
             if(self.id){

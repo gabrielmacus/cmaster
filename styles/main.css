@@ -1301,6 +1301,11 @@ dropdown {
       color: black;
       font-weight: 300; }
 
+@keyframes dragging-files {
+  0% {
+    transform: scale(0.8); }
+  100% {
+    transform: scale(1.3); } }
 field-upload .file-dropbox {
   line-height: 120%;
   padding: 15px;
@@ -1311,6 +1316,15 @@ field-upload .file-dropbox {
   position: relative;
   display: flex;
   align-items: center; }
+  field-upload .file-dropbox.dragging-files .text i {
+    animation-name: dragging-files;
+    animation-duration: 0.3s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    animation-play-state: running; }
   field-upload .file-dropbox .text {
     margin: auto; }
     field-upload .file-dropbox .text i {
@@ -1323,6 +1337,8 @@ field-upload .file-dropbox {
     width: 100%;
     height: 100%;
     opacity: 0; }
+field-upload label {
+  margin-top: 15px; }
 field-upload grid-list .grid-list-wrapper {
   margin-top: 15px;
   margin-bottom: 0; }
@@ -1366,7 +1382,8 @@ navbar > .menu-side {
   box-shadow: inset 0px 1px 10px rgba(0, 0, 0, 0.4);
   background-color: #2980b9;
   color: white;
-  height: 100%; }
+  height: 100%;
+  overflow: auto; }
 
 navbar > .menu-side.left {
   left: 0;
@@ -1387,8 +1404,6 @@ navbar > .menu-side.left {
 
 navbar > .menu-side > .menu-links {
   transition: all 0.2s;
-  height: 100%;
-  overflow: auto;
   position: relative;
   left: 0%; }
 
@@ -1648,6 +1663,43 @@ login .login-wrapper {
       height: 100%; }
     login .login-wrapper field-grid [data-ng-transclude] > btn-toolbar {
       margin-bottom: 0; }
+
+user-box .user-box-wrapper {
+  padding-left: 15px;
+  padding-right: 15px;
+  background: #3498db;
+  display: grid;
+  grid-template-columns: 1fr 4fr; }
+  user-box .user-box-wrapper .username {
+    display: flex;
+    align-items: center;
+    padding: 0 !important;
+    text-align: center;
+    padding-top: 0;
+    font-weight: 600; }
+    user-box .user-box-wrapper .username dropdown {
+      box-shadow: none; }
+      user-box .user-box-wrapper .username dropdown [data-ng-transclude] {
+        max-width: 200px; }
+      user-box .user-box-wrapper .username dropdown .dropdown-item:first-child {
+        background: #3498db;
+        color: white; }
+        user-box .user-box-wrapper .username dropdown .dropdown-item:first-child i {
+          margin-left: 15px; }
+      user-box .user-box-wrapper .username dropdown .dropdown-item {
+        padding: 10px 15px;
+        background: #3498db; }
+  user-box .user-box-wrapper media {
+    width: 100%;
+    margin: auto;
+    left: auto;
+    margin-top: 15px;
+    margin-bottom: 15px; }
+    user-box .user-box-wrapper media figure {
+      margin: auto;
+      max-height: 50px;
+      max-width: 50px;
+      border-radius: 50%; }
 
 .main-container {
   overflow: hidden;

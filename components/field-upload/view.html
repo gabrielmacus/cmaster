@@ -1,13 +1,16 @@
 <label data-ng-show="$ctrl.label">{{$ctrl.label}}</label>
-<div data-ng-click="$ctrl.loadFile()" class="file-dropbox">
+<div data-ng-click="$ctrl.loadFile()" data-ng-mouseover="$ctrl.loadDropBox($event)" data-ng-class="{'dragging-files':$ctrl.draggingFiles}" class="file-dropbox">
     <!--<input type="file">-->
 
-    <span class="text">Click aqui para cargar archivos <i class="fas fa-file-upload"></i>
+    <span class="text">{{'Haga click o arrastre sus archivos para cargarlos'}} <i class="fas fa-file-upload"></i>
 
 
 </span>
 </div>
 
+<!--
+<field data-ng-if="$ctrl.externalFiles" data-label="'Cargar desde la web'" data-model="$ctrl.link" data-placeholder="'Link del archivo'"></field>
+-->
 
 <grid-list data-ng-show="$ctrl.previews.length">
     <grid-item  data-ng-repeat="p in $ctrl.previews"

@@ -1,4 +1,6 @@
-<span class="dropdown-item" data-ng-class="{'opened':$ctrl.opened}" data-ng-click="$ctrl.opened = !$ctrl.opened">{{$ctrl.placeholder}}<i class="fas fa-caret-square-down"></i></span>
+<span class="dropdown-item" data-ng-class="{'opened':$ctrl.opened}" data-ng-click="$ctrl.opened = !$ctrl.opened">{{$ctrl.placeholder}} <i class="fas fa-caret-down"></i>
+
+    <!--<i class="fas fa-caret-square-down"></i>--></span>
 <div data-ng-transclude  data-ng-if="$ctrl.opened" class="collapsed-items toggle">
 
     <!--

@@ -1,0 +1,70 @@
+user-box
+{
+  .user-box-wrapper
+  {
+    padding-left: $padding-1;
+    padding-right: $padding-1;
+    background: $secondary-color;
+    .username
+    {
+      display:flex;
+      align-items:center;
+      padding: 0!important;
+
+      dropdown
+      {
+        [data-ng-transclude]
+        {
+          max-width: 200px;
+        }
+        .dropdown-item:first-child
+        {    background: $secondary-color;
+          color: white;
+
+          i
+          {
+            margin-left: $padding-1;
+          }
+
+          //background: white;
+          //color: $secondary-color;
+        }
+
+        .dropdown-item
+        {
+          padding: 10px $padding-1;
+          background: $secondary-color;
+        }
+        box-shadow: none;
+      }
+
+
+      //padding: $padding-1;
+      text-align: center;
+      padding-top: 0;
+      font-weight: 600;
+    }
+
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    media{
+
+
+      width: 100%;
+      margin: auto;
+      left: auto;
+      margin-top: $padding-1;
+      margin-bottom: $padding-1;
+      figure
+      {
+        margin: auto;
+        max-height: 50px;
+        max-width: 50px;
+
+        border-radius: 50%;
+
+      }
+    }
+
+  }
+}

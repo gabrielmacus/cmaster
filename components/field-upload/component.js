@@ -2,10 +2,11 @@ app.component('fieldUpload', {
         bindings: {
             label:'=',
             model:'=',
-            multiple:'='
+            multiple:'=',
+            externalFiles:'='
 
         },
-        controller: function ($scope) {
+        controller: function ($scope,$http,$timeout,$element) {
 
             var self = this;
             self.readBase64=function (arr,callback,onProgress,results,index) {
@@ -80,10 +81,16 @@ app.component('fieldUpload', {
 
                 var fileInput = document.createElement("input");
             fileInput.type="file";
-            fileInput.addEventListener("change",function () {
 
-                console.log(fileInput.files);
-                self.readBase64(fileInput.files,function (results) {
+
+
+            fileInput.addEventListener("change",function () {
+                handleFiles(fileInput.files);
+            });
+
+            function handleFiles(files) {
+
+                self.readBase64(files,function (results) {
 
 
                     for(var i=0;i<results.length;i++)
@@ -100,15 +107,70 @@ app.component('fieldUpload', {
                     //(Math.ceil((e.loaded* 100) / e.total));
                 })
 
+            }
 
-            });
+
 
             self.$onInit=function () {
                fileInput.multiple = self.multiple?true:false;
 
+
+                $scope.$watch('$ctrl.link',function (newVal) {
+                    if(newVal && newVal.match(/(([a-z]+:\/\/)?(([a-z0-9\-]+\.)+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel|local|internal))(:[0-9]{1,5})?(\/[a-z0-9_\-\.~]+)*(\/([a-z0-9_\-\.]*)(\?[a-z0-9+_\-\.%=&amp;]*)?)?(#[a-zA-Z0-9!$&'()*+.=-_~:@/?]*)?)(\s+|$)/gi)){
+
+                        $http.get(newVal)
+                            .then(function (e) {
+                                console.log(e);
+                            })
+
+                     //
+
+                    }
+                })
+
+                 var dropbox =  $element.find("div")[0];
+
+               if(dropbox)
+                {
+
+
+                    dropbox.addEventListener("dragenter", function (e) {
+
+                        self.draggingFiles = true;
+                        $scope.$apply();
+
+                        e.stopPropagation();
+                        e.preventDefault();
+                    }, false);
+                    dropbox.addEventListener("dragleave", function (e) {
+
+                        self.draggingFiles = false;
+
+                        $scope.$apply();
+                        e.stopPropagation();
+                        e.preventDefault();
+                    }, false);
+
+                    dropbox.addEventListener("drop", function (e) {
+
+                        e.stopPropagation();
+                        e.preventDefault();
+
+                        var dt = e.dataTransfer;
+                        var files = dt.files;
+
+                        handleFiles(files);
+
+                    }, false);
+
+
+                }
             };
 
-            self.loadFile=function () {
+            self.loadFile=function (e) {
+
+
+                console.log(e);
 
                 fileInput.value = "";
                 fileInput.click();

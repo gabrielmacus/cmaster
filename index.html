@@ -42,6 +42,7 @@
     <script src="components/navbar/component.js"></script>
     <script src="components/related-items/component.js"></script>
     <script src="components/field-richtext/component.js"></script>
+    <script src="components/user-box/component.js"></script>
     <!-- Views -->
     <script src="components/routes/home/component.js"></script>
     <script src="components/routes/list/component.js"></script>
@@ -60,13 +61,19 @@
 <navbar data-type="top">
 </navbar>
     <navbar data-type="left"   data-links="[
+       {href:'#!/user',text:'Usuarios',icon:'fas fa-users','active':{'state':'list','module':'user'}},
+           {href:'#!/permission',text:'Permisos',icon:'fas fa-unlock-alt','active':{'state':'list','module':'permission'}},
+
+
     {href:'#!/post',text:'Noticias',icon:'fas fa-newspaper','active':{'state':'list','module':'post'}},
     {href:'#!/file',text:'Archivos',icon:'fas fa-file-invoice','active':{'state':'list','module':'file'}},
     {href:'#!/match',text:'Partidos',icon:'fas fa-futbol','active':{'state':'list','module':'match'}},
     {href:'#!/team',text:'Equipos',icon:'icon-team','active':{'state':'list','module':'team'}},
-    {href:'#!/player',text:'Jugadores',icon:'icon-player','active':{'state':'list','module':'player'}},
-    {href:'#!/logout',text:'Salir',icon:'fas fa-sign-out-alt'}
+    {href:'#!/player',text:'Jugadores',icon:'icon-player','active':{'state':'list','module':'player'}}
     ]">
+
+        <user-box></user-box>
+
     </navbar>
 
 <main class="main-container">

@@ -2,6 +2,10 @@
     <span class="menu-hamburger" data-ng-click="$ctrl.toggleNavbar()"><i class="fas fa-bars"></i></span>
 </div>
 <div class="menu-side left" data-ng-show="$ctrl.type == 'left'">
+
+    <div data-ng-transclude></div>
+
+
     <div class="menu-links" >
 
         <a data-ng-class="{'active':$ctrl.isActive(link)}" data-ng-repeat="link in $ctrl.links" data-ng-href="{{link.href}}">{{link.text}} <i data-ng-class="link.icon"></i></a>

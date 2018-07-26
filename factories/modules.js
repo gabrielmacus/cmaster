@@ -8,7 +8,8 @@ app.factory('Modules', function($http,HttpErrorHandler) {
             ctrl.gridMode = 1920;
             ctrl.title="Listado de archivos";
         },
-        "file-save":function (ctrl) {
+        "file-save":function (ctrl,$scope) {
+
             ctrl.multipart=true;
         },
         "post":function (ctrl) {
@@ -31,6 +32,12 @@ app.factory('Modules', function($http,HttpErrorHandler) {
         "post-save":function (ctrl) {
             ctrl.query = !ctrl.query?{}:ctrl.query;
             ctrl.query.populate = [{file:{path:'images'}}];
+        },
+        "user":function (ctrl) {
+
+            ctrl.title="Listado de usuarios";
+            ctrl.properties = {"id":"ID","username":"Nombre de usuario"};
+
         }
 
     };

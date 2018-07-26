@@ -55,6 +55,7 @@ app.factory('AuthenticationFactory', function($http,HttpErrorHandler,$cookies) {
 
                     if(response.data)
                     {
+
                         factory.user = response.data.user;
                         factory.token = response.data.token;
                     }
