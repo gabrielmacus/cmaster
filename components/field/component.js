@@ -3,8 +3,10 @@ app.component('field', {
             type: '=',
             placeholder:'=',
             label:'=',
-            model:'='
+            model:'=',
+            errors:'=?'
         },
+        transclude:true,
         controller: function () {
             this.type = (!this.type)?"text":this.type;
 

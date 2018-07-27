@@ -1,0 +1,22 @@
+<field-grid>
+    <field  data-errors="$ctrl.validationErrors.username" data-model="$ctrl.item.username" data-label="'Nombre de usuario'"></field>
+
+    <field  data-errors="$ctrl.validationErrors.name" data-model="$ctrl.item.name" data-label="'Nombre'"></field>
+    <field  data-errors="$ctrl.validationErrors.surname" data-model="$ctrl.item.surname" data-label="'Apellido'"></field>
+
+    <field data-ng-if="!$ctrl.item.id"  data-errors="$ctrl.validationErrors.password" data-model="$ctrl.item.password" data-type="'password'" data-label="'Contraseña'"></field>
+    <field data-ng-if="!$ctrl.item.id"  data-errors="$ctrl.validationErrors.password2" data-model="$ctrl.item.password2" data-type="'password'" data-label="'Confirmar contraseña'"></field>
+
+
+
+    <btn-toolbar>
+
+        <btn  data-ng-click="$ctrl.cancel()" >Cancelar <i class="fas fa-long-arrow-alt-left"></i></btn>
+        <btn data-loading="$ctrl.loading" data-ng-click="$ctrl.saveItem()">Guardar <i class="fas fa-save"></i></btn>
+
+
+
+    </btn-toolbar>
+
+</field-grid>
+

@@ -43,6 +43,7 @@
     <script src="components/related-items/component.js"></script>
     <script src="components/field-richtext/component.js"></script>
     <script src="components/user-box/component.js"></script>
+    <script src="components/validation-errors/component.js"></script>
     <!-- Views -->
     <script src="components/routes/home/component.js"></script>
     <script src="components/routes/list/component.js"></script>
@@ -72,7 +73,7 @@
     {href:'#!/player',text:'Jugadores',icon:'icon-player','active':{'state':'list','module':'player'}}
     ]">
 
-        <user-box></user-box>
+        <user-box data-ng-if="$root.loggedUser" data-user="$root.loggedUser"></user-box>
 
     </navbar>
 

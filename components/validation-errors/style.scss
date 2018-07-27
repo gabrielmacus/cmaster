@@ -1,0 +1,13 @@
+$error-color:#e74c3c;
+validation-errors{
+  display: grid;
+  /* display: block; */
+  width: 100%;
+  grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+  margin-top: 7px;
+  font-size: 15px;
+  color: $error-color;
+  font-weight: 600;
+
+
+}

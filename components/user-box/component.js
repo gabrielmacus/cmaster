@@ -8,7 +8,8 @@ app.component('userBox', {
         var self = this;
         self.$onInit=function () {
 
-            self.user = !self.user? AuthenticationFactory.user:self.user;
+
+
 
         };
 

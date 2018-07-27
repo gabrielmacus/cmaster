@@ -1,10 +1,14 @@
-app.factory('AuthenticationFactory', function($http,HttpErrorHandler,$cookies) {
+app.factory('AuthenticationFactory', function($http,HttpErrorHandler,$cookies,$rootScope) {
     //TODO: Load base url with enviroment
     var baseUrl = '/libs/api/';
     return {
 
         user:false,
         token:false,
+
+        OnAuthentication:function () {
+            $rootScope.loggedUser = this.user;
+        },
         Login:function (user,onsuccess,onerror) {
             var factory = this;
             var url = baseUrl+"user/login/";
@@ -27,6 +31,12 @@ app.factory('AuthenticationFactory', function($http,HttpErrorHandler,$cookies) {
                     factory.token = token;
 
                     $cookies.put("_token",factory.token,{'path':'/'});
+
+
+                    if(factory.OnAuthentication)
+                    {
+                        factory.OnAuthentication(factory);
+                    }
 
                     onsuccess();
 
@@ -59,6 +69,12 @@ app.factory('AuthenticationFactory', function($http,HttpErrorHandler,$cookies) {
                         factory.user = response.data.user;
                         factory.token = response.data.token;
                     }
+
+                    if(factory.OnAuthentication)
+                    {
+                        factory.OnAuthentication(factory);
+                    }
+
 
                     callback(factory.user);
 

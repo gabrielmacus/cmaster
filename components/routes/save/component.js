@@ -23,8 +23,10 @@ app.component('save', {
                 });
 
         };
+        self.validationErrors={};
         self.saveItem=function (dontRedirectOnEnd) {
             var restClient = new REST(self.module);
+
             self.loading =true;
             return restClient.save(self.item,function (validationErrors) {
 
@@ -35,6 +37,12 @@ app.component('save', {
             },self.multipart)
                 .then(function (item) {
                     self.loading=false;
+
+
+                    if(self.validationErrors && Object.keys(self.validationErrors).length)
+                    {
+                        return false;
+                    }
 
 
                     if(self.onSave)

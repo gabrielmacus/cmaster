@@ -2,7 +2,8 @@ app.component('fieldRichtext', {
         bindings: {
             label:'=',
             model:'=',
-            toolbar:'='
+            toolbar:'=',
+            errors:'='
 
         },
         controller: function () {

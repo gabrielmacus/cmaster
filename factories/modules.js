@@ -1,4 +1,4 @@
-app.factory('Modules', function($http,HttpErrorHandler) {
+app.factory('Modules', function($http,HttpErrorHandler,AuthenticationFactory) {
 
 
     return {
@@ -36,7 +36,9 @@ app.factory('Modules', function($http,HttpErrorHandler) {
         "user":function (ctrl) {
 
             ctrl.title="Listado de usuarios";
-            ctrl.properties = {"id":"ID","username":"Nombre de usuario"};
+            console.log(AuthenticationFactory.user.id);
+            ctrl.query.filter={id:{not:[AuthenticationFactory.user.id]}};
+            ctrl.properties = {"id":"ID","username":"Nombre de usuario",'name':'Nombre','surname':'Apellido'};
 
         }
 

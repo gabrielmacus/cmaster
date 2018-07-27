@@ -1,11 +1,16 @@
 <field-grid>
-    <field data-model="$ctrl.item.title" data-label="'Título'"></field>
+    <field  data-errors="$ctrl.validationErrors.title" data-model="$ctrl.item.title" data-label="'Título'">
+    </field>
+
+    <field-richtext data-errors="$ctrl.validationErrors.body" data-model="$ctrl.item.body" data-label="'Texto'"></field-richtext>
 
 
-    <field-richtext data-model="$ctrl.item.body" data-label="'Texto'"></field-richtext>
+    <related-items data-unrelate-array="$ctrl.item._deletedRelations" data-label="'Imágenes'" data-parent-key="'posts'" data-child-key="'images'" data-module="'file'" data-model="$ctrl.item._related.images" data-properties='{"src":{label:"Vista previa",type:"media"},"name":"Nombre"}'>
 
 
-    <related-items data-unrelate-array="$ctrl.item._deletedRelations" data-label="'Imágenes'" data-parent-key="'posts'" data-child-key="'images'" data-module="'file'" data-model="$ctrl.item._related.images" data-properties='{"src":{label:"Vista previa",type:"media"},"name":"Nombre"}'></related-items>
+       <field data-model="$parent.item._relationData.extra_1" data-label="'Pie de foto'"></field>
+
+    </related-items>
 
 
 

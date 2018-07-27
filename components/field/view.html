@@ -1,2 +1,3 @@
+<validation-errors data-errors="$ctrl.errors"></validation-errors>
 <label data-ng-show="$ctrl.label">{{$ctrl.label}}</label>
-<input data-ng-model="$ctrl.model" placeholder="{{$ctrl.placeholder}}" type="{{$ctrl.type}}">
+<input data-ng-focus="$ctrl.errors={}" data-ng-model="$ctrl.model" placeholder="{{$ctrl.placeholder}}" type="{{$ctrl.type}}">

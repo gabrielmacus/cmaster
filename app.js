@@ -117,11 +117,12 @@ app.run(function ($transitions,AuthenticationFactory) {
 
 
     $transitions.onStart({}, function(transition) {
-        console.log();
+
 
         if(transition.to().authentication)
         {
             AuthenticationFactory.CheckAuthentication(function (isAuthenticated) {
+
                 if ( !isAuthenticated) {
                     console.log(transition);
                     // Remember toState and toStateParams.

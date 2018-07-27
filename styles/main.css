@@ -1133,22 +1133,28 @@ pager {
     pointer-events: none;
     opacity: 0.5; }
 
-field > label, field > label + *, field-select > label, field-select > label + *, field-options > label, field-options > label + *, field-richtext > label, field-richtext > label + * {
-  display: block;
-  width: 100%;
-  font-size: 18px; }
-field > label + *, field-select > label + *, field-options > label + *, field-richtext > label + * {
-  font-family: "Open Sans", sans-serif;
-  padding: 5px;
-  padding-left: 0;
-  padding-right: 0;
-  border: 0;
-  border-bottom: 1px solid #2980b9;
-  outline: 0; }
-field > label, field-select > label, field-options > label, field-richtext > label {
-  font-weight: 600;
-  color: #2980b9;
-  margin-bottom: 7.5px; }
+field, field-select, field-options, field-richtext {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%; }
+  field validation-errors, field-select validation-errors, field-options validation-errors, field-richtext validation-errors {
+    order: 3; }
+  field > label, field > label + *, field-select > label, field-select > label + *, field-options > label, field-options > label + *, field-richtext > label, field-richtext > label + * {
+    display: block;
+    width: 100%;
+    font-size: 18px; }
+  field > label + *, field-select > label + *, field-options > label + *, field-richtext > label + * {
+    font-family: "Open Sans", sans-serif;
+    padding: 5px;
+    padding-left: 0;
+    padding-right: 0;
+    border: 0;
+    border-bottom: 1px solid #2980b9;
+    outline: 0; }
+  field > label, field-select > label, field-options > label, field-richtext > label {
+    font-weight: 600;
+    color: #2980b9;
+    margin-bottom: 7.5px; }
 
 field-richtext {
   /* Editor styling */ }
@@ -1165,13 +1171,25 @@ field-richtext {
     /* Override bootstrap */
     border: 1px solid #EEE; }
   field-richtext .ta-toolbar .btn-group {
-    margin-bottom: 5px; }
+    margin-bottom: 5px;
+    display: grid;
+    grid-gap: 7.5px;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); }
+    field-richtext .ta-toolbar .btn-group button {
+      border: 0;
+      background: white;
+      padding: 7px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+    field-richtext .ta-toolbar .btn-group button.active {
+      background: #2980b9;
+      color: black; }
   field-richtext .ta-editor, field-richtext .white-box {
     padding: 10px;
     background-color: #FFF;
     border: 1px solid #EEE; }
-  field-richtext textarea.ta-bind {
-    width: 100%; }
+  field-richtext [contenteditable] {
+    width: 100%;
+    padding: 15px !important; }
 
 related-items .related-items-wrapper > label {
   display: block;
@@ -1700,6 +1718,16 @@ user-box .user-box-wrapper {
       max-height: 50px;
       max-width: 50px;
       border-radius: 50%; }
+
+validation-errors {
+  display: grid;
+  /* display: block; */
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  margin-top: 7px;
+  font-size: 15px;
+  color: #e74c3c;
+  font-weight: 600; }
 
 .main-container {
   overflow: hidden;
