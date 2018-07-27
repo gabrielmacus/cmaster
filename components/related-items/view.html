@@ -1,3 +1,5 @@
+<validation-errors data-ng-if="$ctrl.errors" data-errors="$ctrl.errors"></validation-errors>
+
 <div class="related-items-wrapper">
     <label data-ng-show="$ctrl.label">{{$ctrl.label}}</label>
 
@@ -10,7 +12,7 @@
     </lightbox>
 
     <lightbox data-opened="$ctrl.openCreate" >
-        <save data-on-save="$ctrl.onCreatedItem"  data-ng-if="$ctrl.openCreate"  data-module="$ctrl.module"></save>
+        <save data-on-save="$ctrl.onCreatedItem" data-on-save-all="$ctrl.onCreatedItem"  data-ng-if="$ctrl.openCreate"  data-module="$ctrl.module"></save>
     </lightbox>
 
     <grid-list >
@@ -34,15 +36,13 @@
     </grid-list>
 
 
-
-
-
     <btn-toolbar>
         <btn data-ng-click="$ctrl.selectExistant()">Seleccionar <i class="fas fa-hand-pointer"></i>
         </btn>
         <btn data-ng-click="$ctrl.createNew()">Crear <i class="fas fa-file"></i>
         </btn>
     </btn-toolbar>
+
 
 </div>
 

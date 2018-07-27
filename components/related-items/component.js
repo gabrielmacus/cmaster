@@ -7,7 +7,8 @@ app.component('relatedItems', {
             relationType:'=?',
             properties:'=',
             unrelateArray:'=',
-            label:'='
+            label:'=',
+            errors:'=?'
         },
         transclude:true,
         controller: function ($scope,$timeout) {
@@ -78,6 +79,8 @@ app.component('relatedItems', {
 
                     if(newCollection)
                     {
+
+                        self.errors=false;
 
                         for(var k in newCollection)
                         {

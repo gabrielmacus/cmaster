@@ -9,9 +9,22 @@ related-items > .related-items-wrapper > lightbox > .lightbox > .lightbox-contai
 }
 related-items
 {
+  display: flex;
+  flex-wrap: wrap;
+  validation-errors{
+    order: 3;
+
+    & + .related-items-wrapper
+    {
+      outline: 2px solid $error-color;
+    }
+  }
+
+
+
   .related-items-wrapper
   {
-
+width: 100%;
     save .tools btn:first-child
     {
 
@@ -44,6 +57,14 @@ display: none;
 
     .related-actions
     {
+      & + ng-transclude
+      {
+        float:left;
+        width:100%;
+        margin-top: $padding-1;
+      }
+
+
       padding: $padding-1/2;
       background: white;
       margin-top: $padding-1/2;

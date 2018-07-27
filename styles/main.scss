@@ -10,7 +10,7 @@ body {
   height: 100%;
   font-family: $main-font;
 }
-
+$error-color:#e74c3c;
 $main-background:white;
 $main-background-font:black;
 $main-color: #2980b9;
@@ -36,6 +36,7 @@ a{
   text-decoration: none;
   color: inherit;
 }
+
 
 
 //Components

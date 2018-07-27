@@ -6,6 +6,34 @@ app.factory('REST', function($http,HttpErrorHandler) {
     var REST = function (module) {
         var self = this;
         self.module = module;
+        self.getUrl  = function () {
+            return ;
+        };
+
+        self.get=function (endpoint,onSuccess,onError) {
+
+
+            return $http.get(baseUrl+self.module+"/"+endpoint)
+                .then(function (response) {
+
+
+                    onSuccess(response.data);
+
+                },function (error) {
+
+                    if(onError)
+                    {
+                        onError(error);
+                    }
+
+                    HttpErrorHandler(error);
+
+                });
+
+
+
+        };
+
         self.readById=function (id,query) {
 
             query = !query?{}:query;
@@ -43,7 +71,7 @@ app.factory('REST', function($http,HttpErrorHandler) {
 
 
         };
-        self.save=function (item,validationCallback,multipart) {
+        self.save=function (item,successCallback,validationCallback,multipart) {
 
             var url = baseUrl+self.module+"/";
             if(item.id)
@@ -130,7 +158,10 @@ app.factory('REST', function($http,HttpErrorHandler) {
             return $http(request)
                 .then(function (response) {
 
-                    return response.data;
+
+                    successCallback(response.data);
+
+                   // return response.data;
 
                 },function (error) {
                     if(error.status == 400 && validationCallback)

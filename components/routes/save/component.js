@@ -3,7 +3,8 @@ app.component('save', {
         {
             module:'<',
             id:'<',
-            onSave:'<'
+            onSave:'<',
+            onSaveAll:'<'
           //  items:'<'
         },
     controller:function (REST,Modules,$state,$scope) {
@@ -23,40 +24,42 @@ app.component('save', {
                 });
 
         };
-        self.validationErrors={};
-        self.saveItem=function (dontRedirectOnEnd) {
+        self.saveItem=function (dontRedirectOnEnd,success,error) {
             var restClient = new REST(self.module);
-
+            self.validationErrors=false;
             self.loading =true;
-            return restClient.save(self.item,function (validationErrors) {
+            restClient.save(self.item,function (item) {
+                self.loading=false;
+
+                if(self.onSave)
+                {
+
+                    self.onSave(item);
+                }
+                else if(!dontRedirectOnEnd)
+                {
+                    $state.go("list",{module:self.module});
+                }
+
+                if(success)
+                {
+                    success();
+                }
+
+
+
+            },function (validationErrors) {
 
                 self.loading=false;
                     self.validationErrors = validationErrors;
 
-
-            },self.multipart)
-                .then(function (item) {
-                    self.loading=false;
-
-
-                    if(self.validationErrors && Object.keys(self.validationErrors).length)
+                    if(error)
                     {
-                        return false;
+                        error();
                     }
 
 
-                    if(self.onSave)
-                    {
-
-                        self.onSave(item);
-                    }
-                    else if(!dontRedirectOnEnd)
-                    {
-                        $state.go("list",{module:self.module});
-
-                    }
-
-                });
+            },self.multipart);
 
 
         };
@@ -67,19 +70,19 @@ app.component('save', {
 
                 self.item = self.items[k];
 
-                self.saveItem(true).then(function (item) {
+                self.saveItem(true,function () {
 
                     self.saveMultipleItems(k+1);
                 });
             }
             else {
 
-                if(!self.onSave)
+                if(!self.onSaveAll)
                 {
                     $state.go("list",{module:self.module});
                 }
                 else {
-                    self.onSave();
+                    self.onSaveAll();
                 }
 
             }

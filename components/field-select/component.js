@@ -2,7 +2,8 @@ app.component('fieldSelect', {
         bindings: {
             label:'=',
             model:'=',
-            options:'@'
+            options:'@',
+            errors:'=?'
 
         },
         controller: function () {

@@ -1,4 +1,4 @@
-app.factory('Modules', function($http,HttpErrorHandler,AuthenticationFactory) {
+app.factory('Modules', function($http,HttpErrorHandler,AuthenticationFactory,REST,$timeout) {
 
 
     return {
@@ -32,6 +32,7 @@ app.factory('Modules', function($http,HttpErrorHandler,AuthenticationFactory) {
         "post-save":function (ctrl) {
             ctrl.query = !ctrl.query?{}:ctrl.query;
             ctrl.query.populate = [{file:{path:'images'}}];
+
         },
         "user":function (ctrl) {
 
@@ -39,6 +40,21 @@ app.factory('Modules', function($http,HttpErrorHandler,AuthenticationFactory) {
             console.log(AuthenticationFactory.user.id);
             ctrl.query.filter={id:{not:[AuthenticationFactory.user.id]}};
             ctrl.properties = {"id":"ID","username":"Nombre de usuario",'name':'Nombre','surname':'Apellido'};
+
+        },
+        "permission":function (ctrl) {
+            ctrl.title="Listado de permisos";
+            ctrl.properties = {"id":"ID","name":"Denominación"};
+        },
+        "permission-save":function (ctrl,$scope) {
+
+            var restClient = new REST(ctrl.module);
+
+            restClient.get("modules/",function (data) {
+               ctrl.modules = data;
+
+            });
+
 
         }
 
