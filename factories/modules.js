@@ -42,8 +42,23 @@ app.factory('Modules', function($http,HttpErrorHandler,AuthenticationFactory,RES
             ctrl.properties = {"id":"ID","username":"Nombre de usuario",'name':'Nombre','surname':'Apellido'};
 
         },
-        "role-save":function (ctrl) {
-            ctrl.query.populate =[{permission:{path:"permissions"}}];
+        "role-save":function (ctrl,$scope) {
+
+            $scope.$watch("$ctrl.item",function (newVal) {
+                if(newVal && newVal._related && newVal._related.permissions)
+                {
+                    for(var k in newVal._related.permissions)
+                    {
+                        if(newVal._related.permissions[k].actions && typeof newVal._related.permissions[k].actions !== "object")
+                        {
+                            newVal._related.permissions[k].actions = JSON.parse(newVal._related.permissions[k].actions);
+                        }
+                    }
+
+                }
+            })
+
+            ctrl.query.populate =[{module:{path:"permissions"}}];
         },
         "role":function (ctrl) {
 
@@ -52,6 +67,7 @@ app.factory('Modules', function($http,HttpErrorHandler,AuthenticationFactory,RES
 
 
         },
+        /*
         "permission":function (ctrl) {
             ctrl.title="Listado de permisos";
             ctrl.properties = {"id":"ID","module":"Módulo","action":"Acción"};
@@ -66,6 +82,20 @@ app.factory('Modules', function($http,HttpErrorHandler,AuthenticationFactory,RES
                ctrl.modules = data;
 
             });
+
+        },*/
+        "module":function (ctrl) {
+            ctrl.properties = {"name":"Módulo"};
+
+            ctrl.individualActions = [];
+           var idx =  ctrl.toolbarActions.findIndex(function (e) {
+                return e.id == "select";
+            });
+           if(idx > -1)
+           {
+               ctrl.toolbarActions = [ctrl.toolbarActions[idx]];
+           }
+
 
 
         }

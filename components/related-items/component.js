@@ -103,6 +103,9 @@ app.component('relatedItems', {
                 },true);
 
 
+                self.clone=function (item) {
+                    self.model.push(angular.copy(item));
+                }
 
                 self.unrelate=function (k) {
 
@@ -115,7 +118,7 @@ app.component('relatedItems', {
                 self.toolbarActions=function (listCtrl) {
 
 
-                    return [{'label':'Seleccionar','icon':'fas fa-check',visible:listCtrl.defaultToolbarActions[1].visible,'action':function () {
+                    return [{id:'select','label':'Seleccionar','icon':'fas fa-check',visible:listCtrl.defaultToolbarActions[1].visible,'action':function () {
 
                        var selected = angular.copy(self.selectedItems);
                        for(var k in selected)

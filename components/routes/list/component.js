@@ -101,8 +101,8 @@ app.component('list', {
             }},{'label':'Ver detalles','icon':'fas fa-info'}];
 
             self.defaultToolbarActions =[
-                {'label':'Crear','icon':'fas fa-file','action':self.goToCreate},
-                {'label':function(){return 'Eliminar ('+self.getSelectedItems().length+')'},'icon':'fas fa-trash','action':function () {
+                {id:'create','label':'Crear','icon':'fas fa-file','action':self.goToCreate},
+                {id:'delete','label':function(){return 'Eliminar ('+self.getSelectedItems().length+')'},'icon':'fas fa-trash','action':function () {
 
 
                     self.deleteMultipleItems(self.getSelectedItems(),0,function () {
@@ -115,7 +115,8 @@ app.component('list', {
 
                     return self.getSelectedItems().length;//(self.selectedItems && self.selectedItems.length);
 
-                }}];
+                }}
+                ];
 
             if(self.toolbarActions && angular.isFunction(self.toolbarActions))
             {

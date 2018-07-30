@@ -23,10 +23,12 @@
             </dropdown>
 
             <div class="related-actions">
-                <a></a>
 
                 <a data-ng-click="$ctrl.moveRelated(-1,k)" class="move-left"><i class="fas fa-arrow-alt-circle-left"></i></a>
                 <a data-ng-click="$ctrl.moveRelated(1,k)" class="move-right"><i class="fas fa-arrow-alt-circle-right"></i></a>
+
+                <a data-ng-click="$ctrl.clone(item)"><i class="fas fa-clone"></i>
+                </a>
 
             </div>
 

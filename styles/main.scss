@@ -11,7 +11,10 @@ body {
   font-family: $main-font;
 }
 $error-color:#e74c3c;
-$main-background:white;
+$body-color:white;
+$body-font-color:black;
+
+
 $main-background-font:black;
 $main-color: #2980b9;
 
@@ -82,7 +85,7 @@ a{
   width: 100%;
   min-height: 100%;
   overflow: auto;
-  background: $main-background;
+  background: $body-color;
 
 
 

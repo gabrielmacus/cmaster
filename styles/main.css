@@ -1585,24 +1585,39 @@ field-option {
   field-option input:checked ~ label.dummy.not-checked {
     display: none; }
 
-dataset .grid-item-block.extra {
-  display: grid;
-  grid-template-columns: auto min-content;
-  align-items: center; }
-  dataset .grid-item-block.extra label.dummy {
-    font-size: 25px; }
-  dataset .grid-item-block.extra field-option {
-    padding-left: 7.5px; }
-dataset > .loading {
-  height: 80px;
-  align-items: center;
-  display: flex;
-  background: white;
-  margin-bottom: 15px; }
-  dataset > .loading svg {
-    margin: auto; }
-    dataset > .loading svg rect {
-      fill: black; }
+dataset {
+  float: left;
+  width: 100%; }
+  dataset .no-elements {
+    display: flex;
+    width: 100%;
+    height: 80px;
+    align-items: center;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 19px;
+    font-weight: 600;
+    color: black; }
+    dataset .no-elements p {
+      margin: auto; }
+  dataset .grid-item-block.extra {
+    display: grid;
+    grid-template-columns: auto min-content;
+    align-items: center; }
+    dataset .grid-item-block.extra label.dummy {
+      font-size: 25px; }
+    dataset .grid-item-block.extra field-option {
+      padding-left: 7.5px; }
+  dataset > .loading {
+    height: 80px;
+    align-items: center;
+    display: flex;
+    background: white;
+    margin-bottom: 15px; }
+    dataset > .loading svg {
+      margin: auto; }
+      dataset > .loading svg rect {
+        fill: black; }
 
 list > btn-toolbar .tools {
   box-shadow: inset 0px 1px 10px rgba(0, 0, 0, 0.2);

@@ -5,7 +5,7 @@
 <dataset data-loading="$ctrl.loadingItems"  data-selected-items="$ctrl.selectedItems" data-change-page="$ctrl.changePage" data-pager-offset="$ctrl.pagerOffset" data-pagination="$ctrl.pagination" data-individual-actions="$ctrl.individualActions" data-grid-mode="$ctrl.gridMode" data-pagination="$ctrl.pagination" data-properties="$ctrl.properties" data-items="$ctrl.items"></dataset>
 
 
-<btn-toolbar>
+<btn-toolbar data-ng-if="$ctrl.toolbarActions.length">
 
     <btn class="scale-fade-in" data-ng-repeat="tool in $ctrl.toolbarActions"
          data-ng-click="tool.action()"

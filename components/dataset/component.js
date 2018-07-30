@@ -9,7 +9,8 @@ app.component('dataset', {
             gridMode:'=',
             pagerOffset:'<',
             selectedItems:'=',
-            loading:'='
+            loading:'=',
+            emptyMessage:'='
         },
         controller: function ($scope,$window,$timeout) {
             var self = this;

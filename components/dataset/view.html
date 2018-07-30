@@ -1,9 +1,9 @@
 
 
-<grid-list class="toggle" data-ng-if="!$ctrl.loading">
+<grid-list data-ng-if="$ctrl.items.length" class="toggle" data-ng-if="!$ctrl.loading">
     <grid-item data-ng-repeat="(k,item) in $ctrl.items" data-properties="$ctrl.properties" data-item="item">
 
-        <dropdown  data-placeholder="'Acciones'" >
+        <dropdown data-ng-if="$ctrl.individualActions.length"  data-placeholder="'Acciones'" >
             <a data-ng-click="action.action(item)"  data-ng-repeat="action in $ctrl.individualActions">{{action.label}} &nbsp;<i data-ng-show="action.icon" data-ng-class="action.icon"></i></a>
         </dropdown>
         <field-option data-on-change="$ctrl.onUpdateItemSelection" data-model="item._selected" data-id="'grid-item-'+item.id" data-value="true"></field-option>
@@ -12,6 +12,10 @@
 
     </grid-item>
 </grid-list>
+
+<div data-ng-if="!$ctrl.items.length && !$ctrl.loading" class="no-elements">
+    <p>{{emptyMessage || 'No hay elementos para mostrar'}}</p>
+</div>
 
 
 <pager class="toggle" data-ng-if="!$ctrl.loading && $ctrl.pagination.pages > 1" data-change-page="$ctrl.changePage"  data-pager-offset="$ctrl.pagerOffset" data-pagination="$ctrl.pagination"></pager>
