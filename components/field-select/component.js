@@ -1,11 +1,12 @@
 app.component('fieldSelect', {
         bindings: {
             label:'=',
-            model:'=',
-            options:'@',
-            errors:'=?'
+            errors:'=?',
+            model:'=?',
+            options:'@'
 
         },
+    //transclude:true,
         controller: function () {
 
 

@@ -12,7 +12,7 @@ app.factory('Modules', function($http,HttpErrorHandler,AuthenticationFactory,RES
 
             ctrl.multipart=true;
         },
-        "post":function (ctrl) {
+        "news":function (ctrl) {
 
             ctrl.onProcess=function (item,callback) {
 
@@ -29,7 +29,7 @@ app.factory('Modules', function($http,HttpErrorHandler,AuthenticationFactory,RES
             ctrl.properties = {"image":{type:"media",label:"Imagen"},"title":"Titulo"};
             ctrl.query.populate = [{file:{path:'images'}}];
         },
-        "post-save":function (ctrl) {
+        "news-save":function (ctrl) {
             ctrl.query = !ctrl.query?{}:ctrl.query;
             ctrl.query.populate = [{file:{path:'images'}}];
 
@@ -42,11 +42,23 @@ app.factory('Modules', function($http,HttpErrorHandler,AuthenticationFactory,RES
             ctrl.properties = {"id":"ID","username":"Nombre de usuario",'name':'Nombre','surname':'Apellido'};
 
         },
+        "role-save":function (ctrl) {
+            ctrl.query.populate =[{permission:{path:"permissions"}}];
+        },
+        "role":function (ctrl) {
+
+            ctrl.title="Listado de roles";
+            ctrl.properties = {"id":"ID","name":"Nombre"};
+
+
+        },
         "permission":function (ctrl) {
             ctrl.title="Listado de permisos";
-            ctrl.properties = {"id":"ID","name":"Denominación"};
+            ctrl.properties = {"id":"ID","module":"Módulo","action":"Acción"};
+
         },
         "permission-save":function (ctrl,$scope) {
+
 
             var restClient = new REST(ctrl.module);
 

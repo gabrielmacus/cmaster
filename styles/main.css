@@ -1139,11 +1139,11 @@ field, field-select, field-options, field-richtext {
   width: 100%; }
   field validation-errors, field-select validation-errors, field-options validation-errors, field-richtext validation-errors {
     order: 3; }
-  field > label, field > label + *, field-select > label, field-select > label + *, field-options > label, field-options > label + *, field-richtext > label, field-richtext > label + * {
+  field > label, field > label + *, field > ng-transclude > *, field-select > label, field-select > label + *, field-select > ng-transclude > *, field-options > label, field-options > label + *, field-options > ng-transclude > *, field-richtext > label, field-richtext > label + *, field-richtext > ng-transclude > * {
     display: block;
     width: 100%;
     font-size: 18px; }
-  field > label + *, field-select > label + *, field-options > label + *, field-richtext > label + * {
+  field > label + :not(ng-transclude), field > ng-transclude > *, field-select > label + :not(ng-transclude), field-select > ng-transclude > *, field-options > label + :not(ng-transclude), field-options > ng-transclude > *, field-richtext > label + :not(ng-transclude), field-richtext > ng-transclude > * {
     font-family: "Open Sans", sans-serif;
     padding: 5px;
     padding-left: 0;

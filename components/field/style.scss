@@ -14,9 +14,9 @@ display: flex;
 
 
 
-  & > label,& > label + *
+  & > label,& > label + *,& > ng-transclude > *
   {display:block;width:100%;    font-size:18px;}
-  & > label  + *
+  & > label  + :not(ng-transclude),& > ng-transclude > *
   {font-family:$main-font;
     padding:$padding-1/3;
     padding-left:0;

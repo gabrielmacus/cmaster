@@ -1,11 +1,11 @@
 <field-grid>
-    <field  data-errors="$ctrl.validationErrors.name" data-model="$ctrl.item.name" data-label="'Nombre'">
-    </field>
 
-    <field-select data-options="l as l for l  in [1,2,3]" data-errors="$ctrl.validationErrors.level"  data-model="$ctrl.item.level" data-label="'Nivel'">
-    </field-select>
 
-    <field-select data-options="m as m for m in $ctrl.modules" data-errors="$ctrl.validationErrors.module"  data-model="$ctrl.item.module" data-label="'Módulo'">
+    <field-select  data-errors="$ctrl.validationErrors.module"    data-label="'Módulo'">
+
+        <select  data-ng-model="$ctrl.item.module" data-ng-options="m as m for m in $ctrl.modules">
+
+        </select>
     </field-select>
 
 
