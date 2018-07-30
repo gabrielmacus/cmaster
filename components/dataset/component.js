@@ -9,6 +9,7 @@ app.component('dataset', {
             gridMode:'=',
             pagerOffset:'<',
             selectedItems:'=',
+            singleSelection:'=',
             loading:'=',
             emptyMessage:'='
         },

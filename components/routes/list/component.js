@@ -3,6 +3,7 @@ app.component('list', {
         {
             module:'<',
             selectedItems:'=',
+            singleSelection:'=',
             toolbarActions:'<?'
         },
     controller:function (REST,Modules,$state,$timeout,$scope) {

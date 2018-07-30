@@ -34,6 +34,9 @@ app.factory('Modules', function($http,HttpErrorHandler,AuthenticationFactory,RES
             ctrl.query.populate = [{file:{path:'images'}}];
 
         },
+        "user-save":function (ctrl) {
+            ctrl.query.populate = [{role:{path:'role'}}];
+        },
         "user":function (ctrl) {
 
             ctrl.title="Listado de usuarios";

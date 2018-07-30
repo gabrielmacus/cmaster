@@ -4,7 +4,7 @@
     <label data-ng-show="$ctrl.label">{{$ctrl.label}}</label>
 
     <p class="related-items-empty" data-ng-show="!$ctrl.model.length">
-        {{'Sin elementos relacionados'}}
+        {{'No seleccionó ningún elemento'}}
     </p>
 
     <lightbox data-opened="$ctrl.openList" >
@@ -15,14 +15,14 @@
         <save data-on-save="$ctrl.onCreatedItem" data-on-save-all="$ctrl.onCreatedItem"  data-ng-if="$ctrl.openCreate"  data-module="$ctrl.module"></save>
     </lightbox>
 
-    <grid-list >
+    <grid-list data-ng-class="{'single-item':$ctrl.singleItem}" >
         <grid-item  data-item="item" data-ng-repeat="(k,item) in $ctrl.model" data-properties="$ctrl.properties">
 
             <dropdown  data-placeholder="'Acciones'" data-items="[{label:'Demo'},{label:'Demo 2'}]">
                 <a data-ng-click="$ctrl.unrelate(k)">Eliminar &nbsp;<i class="fas fa-trash"></i></a>
             </dropdown>
 
-            <div class="related-actions">
+            <div data-ng-if="!$ctrl.singleItem" class="related-actions">
 
                 <a data-ng-click="$ctrl.moveRelated(-1,k)" class="move-left"><i class="fas fa-arrow-alt-circle-left"></i></a>
                 <a data-ng-click="$ctrl.moveRelated(1,k)" class="move-right"><i class="fas fa-arrow-alt-circle-right"></i></a>

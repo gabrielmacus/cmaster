@@ -7,11 +7,10 @@
     <field data-ng-if="!$ctrl.item.id"  data-errors="$ctrl.validationErrors.password" data-model="$ctrl.item.password" data-type="'password'" data-label="'Contraseña'"></field>
     <field data-ng-if="!$ctrl.item.id"  data-errors="$ctrl.validationErrors.password2" data-model="$ctrl.item.password2" data-type="'password'" data-label="'Confirmar contraseña'"></field>
 
-    <field-select data-label="'Rol'" data-options="r as r for r in [1,2,3]" data-model="$ctrl.item._related.rol[0]"></field-select>
 
-    {{$ctrl.item._related}}
+    <related-items data-single-item="true" data-errors="$ctrl.validationErrors['_related.role']" data-unrelate-array="$ctrl.item._deletedRelations" data-label="'Rol'"  data-child-key="'role'" data-module="'role'" data-model="$ctrl.item._related.role" data-properties='{"name":"Nombre"}'>
 
-
+    </related-items>
     <btn-toolbar>
 
         <btn  data-ng-click="$ctrl.cancel()" >Cancelar <i class="fas fa-long-arrow-alt-left"></i></btn>

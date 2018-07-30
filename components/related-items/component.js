@@ -8,7 +8,8 @@ app.component('relatedItems', {
             properties:'=',
             unrelateArray:'=',
             label:'=',
-            errors:'=?'
+            errors:'=?',
+            singleItem:'=?'
         },
         transclude:true,
         controller: function ($scope,$timeout) {
