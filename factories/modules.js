@@ -35,7 +35,7 @@ app.factory('Modules', function($http,HttpErrorHandler,AuthenticationFactory,RES
 
         },
         "user-save":function (ctrl) {
-            ctrl.query.populate = [{role:{path:'role'}}];
+            ctrl.query.populate = [{"role":true}];
         },
         "user":function (ctrl) {
 

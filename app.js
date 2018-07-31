@@ -132,6 +132,9 @@ app.run(function ($transitions,AuthenticationFactory) {
                     transition.router.stateService.transitionTo('login');
                     return false;
                 }
+                else {
+                    document.body.classList.add("logged-in")
+                }
             });
 
         }

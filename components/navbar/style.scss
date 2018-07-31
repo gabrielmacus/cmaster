@@ -5,6 +5,16 @@ $menu-font-color: $main-font-color;
 $menu-shadow:inset 0px 1px 10px rgba(0, 0, 0, 0.4);
 $menu-item-border-bottom: $secondary-color;
 $menu-icon-size:20px;
+
+
+body:not(.logged-in)
+{
+  navbar
+  {
+    display:none;
+  }
+}
+
 //Side navbar
 
 //Top navbar

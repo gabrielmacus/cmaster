@@ -36,6 +36,8 @@ height: 100%;
   }
   .grid-item-block {
 
+
+
     &.extra
     {
       margin-top: auto;
@@ -55,7 +57,11 @@ height: 100%;
     }
 
     .text
-    {line-height: 120%;}
+    {width:100%;line-height: 120%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    float: left
+    }
 
     display: block;
     margin-bottom: $padding-1;

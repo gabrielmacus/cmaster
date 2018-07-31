@@ -1059,7 +1059,11 @@ grid-item > .grid-item-wrapper {
     grid-item > .grid-item-wrapper .grid-item-block:last-child {
       margin-bottom: 0; }
     grid-item > .grid-item-wrapper .grid-item-block .text {
-      line-height: 120%; }
+      width: 100%;
+      line-height: 120%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      float: left; }
 
 media {
   box-shadow: none;
@@ -1112,8 +1116,8 @@ img, iframe, video {
   height: 100%; }
 
 pager {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  overflow-x: auto;
+  display: flex;
   user-select: none;
   cursor: pointer;
   text-align: center;
@@ -1370,6 +1374,9 @@ heading .main-title {
   border-bottom: 1px solid #3498db;
   line-height: 150%; }
 
+body:not(.logged-in) navbar {
+  display: none; }
+
 navbar > .menu-top {
   position: fixed;
   right: 0;
@@ -1588,6 +1595,22 @@ field-option {
 dataset {
   float: left;
   width: 100%; }
+  dataset grid-item {
+    position: relative; }
+    dataset grid-item .loader {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.9); }
+      dataset grid-item .loader svg {
+        width: 25%;
+        margin: auto; }
+        dataset grid-item .loader svg * {
+          fill: white; }
   dataset .no-elements {
     display: flex;
     width: 100%;
@@ -1632,6 +1655,13 @@ login .login-wrapper {
   width: 100%;
   height: 100%;
   z-index: 10; }
+  login .login-wrapper .login-errors {
+    line-height: 120%;
+    font-size: 15px;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    color: #e74c3c; }
   login .login-wrapper:after {
     content: '';
     position: fixed;

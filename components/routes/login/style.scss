@@ -4,6 +4,16 @@ login
 {
   .login-wrapper
   {
+    .login-errors
+    {
+      line-height: 120%;
+      font-size: 15px;
+      font-weight: 600;
+      width: 100%;
+      text-align: center;
+      color: $error-color;
+    }
+
     display: flex;
 
     &:after{

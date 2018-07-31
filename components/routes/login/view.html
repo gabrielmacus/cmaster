@@ -16,11 +16,20 @@
 
         </div>
 
+
         <btn-toolbar>
             <btn data-loading="$ctrl.loading" data-ng-click="$ctrl.login()">Ingresar</btn>
         </btn-toolbar>
 
+
+        <p class="login-errors slide-top" data-ng-if="$ctrl.loginError">
+            {{$ctrl.loginError}}
+        </p>
+
+
     </field-grid>
+
+
 
 
 

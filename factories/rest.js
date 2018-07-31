@@ -44,20 +44,18 @@ app.factory('REST', function($http,HttpErrorHandler) {
                 },HttpErrorHandler);
 
         };
-        self.list=function (query,onError) {
+        self.list=function (query,onSuccess,onError) {
 
             query = !query?{}:query;
 
-            return $http.get(baseUrl+self.module+"/?"+window.decodeURI(Qs.stringify(query)),{
+            $http.get(baseUrl+self.module+"/?"+window.decodeURI(Qs.stringify(query)),{
 
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 
             })
                 .then(function (response) {
 
-
-                 return response.data;
-
+                    onSuccess(response.data);
                 },function (error) {
 
                     if(onError)
@@ -178,16 +176,15 @@ app.factory('REST', function($http,HttpErrorHandler) {
 
 
         }
-        self.delete=function (id) {
+        self.delete=function (id,onSuccess) {
             return $http.delete(baseUrl+self.module+"/"+id,{
 
                 headers: {}
 
             })
                 .then(function (response) {
-                    console.log(response);
 
-                    return response.data;
+                    onSuccess(response.data);
 
                 },HttpErrorHandler);
 

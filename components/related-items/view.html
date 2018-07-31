@@ -18,9 +18,10 @@
     <grid-list data-ng-class="{'single-item':$ctrl.singleItem}" >
         <grid-item  data-item="item" data-ng-repeat="(k,item) in $ctrl.model" data-properties="$ctrl.properties">
 
+            <!--
             <dropdown  data-placeholder="'Acciones'" data-items="[{label:'Demo'},{label:'Demo 2'}]">
                 <a data-ng-click="$ctrl.unrelate(k)">Eliminar &nbsp;<i class="fas fa-trash"></i></a>
-            </dropdown>
+            </dropdown>-->
 
             <div data-ng-if="!$ctrl.singleItem" class="related-actions">
 
@@ -28,6 +29,9 @@
                 <a data-ng-click="$ctrl.moveRelated(1,k)" class="move-right"><i class="fas fa-arrow-alt-circle-right"></i></a>
 
                 <a data-ng-click="$ctrl.clone(item)"><i class="fas fa-clone"></i>
+                    <a data-ng-click="$ctrl.unrelate(k)"> &nbsp;<i class="fas fa-trash"></i></a>
+
+
                 </a>
 
             </div>

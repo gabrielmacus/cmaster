@@ -16,14 +16,12 @@ app.component('list', {
             self.query.p = page;
             return self.list();
         };
-        self.list=function () {
+        self.list=function (onSuccess) {
             var restClient = new REST(self.module);
 
             self.loadingItems=true;
 
-            return restClient.list(self.query,function () {
-                self.loadingItems=false;
-            }).then(function (data) {
+            restClient.list(self.query,function (data) {
                 self.items = [];
                 for(var k in data.results)
                 {
@@ -46,21 +44,31 @@ app.component('list', {
 
                 self.loadingItems=false;
 
+               if(onSuccess)
+               {
+                   onSuccess();
+               }
+
+            },function () {
+                self.loadingItems=false;
             });
         };
-        self.delete=function (item) {
+        self.delete=function (item,onSuccess) {
+
             var restClient = new REST(self.module);
-            return restClient.delete(item.id).then(function () {
-                self.list();
-            })
+            item._loading=true;
+
+            restClient.delete(item.id,function () {
+                self.list(onSuccess);
+
+            });
         };
         self.deleteMultipleItems=function (items,k,onEnd) {
 
             k = k?k:0;
             if(items[k])
             {
-                self.delete(items[k])
-                    .then(function () {
+                self.delete(items[k],function () {
                        self.deleteMultipleItems(items,k+1);
                     });
             }
