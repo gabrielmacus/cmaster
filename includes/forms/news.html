@@ -12,7 +12,12 @@
 
     </related-items>
 
+    <related-items data-errors="$ctrl.validationErrors['_related.news']" data-unrelate-array="$ctrl.item._deletedRelations" data-label="'Noticias relacionadas'" data-parent-key="'articles'" data-child-key="'articles'" data-module="'news'" data-model="$ctrl.item._related.articles" data-properties='{"title":"Titulo"}'>
 
+
+        <field data-model="$parent.item._relationData.extra_1" data-label="'Comentario'"></field>
+
+    </related-items>
 
     <!--
     <field-options data-multiple="true" data-model="$ctrl.item.interests" data-label="'Intereses'" data-option-label="'label'" data-option-value="'value'"  data-options="[{label:'Si',value:1},{label:'No',value:0}]"></field-options>
@@ -29,4 +34,3 @@
     </btn-toolbar>
 
 </field-grid>
-

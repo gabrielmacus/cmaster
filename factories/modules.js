@@ -31,7 +31,7 @@ app.factory('Modules', function($http,HttpErrorHandler,AuthenticationFactory,RES
         },
         "news-save":function (ctrl) {
             ctrl.query = !ctrl.query?{}:ctrl.query;
-            ctrl.query.populate = [{file:{path:'images'}}];
+            ctrl.query.populate = [{file:{path:'images'}},{news:{path:"articles"}}];
 
         },
         "user-save":function (ctrl) {
