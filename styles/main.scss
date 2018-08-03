@@ -1,29 +1,23 @@
 @import "ng-animations.scss";
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");
+
+
+
+
+
 html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 /* Extract from normalize.css by Nicolas Gallagher and Jonathan Neal git.io/normalize */
 html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
-$main-font:"Open Sans", sans-serif;;
+
+
+
+
 
 html,
 body {
   height: 100%;
+  overflow-x: hidden;
   font-family: $main-font;
 }
-$error-color:#e74c3c;
-$body-color:white;
-$body-font-color:black;
-
-
-$main-background-font:black;
-$main-color: #2980b9;
-
-$main-font-color:white;
-
-$secondary-color:#3498db;
-$secondary-font-color: black;
-
-$padding-1: 15px;
 
 
 b {

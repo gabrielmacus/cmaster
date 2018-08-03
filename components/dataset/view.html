@@ -1,15 +1,17 @@
 
 
 <grid-list   data-ng-if="!$ctrl.loading && $ctrl.items.length">
-    <grid-item data-ng-repeat="(k,item) in $ctrl.items" data-properties="$ctrl.properties" data-item="item">
+    <grid-item data-ng-class="{'deleted':item._deleted}" data-ng-repeat="(k,item) in $ctrl.items" data-properties="$ctrl.properties" data-item="item">
+
 
         <dropdown data-ng-if="!item._loading && $ctrl.individualActions.length"  data-placeholder="'Acciones'" >
             <a data-ng-click="action.action(item)"  data-ng-repeat="action in $ctrl.individualActions">{{action.label}} &nbsp;<i data-ng-show="action.icon" data-ng-class="action.icon"></i></a>
         </dropdown>
+
         <field-option data-ng-if="!item._loading" data-on-change="$ctrl.onUpdateItemSelection" data-model="item._selected" data-id="'grid-item-'+item.id" data-value="true"></field-option>
 
 
-        <div class="loader" data-ng-if="item._loading">
+        <div class="loader toggle" data-ng-if="item._loading">
             <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
     viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
   <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946

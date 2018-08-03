@@ -1,6 +1,7 @@
 field-option
 {
 
+
   display: flex;
   input
   {
@@ -17,14 +18,37 @@ field-option
     font-size: 15px;
     color: black;
     display: inline-block;
+    transition:opacity 0.1s;
   }
-  label.dummy
+
+
+  .dummy-container
+  {
+    position: relative;
+  }
+  label.dummy.checked
+  {
+    position: absolute;
+    top:0;
+    left:0;
+  }
+
+  label.dummy.visible
+  {
+    opacity: 1;
+  }
+  label.dummy:not(.visible)
+  {
+    opacity: 0;
+  }
+  label.dummy.not-checked
   { cursor:pointer;
     padding: 0;
     margin: 0;
     margin-left: auto;
     border: 0;
   }
+  /*
   label.dummy.not-checked
   {
     display: block;
@@ -46,7 +70,7 @@ field-option
     }
 
 
-  }
+  }*/
 
 
 }

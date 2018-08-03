@@ -59,7 +59,13 @@ app.component('list', {
             item._loading=true;
 
             restClient.delete(item.id,function () {
-                self.list(onSuccess);
+                if(!onSuccess)
+                {
+                    self.list();
+                }
+                else {
+                    onSuccess();
+                }
 
             });
         };
@@ -69,6 +75,10 @@ app.component('list', {
             if(items[k])
             {
                 self.delete(items[k],function () {
+
+                    items[k]._deleted= true;
+                        items[k]._loading=false;
+
                        self.deleteMultipleItems(items,k+1);
                     });
             }
@@ -77,6 +87,9 @@ app.component('list', {
                 if(onEnd)
                 {
                     onEnd();
+                }
+                else {
+                    self.list();
                 }
             }
 
@@ -124,6 +137,30 @@ app.component('list', {
 
                     return self.getSelectedItems().length;//(self.selectedItems && self.selectedItems.length);
 
+                }},
+                {id:'deselect-all','label':'Desmarcar todo','icon':'fas fa-times','action':function () {
+
+                    for(let k in self.items)
+                    {
+                        self.items[k]._selected = false;
+
+                    }
+
+                },'visible':function () {
+
+                    return self.items.length && self.items.length == self.getSelectedItems().length;
+
+                }},
+                {id:'select-all','label':'Marcar todo','visible':function () {
+
+                    return self.items.length && self.items.length != self.getSelectedItems().length;
+
+                },'icon':'fas fa-check-double','action':function () {
+                    for(let k in self.items)
+                    {
+                        self.items[k]._selected = true;
+
+                    }
                 }}
                 ];
 
@@ -155,7 +192,7 @@ app.component('list', {
                 if(!angular.isFunction(self.toolbarActions[k].label))
                 {
 
-                    var label =self.toolbarActions[k].label;
+                    let label =self.toolbarActions[k].label;
                     self.toolbarActions[k].label =function () {
                         return label;
                     }

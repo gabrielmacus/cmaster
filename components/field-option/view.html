@@ -1,11 +1,16 @@
-
-<label for="{{$ctrl.id}}" >{{$ctrl.label}}</label>
-
-
-<input id="{{$ctrl.id}}" data-ng-change="$ctrl.onChange()" data-ng-model="$ctrl.model" data-ng-true-value="'{{$ctrl.value}}'" type="checkbox">
+<label data-ng-click="$ctrl.toggleValue()" >{{$ctrl.label}}</label>
 
 
-<label for="{{$ctrl.id}}" class="dummy not-checked"><i class="far fa-square"></i></label>
 
-<label for="{{$ctrl.id}}" class="dummy checked"><i class="fas fa-check-square"></i></label>
 
+<!--
+<input id="{{$ctrl.id}}"  data-ng-model="$ctrl.model" data-ng-true-value="'{{$ctrl.value}}'" type="checkbox">
+-->
+
+<div class="dummy-container">
+    <label data-ng-class="{'visible':$ctrl.model === false}" data-ng-click="$ctrl.toggleValue()"  class="toggle dummy not-checked"><i class="far fa-square"></i></label>
+
+    <label data-ng-class="{'visible':$ctrl.model !== false}" data-ng-click="$ctrl.toggleValue()" class="toggle dummy checked"><i class="fas fa-check-square"></i></label>
+
+
+</div>

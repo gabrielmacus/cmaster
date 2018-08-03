@@ -4,6 +4,17 @@ dataset
 
   grid-item
   {
+    transition: opacity 0.2s;
+
+    &.deleted
+    {
+
+
+      pointer-events: none;
+      opacity: 0.4;
+
+    }
+
     position: relative;
     .loader
     {
