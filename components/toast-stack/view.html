@@ -1,0 +1,11 @@
+<div data-ng-click="$ctrl.goAway(k)" class="toast scale-fade-in" data-ng-class="toast.type"     data-ng-repeat="(k,toast) in $ctrl.toasts">
+
+    <span class="text " data-ng-init="$ctrl.startTimeout(toast,k)" >
+        <i data-ng-show="toast.type == 'error'" class="fas fa-times-circle"></i>
+         <i data-ng-show="toast.type == 'info'" class="fas fa-exclamation"></i>
+         <i data-ng-show="toast.type == 'warning'" class="fas fa-info"></i>
+         <i data-ng-show="toast.type == 'success'" class="fas fa-thumbs-up"></i>
+        {{toast.text}}</span>
+
+
+</div>

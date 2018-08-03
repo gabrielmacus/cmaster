@@ -1,0 +1,53 @@
+toast-stack
+{
+  display: grid;
+  grid-gap: 10px;
+  position: fixed;
+  bottom: $padding-1 * 3;
+  right:$padding-1 * 2;
+
+  .toast
+  {
+    .text
+    {
+      font-size: 14px;
+      display: flex;
+    }
+    i{
+      margin-right: 10px;
+    }
+    max-width: 230px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    background-color: #eeeeee;
+    color:black;
+    padding: $padding-1;
+    font-weight: 600;
+  }
+
+  .toast.error
+  {
+    background-color: $error-color;
+    color: white;
+  }
+  .toast.info
+  {
+    background-color: $info-color;
+    color: white;
+  }
+
+  .toast.warning
+  {
+    background-color: $warning-color;
+    color: white;
+  }
+
+  .toast.success
+  {
+    background-color: $success-color;
+    color: white;
+  }
+
+
+
+
+}

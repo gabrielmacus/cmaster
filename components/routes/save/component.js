@@ -7,7 +7,7 @@ app.component('save', {
             onSaveAll:'<'
           //  items:'<'
         },
-    controller:function (REST,Modules,$state,$scope) {
+    controller:function (REST,Modules,$state,$scope,ToastStack) {
         var self = this;
         self.item = {};
 
@@ -25,14 +25,31 @@ app.component('save', {
 
         };
         self.saveItem=function (dontRedirectOnEnd,success,error) {
+
+            ToastStack.push({
+                type:'info',
+                text:'Guardando elemento...'
+            },'saving');
+
             var restClient = new REST(self.module);
             self.validationErrors=false;
             self.loading =true;
             restClient.save(self.item,function (item) {
                 self.loading=false;
 
+                if(!self.onSave)
+                {
+                    ToastStack.remove("saving");
+                    ToastStack.push({
+                        type:'success',
+                        text:'Elemento guardado con éxito',
+                        timeout:2000
+                    });
+                }
+
                 if(self.onSave)
                 {
+
 
                     self.onSave(item);
                 }
@@ -49,8 +66,14 @@ app.component('save', {
 
 
             },function (validationErrors) {
-
+                ToastStack.remove("saving");
                 self.loading=false;
+
+                ToastStack.push({
+                    type:'error',
+                    text:'Hay errores de validación. Verifique los campos',
+                    timeout:5000
+                },'validation');
                     self.validationErrors = validationErrors;
 
                     if(error)
@@ -79,6 +102,12 @@ app.component('save', {
 
                 if(!self.onSaveAll)
                 {
+                    ToastStack.remove("saving");
+                    ToastStack.push({
+                        type:'success',
+                        text:'Múltiples elementos guardados con éxito',
+                        timeout:2000
+                    });
                     $state.go("list",{module:self.module});
                 }
                 else {

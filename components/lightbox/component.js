@@ -15,3 +15,4 @@ app.component('lightbox', {
     },
     templateUrl:"components/lightbox/view.html"
 });
+

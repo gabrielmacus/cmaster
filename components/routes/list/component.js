@@ -6,8 +6,35 @@ app.component('list', {
             singleSelection:'=',
             toolbarActions:'<?'
         },
-    controller:function (REST,Modules,$state,$timeout,$scope) {
+    controller:function (REST,Modules,$state,$timeout,$scope,$rootScope,ToastStack) {
 
+        /*
+        ToastStack.push({
+            text:"Hey! Soy un toast...",
+            type:"error",
+        });*/
+        /*
+        $rootScope.ToastStack = [
+            {
+                text:"Hey! Soy un toast...",
+                type:"error",
+            },
+            {
+                text:"Hey! Soy un toast...",
+                type:"info",
+                timeout:5000
+            },
+            {
+                text:"Hey! Soy un toast...",
+                type:"warning",
+                timeout:4000
+            },
+            {
+                text:"Hey! Soy un toast...",
+                type:"success",
+                timeout:3000
+            }
+        ];*/
         var self = this;
         self.goToCreate=function () {
             $state.go("create",{module:self.module});
@@ -55,12 +82,27 @@ app.component('list', {
         };
         self.delete=function (item,onSuccess) {
 
+
+            ToastStack.push({
+              type:'info',
+              text:'Eliminando elemento...'
+            },'deleting');
+
             var restClient = new REST(self.module);
             item._loading=true;
 
             restClient.delete(item.id,function () {
+                ToastStack.remove("deleting");
                 if(!onSuccess)
                 {
+                    //ToastStack.remove('deleting');
+
+                    ToastStack.push({
+                      type:'success',
+                      text:'Elemento eliminado',
+                      timeout:2000
+                    },'deleted');
+
                     self.list();
                 }
                 else {
@@ -89,6 +131,15 @@ app.component('list', {
                     onEnd();
                 }
                 else {
+
+
+                    ToastStack.push({
+                        type:'success',
+                        text:'Múltiples elementos eliminados',
+                        timeout:2000
+                    },'deleted');
+
+
                     self.list();
                 }
             }
@@ -110,12 +161,25 @@ app.component('list', {
             self.pagerOffset = 4;
             self.individualActions = [{'label':'Eliminar','icon':'fas fa-trash','action':function (item) {
 
-                self.deleteItem=function () {
-                    self.deleteItem=false;
-                    self.delete(item);
 
+                $rootScope.Lightbox = {
+                    opened:true,
+                    title:"¿Desea eliminar el elemento?",
+                    actions:[
+                        {"text":"Si","action":function () {
+                            $rootScope.Lightbox = false;
+                            self.delete(item);
+                        }},
+                        {
+                            "text":"No","action":function () {
+                            $rootScope.Lightbox = false;
+                        }
+                        }
 
-                }
+                    ]
+
+                };
+
 
             }},{'label':'Editar','icon':'fas fa-pen','action':function (item) {
                 $state.go("update",{module:self.module,id:item.id});
@@ -126,13 +190,35 @@ app.component('list', {
                 {id:'create','label':'Crear','icon':'fas fa-file','action':self.goToCreate},
                 {id:'delete','label':function(){return 'Eliminar ('+self.getSelectedItems().length+')'},'icon':'fas fa-trash','action':function () {
 
+                    $rootScope.Lightbox = {
+                        opened:true,
+                        title:"¿Desea eliminar "+self.getSelectedItems().length+" elemento/s?",
+                        actions:[
+                            {"text":"Si","action":function () {
+                                $rootScope.Lightbox = false;
+                                self.deleteMultipleItems(self.getSelectedItems(),0,function () {
+                                    for(var k in self.items)
+                                    {
+                                        self.items[k]._selected=false;
+                                    }
+                                });
+                            }},
+                            {
+                                "text":"No","action":function () {
+                                    $rootScope.Lightbox = false;
+                                }
+                            }
 
-                    self.deleteMultipleItems(self.getSelectedItems(),0,function () {
-                        for(var k in self.items)
-                        {
-                            self.items[k]._selected=false;
-                        }
-                    });
+                        ]
+
+
+
+                    };
+
+
+
+
+
                 },'visible':function () {
 
                     return self.getSelectedItems().length;//(self.selectedItems && self.selectedItems.length);

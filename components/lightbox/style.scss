@@ -1,6 +1,12 @@
 lightbox
 {
 
+   :not(dataset) + btn-toolbar  > .tools
+  {
+
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  }
+
   .main-title
   {    border-bottom: 0;
     font-size: 25px;}

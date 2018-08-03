@@ -44,6 +44,7 @@
     <script src="components/field-richtext/component.js"></script>
     <script src="components/user-box/component.js"></script>
     <script src="components/validation-errors/component.js"></script>
+    <script src="components/toast-stack/component.js"></script>
     <!-- Views -->
     <script src="components/routes/home/component.js"></script>
     <script src="components/routes/list/component.js"></script>
@@ -77,6 +78,7 @@
         <user-box data-ng-if="$root.loggedUser" data-user="$root.loggedUser"></user-box>
 
     </navbar>
+
 
 <main class="main-container">
 
@@ -116,6 +118,17 @@
     </div>
 
 </main>
+
+
+<lightbox data-opened="$root.Lightbox.opened">
+    <heading >{{$root.Lightbox.title}}</heading>
+    <btn-toolbar data-ng-if="$root.Lightbox.actions.length">
+        <btn data-ng-repeat="a in $root.Lightbox.actions" data-ng-click="a.action()">{{a.text}}</btn>
+    </btn-toolbar>
+</lightbox>
+
+
+<toast-stack data-toasts="$root.ToastStack"></toast-stack>
 
 </body>
 </html>
