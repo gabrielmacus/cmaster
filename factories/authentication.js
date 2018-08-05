@@ -78,7 +78,15 @@ app.factory('AuthenticationFactory', function($http,HttpErrorHandler,$cookies,$r
 
                     callback(factory.user);
 
-                },HttpErrorHandler);
+                },function(e){
+
+
+                    callback(false);
+
+                    //HttpErrorHandler(e);
+
+
+                });
 
         }
 

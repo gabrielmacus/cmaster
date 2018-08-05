@@ -116,24 +116,27 @@ app.component('relatedItems', {
 
                 };
 
+
                 self.toolbarActions=function (listCtrl) {
 
 
-                    return [{id:'select','label':'Seleccionar','icon':'fas fa-check',visible:listCtrl.defaultToolbarActions[1].visible,'action':function () {
+                    var actions = angular.extend(listCtrl.defaultToolbarActions,[{id:'select','label':'Seleccionar','icon':'fas fa-check',visible:listCtrl.defaultToolbarActions[1].visible,'action':function () {
 
-                       var selected = angular.copy(self.selectedItems);
-                       for(var k in selected)
-                       {
+                        var selected = angular.copy(listCtrl.getSelectedItems());
+                        for(var k in selected)
+                        {
 
 
-                           if(!self.model){
-                               self.model=[];
-                           }
-                           self.model.push(selected[k])
-                       }
+                            if(!self.model){
+                                self.model=[];
+                            }
+                            self.model.push(selected[k])
+                        }
                         self.openList=false;
 
-                    }},listCtrl.defaultToolbarActions[1]];
+                    }}]);
+
+                    return actions;
 
 
                 };

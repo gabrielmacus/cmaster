@@ -21,9 +21,10 @@ app.component('dataset', {
 
 
 
-                self.onUpdateItemSelection=function () {
+                self.onUpdateItemSelection=function (item) {
 
                     $timeout(function () {
+                        
                         self.selectedItems =self.items.filter(function (t) { return t._selected });
                         $scope.$apply();
                     })

@@ -8,7 +8,7 @@
     <field data-ng-if="!$ctrl.item.id"  data-errors="$ctrl.validationErrors.password2" data-model="$ctrl.item.password2" data-type="'password'" data-label="'Confirmar contraseña'"></field>
 
 
-    <related-items    data-errors="$ctrl.validationErrors['_related.role']" data-unrelate-array="$ctrl.item._deletedRelations" data-label="'Rol'"   data-module="'role'" data-model="$ctrl.item._related.role" data-properties='{"name":"Nombre"}'>
+    <related-items data-single-item="true"    data-errors="$ctrl.validationErrors['_related.role']" data-unrelate-array="$ctrl.item._deletedRelations" data-label="'Rol'"   data-module="'role'" data-model="$ctrl.item._related.role" data-properties='{"name":"Nombre"}'>
 
     </related-items>
 

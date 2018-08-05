@@ -8,7 +8,7 @@
     </p>
 
     <lightbox data-opened="$ctrl.openList" >
-        <list data-toolbar-actions="$ctrl.toolbarActions"  class="toggle" data-ng-if="$ctrl.openList" data-selected-items="$ctrl.selectedItems" data-module="$ctrl.module"></list>
+        <list data-single-selection="$ctrl.singleItem" data-toolbar-actions="$ctrl.toolbarActions"  class="toggle" data-ng-if="$ctrl.openList" data-selected-items="$ctrl.selectedItems" data-module="$ctrl.module"></list>
     </lightbox>
 
     <lightbox data-opened="$ctrl.openCreate" >
@@ -23,12 +23,12 @@
                 <a data-ng-click="$ctrl.unrelate(k)">Eliminar &nbsp;<i class="fas fa-trash"></i></a>
             </dropdown>-->
 
-            <div data-ng-if="!$ctrl.singleItem" class="related-actions">
+            <div  class="related-actions">
 
-                <a data-ng-click="$ctrl.moveRelated(-1,k)" class="move-left"><i class="fas fa-arrow-alt-circle-left"></i></a>
-                <a data-ng-click="$ctrl.moveRelated(1,k)" class="move-right"><i class="fas fa-arrow-alt-circle-right"></i></a>
+                <a data-ng-if="!$ctrl.singleItem" data-ng-click="$ctrl.moveRelated(-1,k)" class="move-left"><i class="fas fa-arrow-alt-circle-left"></i></a>
+                <a data-ng-if="!$ctrl.singleItem" data-ng-click="$ctrl.moveRelated(1,k)" class="move-right"><i class="fas fa-arrow-alt-circle-right"></i></a>
 
-                <a data-ng-click="$ctrl.clone(item)"><i class="fas fa-clone"></i>
+                <a data-ng-if="!$ctrl.singleItem" data-ng-click="$ctrl.clone(item)"><i class="fas fa-clone"></i>
                     <a data-ng-click="$ctrl.unrelate(k)"> &nbsp;<i class="fas fa-trash"></i></a>
 
 
